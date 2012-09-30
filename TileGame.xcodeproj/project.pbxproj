@@ -721,12 +721,9 @@
 		F4DBBC6A15A57F4800071821 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-
 				F47F4BB2161857F400A16AD1 /* title-background.png */,
 				F47F4BB3161857F400A16AD1 /* title-caption.png */,
-
 				CED7924616172A5800BE73F6 /* cave-32 */,
-
 				F4F849CC160433EE009945BC /* Sprites */,
 				F4F849CA16043398009945BC /* Sounds */,
 				F49F45D915E6019A007ED9E8 /* background.png */,
@@ -1203,21 +1200,18 @@
 				F4A0998C1614380400D5BDE9 /* lamp-64.png in Resources */,
 				F4A0998D1614380400D5BDE9 /* lever.png in Resources */,
 				F4A0998E1614380400D5BDE9 /* wheel.png in Resources */,
-
 				F4A0999716144AB200D5BDE9 /* cart-32.plist in Resources */,
 				F4A0999816144AB200D5BDE9 /* cart-32.png in Resources */,
 				F4A0999916144AB200D5BDE9 /* cart-64.plist in Resources */,
 				F4A0999A16144AB200D5BDE9 /* cart-64.png in Resources */,
 				F47F4BB5161857F500A16AD1 /* title-background.png in Resources */,
 				F47F4BB6161857F500A16AD1 /* title-caption.png in Resources */,
-
 				CED7924C16172A5800BE73F6 /* cave-on-wheels.png in Resources */,
 				CED7924D16172A5800BE73F6 /* gold-on-wheels-32.tmx in Resources */,
 				CED7924E16172A5800BE73F6 /* meta.png in Resources */,
 				CED7924F16172A5800BE73F6 /* rails.png in Resources */,
 				CED7925016172A5800BE73F6 /* rocks.png in Resources */,
 				CED79277161734C600BE73F6 /* base.png in Resources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
