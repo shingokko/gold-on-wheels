@@ -10,6 +10,9 @@
 
 @interface TitleScreenLayer : CCLayerColor {
 }
+
++(CCScene *) scene;
+
 @end
 
 @interface TitleScreenScene : CCScene {

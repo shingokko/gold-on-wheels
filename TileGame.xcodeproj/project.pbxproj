@@ -14,7 +14,8 @@
 		F4374CE115AEAE83008F26A8 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F4374CE015AEAE83008F26A8 /* GameOverScene.m */; };
 		F4374CEA15AEBB2F008F26A8 /* broken.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4374CE715AEBB2F008F26A8 /* broken.caf */; };
 		F4374CEB15AEBB2F008F26A8 /* great.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4374CE815AEBB2F008F26A8 /* great.caf */; };
-		F4374CEC15AEBB2F008F26A8 /* selection.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4374CE915AEBB2F008F26A8 /* selection.caf */; };
+		F47F4BB5161857F500A16AD1 /* title-background.png in Resources */ = {isa = PBXBuildFile; fileRef = F47F4BB2161857F400A16AD1 /* title-background.png */; };
+		F47F4BB6161857F500A16AD1 /* title-caption.png in Resources */ = {isa = PBXBuildFile; fileRef = F47F4BB3161857F400A16AD1 /* title-caption.png */; };
 		F49F45DE15E6019A007ED9E8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F49F45D915E6019A007ED9E8 /* background.png */; };
 		F49F45DF15E6019A007ED9E8 /* start-button-clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = F49F45DA15E6019A007ED9E8 /* start-button-clicked.png */; };
 		F49F45E015E6019A007ED9E8 /* start-button.png in Resources */ = {isa = PBXBuildFile; fileRef = F49F45DB15E6019A007ED9E8 /* start-button.png */; };
@@ -36,18 +37,15 @@
 		F49F852B15F616C6001FCBE3 /* CCActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F49F852A15F616C6001FCBE3 /* CCActor.m */; };
 		F4A099811614380400D5BDE9 /* boot-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A099731614380400D5BDE9 /* boot-32.png */; };
 		F4A099821614380400D5BDE9 /* boot-64.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A099741614380400D5BDE9 /* boot-64.png */; };
-		F4A099831614380400D5BDE9 /* cart-front-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A099751614380400D5BDE9 /* cart-front-32.png */; };
-		F4A099841614380400D5BDE9 /* cart-front-64.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A099761614380400D5BDE9 /* cart-front-64.png */; };
-		F4A099851614380400D5BDE9 /* cart-side-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A099771614380400D5BDE9 /* cart-side-32.png */; };
-		F4A099861614380400D5BDE9 /* cart-side-64.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A099781614380400D5BDE9 /* cart-side-64.png */; };
-		F4A099871614380400D5BDE9 /* cart-with-gold-front-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A099791614380400D5BDE9 /* cart-with-gold-front-32.png */; };
-		F4A099881614380400D5BDE9 /* cart-with-gold-front-64.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A0997A1614380400D5BDE9 /* cart-with-gold-front-64.png */; };
-		F4A099891614380400D5BDE9 /* cart-with-gold-side-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A0997B1614380400D5BDE9 /* cart-with-gold-side-32.png */; };
-		F4A0998A1614380400D5BDE9 /* cart-with-gold-side-64.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A0997C1614380400D5BDE9 /* cart-with-gold-side-64.png */; };
 		F4A0998B1614380400D5BDE9 /* lamp-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A0997D1614380400D5BDE9 /* lamp-32.png */; };
 		F4A0998C1614380400D5BDE9 /* lamp-64.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A0997E1614380400D5BDE9 /* lamp-64.png */; };
 		F4A0998D1614380400D5BDE9 /* lever.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A0997F1614380400D5BDE9 /* lever.png */; };
 		F4A0998E1614380400D5BDE9 /* wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A099801614380400D5BDE9 /* wheel.png */; };
+		F4A099921614464000D5BDE9 /* GoldCart.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A099911614464000D5BDE9 /* GoldCart.m */; };
+		F4A0999716144AB200D5BDE9 /* cart-32.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A0999316144AB200D5BDE9 /* cart-32.plist */; };
+		F4A0999816144AB200D5BDE9 /* cart-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A0999416144AB200D5BDE9 /* cart-32.png */; };
+		F4A0999916144AB200D5BDE9 /* cart-64.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A0999516144AB200D5BDE9 /* cart-64.plist */; };
+		F4A0999A16144AB200D5BDE9 /* cart-64.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A0999616144AB200D5BDE9 /* cart-64.png */; };
 		F4A3EB4B15FAB83400FC3D43 /* GamePlayInputLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3EB4A15FAB83400FC3D43 /* GamePlayInputLayer.m */; };
 		F4A54073160D603F0092F62B /* zombie-64.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A5406F160D603F0092F62B /* zombie-64.plist */; };
 		F4A54074160D603F0092F62B /* zombie-64.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A54070160D603F0092F62B /* zombie-64.png */; };
@@ -57,11 +55,8 @@
 		F4A63CC815F188A400982A64 /* Powerup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A63CC715F188A400982A64 /* Powerup.m */; };
 		F4A63CCC15EF461200C32883 /* CCSpotLight.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A63CCB15EF461200C32883 /* CCSpotLight.m */; };
 		F4A63CCE15F1902000982A64 /* Speedup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A63CCD15F1902000982A64 /* Speedup.m */; };
-		F4A63D1915EF5DCA00C32883 /* gun.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A63D1815EF5DCA00C32883 /* gun.png */; };
 		F4A9FB9D15A8125500E51FCB /* enemy1.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A9FB9915A8125500E51FCB /* enemy1.png */; };
 		F4A9FBA015A8125500E51FCB /* Projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A9FB9C15A8125500E51FCB /* Projectile.png */; };
-		F4C10CFB15F37C0400398A5D /* boot.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C10CF815F37C0400398A5D /* boot.png */; };
-		F4C10CFC15F37C0400398A5D /* lamp.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C10CF915F37C0400398A5D /* lamp.png */; };
 		F4C10CFD15F37C0400398A5D /* run.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4C10CFA15F37C0400398A5D /* run.caf */; };
 		F4DBBC5A15A57F4800071821 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DBBC5915A57F4800071821 /* QuartzCore.framework */; };
 		F4DBBC5C15A57F4800071821 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DBBC5B15A57F4800071821 /* OpenGLES.framework */; };
@@ -210,7 +205,8 @@
 		F4374CE015AEAE83008F26A8 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		F4374CE715AEBB2F008F26A8 /* broken.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = broken.caf; sourceTree = "<group>"; };
 		F4374CE815AEBB2F008F26A8 /* great.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = great.caf; sourceTree = "<group>"; };
-		F4374CE915AEBB2F008F26A8 /* selection.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = selection.caf; sourceTree = "<group>"; };
+		F47F4BB2161857F400A16AD1 /* title-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-background.png"; path = "Resources/title-background.png"; sourceTree = "<group>"; };
+		F47F4BB3161857F400A16AD1 /* title-caption.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-caption.png"; path = "Resources/title-caption.png"; sourceTree = "<group>"; };
 		F49F45D915E6019A007ED9E8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
 		F49F45DA15E6019A007ED9E8 /* start-button-clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button-clicked.png"; path = "Resources/start-button-clicked.png"; sourceTree = "<group>"; };
 		F49F45DB15E6019A007ED9E8 /* start-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button.png"; path = "Resources/start-button.png"; sourceTree = "<group>"; };
@@ -242,18 +238,16 @@
 		F49F852A15F616C6001FCBE3 /* CCActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCActor.m; path = Classes/CCSpriteExtensions/CCActor.m; sourceTree = "<group>"; };
 		F4A099731614380400D5BDE9 /* boot-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boot-32.png"; path = "Resources/boot-32.png"; sourceTree = "<group>"; };
 		F4A099741614380400D5BDE9 /* boot-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boot-64.png"; path = "Resources/boot-64.png"; sourceTree = "<group>"; };
-		F4A099751614380400D5BDE9 /* cart-front-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cart-front-32.png"; path = "Resources/cart-front-32.png"; sourceTree = "<group>"; };
-		F4A099761614380400D5BDE9 /* cart-front-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cart-front-64.png"; path = "Resources/cart-front-64.png"; sourceTree = "<group>"; };
-		F4A099771614380400D5BDE9 /* cart-side-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cart-side-32.png"; path = "Resources/cart-side-32.png"; sourceTree = "<group>"; };
-		F4A099781614380400D5BDE9 /* cart-side-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cart-side-64.png"; path = "Resources/cart-side-64.png"; sourceTree = "<group>"; };
-		F4A099791614380400D5BDE9 /* cart-with-gold-front-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cart-with-gold-front-32.png"; path = "Resources/cart-with-gold-front-32.png"; sourceTree = "<group>"; };
-		F4A0997A1614380400D5BDE9 /* cart-with-gold-front-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cart-with-gold-front-64.png"; path = "Resources/cart-with-gold-front-64.png"; sourceTree = "<group>"; };
-		F4A0997B1614380400D5BDE9 /* cart-with-gold-side-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cart-with-gold-side-32.png"; path = "Resources/cart-with-gold-side-32.png"; sourceTree = "<group>"; };
-		F4A0997C1614380400D5BDE9 /* cart-with-gold-side-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cart-with-gold-side-64.png"; path = "Resources/cart-with-gold-side-64.png"; sourceTree = "<group>"; };
 		F4A0997D1614380400D5BDE9 /* lamp-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lamp-32.png"; path = "Resources/lamp-32.png"; sourceTree = "<group>"; };
 		F4A0997E1614380400D5BDE9 /* lamp-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lamp-64.png"; path = "Resources/lamp-64.png"; sourceTree = "<group>"; };
 		F4A0997F1614380400D5BDE9 /* lever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lever.png; path = Resources/lever.png; sourceTree = "<group>"; };
 		F4A099801614380400D5BDE9 /* wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wheel.png; path = Resources/wheel.png; sourceTree = "<group>"; };
+		F4A099901614464000D5BDE9 /* GoldCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldCart.h; sourceTree = "<group>"; };
+		F4A099911614464000D5BDE9 /* GoldCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoldCart.m; sourceTree = "<group>"; };
+		F4A0999316144AB200D5BDE9 /* cart-32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "cart-32.plist"; sourceTree = "<group>"; };
+		F4A0999416144AB200D5BDE9 /* cart-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cart-32.png"; sourceTree = "<group>"; };
+		F4A0999516144AB200D5BDE9 /* cart-64.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "cart-64.plist"; sourceTree = "<group>"; };
+		F4A0999616144AB200D5BDE9 /* cart-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cart-64.png"; sourceTree = "<group>"; };
 		F4A3EB4A15FAB83400FC3D43 /* GamePlayInputLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayInputLayer.m; sourceTree = "<group>"; };
 		F4A3EB4C15FAB9B600FC3D43 /* GamePlayInputLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayInputLayer.h; sourceTree = "<group>"; };
 		F4A5406F160D603F0092F62B /* zombie-64.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "zombie-64.plist"; sourceTree = "<group>"; };
@@ -267,11 +261,8 @@
 		F4A63CCB15EF461200C32883 /* CCSpotLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCSpotLight.m; path = TileGame/Classes/CCSpotLight.m; sourceTree = "<group>"; };
 		F4A63CCC15F1902000982A64 /* Speedup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Speedup.h; path = TileGame/Classes/Powerups/Speedup.h; sourceTree = "<group>"; };
 		F4A63CCD15F1902000982A64 /* Speedup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Speedup.m; path = TileGame/Classes/Powerups/Speedup.m; sourceTree = "<group>"; };
-		F4A63D1815EF5DCA00C32883 /* gun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gun.png; path = Resources/gun.png; sourceTree = "<group>"; };
 		F4A9FB9915A8125500E51FCB /* enemy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy1.png; path = Resources/enemy1.png; sourceTree = "<group>"; };
 		F4A9FB9C15A8125500E51FCB /* Projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Projectile.png; path = Resources/Projectile.png; sourceTree = "<group>"; };
-		F4C10CF815F37C0400398A5D /* boot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = boot.png; path = Resources/boot.png; sourceTree = "<group>"; };
-		F4C10CF915F37C0400398A5D /* lamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lamp.png; path = Resources/lamp.png; sourceTree = "<group>"; };
 		F4C10CFA15F37C0400398A5D /* run.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = run.caf; path = Resources/run.caf; sourceTree = "<group>"; };
 		F4DBBC5515A57F4800071821 /* TileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DBBC5915A57F4800071821 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -557,6 +548,8 @@
 				CE219B82160D1C650096C496 /* GameObject.m */,
 				CE219B87160D1D940096C496 /* GameCharacter.h */,
 				CE219B88160D1D940096C496 /* GameCharacter.m */,
+				F4A099901614464000D5BDE9 /* GoldCart.h */,
+				F4A099911614464000D5BDE9 /* GoldCart.m */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -707,11 +700,10 @@
 		F4DBBC6A15A57F4800071821 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F47F4BB2161857F400A16AD1 /* title-background.png */,
+				F47F4BB3161857F400A16AD1 /* title-caption.png */,
 				F4F849CC160433EE009945BC /* Sprites */,
-				F4C10CF815F37C0400398A5D /* boot.png */,
-				F4C10CF915F37C0400398A5D /* lamp.png */,
 				F4F849CA16043398009945BC /* Sounds */,
-				F4A63D1815EF5DCA00C32883 /* gun.png */,
 				F49F45D915E6019A007ED9E8 /* background.png */,
 				F49F45DA15E6019A007ED9E8 /* start-button-clicked.png */,
 				F49F45DB15E6019A007ED9E8 /* start-button.png */,
@@ -1060,7 +1052,6 @@
 				F49F45E615E603DA007ED9E8 /* intermission.mp3 */,
 				F49F45E715E603DA007ED9E8 /* selection.caf */,
 				F4374CE715AEBB2F008F26A8 /* broken.caf */,
-				F4374CE915AEBB2F008F26A8 /* selection.caf */,
 				F4DBBDED15A5813400071821 /* hit.caf */,
 				F4DBBDEF15A5813400071821 /* move.caf */,
 				F4DBBDF015A5813400071821 /* pickup.caf */,
@@ -1072,28 +1063,24 @@
 		F4F849CC160433EE009945BC /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				F4A0999316144AB200D5BDE9 /* cart-32.plist */,
+				F4A0999416144AB200D5BDE9 /* cart-32.png */,
+				F4A0999516144AB200D5BDE9 /* cart-64.plist */,
+				F4A0999616144AB200D5BDE9 /* cart-64.png */,
 				F4A099731614380400D5BDE9 /* boot-32.png */,
 				F4A099741614380400D5BDE9 /* boot-64.png */,
-				F4A099751614380400D5BDE9 /* cart-front-32.png */,
-				F4A099761614380400D5BDE9 /* cart-front-64.png */,
-				F4A099771614380400D5BDE9 /* cart-side-32.png */,
-				F4A099781614380400D5BDE9 /* cart-side-64.png */,
-				F4A099791614380400D5BDE9 /* cart-with-gold-front-32.png */,
-				F4A0997A1614380400D5BDE9 /* cart-with-gold-front-64.png */,
-				F4A0997B1614380400D5BDE9 /* cart-with-gold-side-32.png */,
-				F4A0997C1614380400D5BDE9 /* cart-with-gold-side-64.png */,
 				F4A0997D1614380400D5BDE9 /* lamp-32.png */,
 				F4A0997E1614380400D5BDE9 /* lamp-64.png */,
 				F4A0997F1614380400D5BDE9 /* lever.png */,
 				F4A099801614380400D5BDE9 /* wheel.png */,
-				F4A5406F160D603F0092F62B /* zombie-64.plist */,
-				F4A54070160D603F0092F62B /* zombie-64.png */,
 				F4A54071160D603F0092F62B /* zombie-32.plist */,
 				F4A54072160D603F0092F62B /* zombie-32.png */,
-				F4F849E4160452B7009945BC /* miner-64.plist */,
-				F4F849E5160452B7009945BC /* miner-64.png */,
+				F4A5406F160D603F0092F62B /* zombie-64.plist */,
+				F4A54070160D603F0092F62B /* zombie-64.png */,
 				F4F849E0160452A8009945BC /* miner.plist */,
 				F4F849E1160452A8009945BC /* miner.png */,
+				F4F849E4160452B7009945BC /* miner-64.plist */,
+				F4F849E5160452B7009945BC /* miner-64.png */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -1169,7 +1156,6 @@
 				F4A9FBA015A8125500E51FCB /* Projectile.png in Resources */,
 				F4374CEA15AEBB2F008F26A8 /* broken.caf in Resources */,
 				F4374CEB15AEBB2F008F26A8 /* great.caf in Resources */,
-				F4374CEC15AEBB2F008F26A8 /* selection.caf in Resources */,
 				F49F45DE15E6019A007ED9E8 /* background.png in Resources */,
 				F49F45DF15E6019A007ED9E8 /* start-button-clicked.png in Resources */,
 				F49F45E015E6019A007ED9E8 /* start-button.png in Resources */,
@@ -1180,10 +1166,7 @@
 				F49F45EB15E603DA007ED9E8 /* selection.caf in Resources */,
 				F49F45ED15E60E4F007ED9E8 /* step.caf in Resources */,
 				F4E35D5715EE234F0001ABBA /* shoot.caf in Resources */,
-				F4A63D1915EF5DCA00C32883 /* gun.png in Resources */,
 				F4A63CC415F1857A00982A64 /* powerup.caf in Resources */,
-				F4C10CFB15F37C0400398A5D /* boot.png in Resources */,
-				F4C10CFC15F37C0400398A5D /* lamp.png in Resources */,
 				F4C10CFD15F37C0400398A5D /* run.caf in Resources */,
 				F4F849E2160452A8009945BC /* miner.plist in Resources */,
 				F4F849E3160452A8009945BC /* miner.png in Resources */,
@@ -1195,18 +1178,16 @@
 				F4A54076160D603F0092F62B /* zombie-32.png in Resources */,
 				F4A099811614380400D5BDE9 /* boot-32.png in Resources */,
 				F4A099821614380400D5BDE9 /* boot-64.png in Resources */,
-				F4A099831614380400D5BDE9 /* cart-front-32.png in Resources */,
-				F4A099841614380400D5BDE9 /* cart-front-64.png in Resources */,
-				F4A099851614380400D5BDE9 /* cart-side-32.png in Resources */,
-				F4A099861614380400D5BDE9 /* cart-side-64.png in Resources */,
-				F4A099871614380400D5BDE9 /* cart-with-gold-front-32.png in Resources */,
-				F4A099881614380400D5BDE9 /* cart-with-gold-front-64.png in Resources */,
-				F4A099891614380400D5BDE9 /* cart-with-gold-side-32.png in Resources */,
-				F4A0998A1614380400D5BDE9 /* cart-with-gold-side-64.png in Resources */,
 				F4A0998B1614380400D5BDE9 /* lamp-32.png in Resources */,
 				F4A0998C1614380400D5BDE9 /* lamp-64.png in Resources */,
 				F4A0998D1614380400D5BDE9 /* lever.png in Resources */,
 				F4A0998E1614380400D5BDE9 /* wheel.png in Resources */,
+				F4A0999716144AB200D5BDE9 /* cart-32.plist in Resources */,
+				F4A0999816144AB200D5BDE9 /* cart-32.png in Resources */,
+				F4A0999916144AB200D5BDE9 /* cart-64.plist in Resources */,
+				F4A0999A16144AB200D5BDE9 /* cart-64.png in Resources */,
+				F47F4BB5161857F500A16AD1 /* title-background.png in Resources */,
+				F47F4BB6161857F500A16AD1 /* title-caption.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1336,6 +1317,7 @@
 				CE219B89160D1D940096C496 /* GameCharacter.m in Sources */,
 				CE219B8D160D1DF50096C496 /* Zombie.m in Sources */,
 				CE219B92160D1E640096C496 /* ShortestPathStep.m in Sources */,
+				F4A099921614464000D5BDE9 /* GoldCart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1396,6 +1378,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1417,6 +1400,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -14,6 +14,7 @@
 #import "CCSpotLight.h"
 #import "Speedup.h"
 #import "Lightup.h"
+#import "GoldCart.h"
 
 @interface GamePlayRenderingLayer (PrivateMethods)
 -(void)testCollisions:(ccTime)dt;
@@ -61,8 +62,6 @@ int maxSight = 400;
 	[_background release];
 	[_meta release];
 	[_hud release];
-	[_enemies release];
-	[_projectiles release];	
 	[heroSprite release];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -113,6 +112,7 @@ int maxSight = 400;
 #pragma mark Hero
 
 - (void)testCollisions:(ccTime)dt {
+    /*
     NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
     
     // iterate through projectiles
@@ -166,6 +166,7 @@ int maxSight = 400;
         [self removeChild:projectile cleanup:YES];
     }
     [projectilesToDelete release];
+     */
 }
 
 -(void)win {
@@ -185,24 +186,163 @@ int maxSight = 400;
     _moving = NO;
 }
 
+-(NSDictionary*)getTileMetaData:(CGPoint)position {
+    CGPoint tileCoord = [self tileCoordForPosition:position];
+    int metaGid = [_meta tileGIDAt:tileCoord];
+    
+    if (metaGid) {
+        NSDictionary* meta = [_tileMap propertiesForGID:metaGid];
+        return meta;
+    }
+    return nil;
+}
+-(BOOL)isCollectableTile:(CGPoint)position forMeta:(NSDictionary*)meta {
+    if (!meta) {
+        meta = [self getTileMetaData:position];
+    }
+    
+    if (meta) {
+        NSString *collision = [meta valueForKey:@"Collectable"];
+        if (collision && [collision compare:@"True"] == NSOrderedSame) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(BOOL)isCollidableTile:(CGPoint)position {
+    return [self isCollidableTile:position forMeta:nil];
+}
+
+-(BOOL)isCollidableTile:(CGPoint)position forMeta:(NSDictionary*)meta {
+    if (!meta) {
+        meta = [self getTileMetaData:position];
+    }
+
+    if (meta) {
+        NSString *collision = [meta valueForKey:@"Collidable"];
+        if (collision && [collision compare:@"True"] == NSOrderedSame) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+-(NSString*)getRailTileName:(CGPoint)position {
+    return [self getRailTileName:position forMeta:nil];
+}
+
+-(NSString*)getRailTileName:(CGPoint)position forMeta:(NSDictionary*)meta {
+    if (!meta) {
+        meta = [self getTileMetaData:position];
+    }
+    
+    if (meta) {
+        return [self getRailTileNameForMeta:meta];
+    }
+    
+    return nil;
+}
+
+-(NSString*)getRailTileNameForMeta:(NSDictionary*)meta {
+    if (meta) {
+        NSString *properties = [meta valueForKey:@"Rail"];
+        if (properties && [properties compare:@"Straight"] == NSOrderedSame) {
+            return @"Straight";
+        }
+        else if (properties && [properties compare:@"Curved"] == NSOrderedSame) {
+            return @"Curved";
+        }
+    }
+    
+    return nil;
+}
+
+-(BOOL)isRailTile:(CGPoint)tileCoord {
+    
+    int metaGid = [_meta tileGIDAt:tileCoord];
+    
+    if (metaGid) {
+        NSDictionary* meta = [_tileMap propertiesForGID:metaGid];
+        NSString* railTileName = [self getRailTileNameForMeta:meta];
+        
+        if (railTileName == @"Straight") {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(CGPoint)findNextRailPosition:(CGPoint)subjectPos playerFacing:(FacingDirection)direction {
+    
+    CGPoint tilePos = [self tileCoordForPosition:subjectPos];
+        
+    // Find the final destination of the cart based on the next destination
+    CGPoint tilePos1, tilePos2, tilePos3;
+    BOOL neighbor1, neighbor2, neighbor3;
+    
+    switch (direction) {
+        case kFacingUp:
+            tilePos1 = ccp(tilePos.x-1.0f, tilePos.y);
+            tilePos2 = ccp(tilePos.x, tilePos.y-1.0f);
+            tilePos3 = ccp(tilePos.x+1.0f, tilePos.y);
+            break;
+            
+        case kFacingDown:
+            tilePos1 = ccp(tilePos.x+1.0f, tilePos.y);
+            tilePos2 = ccp(tilePos.x, tilePos.y+1.0f);
+            tilePos3 = ccp(tilePos.x-1.0f, tilePos.y);
+            break;
+            
+        case kFacingRight:
+            tilePos1 = ccp(tilePos.x, tilePos.y-1.0f);
+            tilePos2 = ccp(tilePos.x+1.0f, tilePos.y);
+            tilePos3 = ccp(tilePos.x, tilePos.y+1.0f);
+            break;
+            
+        case kFacingLeft:
+            tilePos1 = ccp(tilePos.x, tilePos.y+1.0f);
+            tilePos2 = ccp(tilePos.x-1.0f, tilePos.y);
+            tilePos3 = ccp(tilePos.x, tilePos.y-1.0f);
+            break;
+    }
+
+    neighbor1 = [self isRailTile:tilePos1];
+    neighbor3 = [self isRailTile:tilePos3];
+    neighbor2 = [self isRailTile:tilePos2];
+    
+    if (neighbor1) {
+        return [self positionForTileCoord:tilePos1];
+    }
+    if (neighbor2) {
+        return [self positionForTileCoord:tilePos2];
+    }
+    if (neighbor3) {
+        return [self positionForTileCoord:tilePos3];
+    }
+    return ccp(-1000.0f, -1000.0f);
+}
+
 -(void)setPlayerPosition:(CGPoint)position facing:(FacingDirection)direction {
     if (_moving) {
         return;
     }
     
     CGPoint tileCoord = [self tileCoordForPosition:position];
+    
+    CCLOG(@"Tile coord: %f, %f", tileCoord.x, tileCoord.y);
+    
     int metaGid = [_meta tileGIDAt:tileCoord];
     
     if (metaGid) {
         NSDictionary *properties = [_tileMap propertiesForGID:metaGid];
         if (properties) {
-            NSString *collision = [properties valueForKey:@"Collidable"];
-            if (collision && [collision compare:@"True"] == NSOrderedSame) {
-                //[[SimpleAudioEngine sharedEngine] playEffect:@"hit.caf"];
+            if ([self isCollidableTile:position forMeta:properties]) {
                 return;
             }
-            NSString *collection = [properties valueForKey:@"Collectable"];
-            if (collection && [collection compare:@"True"] == NSOrderedSame) {
+            
+            if ([self isCollectableTile:position forMeta:properties]) {
                 [[SimpleAudioEngine sharedEngine] playEffect:@"pickup.caf"];
                 
                 [_meta removeTileAt:tileCoord];
@@ -217,6 +357,68 @@ int maxSight = 400;
                 }
             }
         }
+    }
+    
+    CCArray* carts = [_cartSpriteBatchNode children];
+    BOOL cartWillHitSomething = NO;
+    for (GameObject *cart in carts) {
+        CGRect targetRect = CGRectMake(cart.position.x - (cart.contentSize.width/2), cart.position.y - (cart.contentSize.height/2), cart.contentSize.width, cart.contentSize.height);
+            
+        if (CGRectContainsPoint(targetRect, position)) {
+            CCLOG(@"Collision between a cart and the miner has been detected.");
+            CGPoint dest = ccp(cart.position.x, cart.position.y);
+            CGPoint diff = ccp(abs(abs(_player.position.x) - abs(position.x)), abs(abs(_player.position.y) - abs(position.y)));
+            switch (direction) {
+                case kFacingUp:
+                    dest.y += diff.y;
+                    break;
+                    
+                case kFacingDown:
+                    dest.y -= diff.y;
+                    break;
+                    
+                case kFacingRight:
+                    dest.x += diff.x;
+                    break;
+                    
+                case kFacingLeft:
+                    dest.x -= diff.x;
+                    break;
+            }
+            
+            if ([self isCollidableTile:dest]) {
+                cartWillHitSomething = YES;
+            }
+            else {
+                // If there are no collidables so far, check if the cart will still be on rails
+                NSString* railTileName = [self getRailTileName:dest];
+                
+                if (railTileName == @"Straight") {
+                    id actionCartMove = [CCMoveTo actionWithDuration:0.2f position:dest];
+                    [cart runAction:[CCSequence actions:actionCartMove, nil]];
+                }
+                else if (railTileName == @"Curved") {
+                    CGPoint finalDest = [self findNextRailPosition:dest playerFacing:direction];
+                    
+                    if (!(finalDest.x == -1000.0f && finalDest.y == -1000.0f)) {
+                        ccBezierConfig bezier;
+                        bezier.controlPoint_1 = cart.position;
+                        bezier.controlPoint_2 = dest;
+                        bezier.endPosition = finalDest;
+                        id actionCartMove = [CCBezierTo actionWithDuration:0.4f bezier:bezier];
+                        [cart runAction:[CCSequence actions:actionCartMove, nil]];
+                    }
+                }
+                else {
+                    cartWillHitSomething = YES;
+                }
+            }
+        }
+    }
+    
+    // The destination of the cart is a collidable tile, so stop the hero
+    if (cartWillHitSomething) {
+        return;
     }
     
     id actionMove = [CCMoveTo actionWithDuration:0.2f position:position];
@@ -273,13 +475,8 @@ int maxSight = 400;
     }
 }
 
-- (void) projectileMoveFinished:(id)sender {
-    CCSprite *sprite = (CCSprite *)sender;
-    [self removeChild:sprite cleanup:YES];
-    [_projectiles removeObject:sprite];
-}
-
 -(void)throwProjectile:(CGPoint)touchLocation {
+    /*
     // Create a projectile and put it at the player's location
     CCSprite *projectile = [CCSprite spriteWithFile:@"Projectile.png"];
     projectile.position = _player.position;
@@ -318,6 +515,7 @@ int maxSight = 400;
      [CCSequence actionOne:[CCMoveTo actionWithDuration: realMoveDuration position: realDest] two: actionMoveDone]];
     
     [_projectiles addObject:projectile];
+     */
 }
 
 -(void)moveHero:(CGPoint)touchLocation facing:(FacingDirection)direction
@@ -474,28 +672,37 @@ int maxSight = 400;
 
 #pragma mark Zombie Outbreak
 
--(void)createObjectOfType:(GameObjectType)objectType 
-               withHealth:(int)initialHealth
-               atLocation:(CGPoint)spawnLocation 
-               withZValue:(int)ZValue {
+-(void)createObjectOfType:(GameObjectType)objectType withHealth:(int)initialHealth atLocation:(CGPoint)spawnLocation withZValue:(int)zValue {
     
     if (kEnemyTypeZombie == objectType) {
-		CCLOG(@"Creating Zombie");
+		CCLOG(@"Creating a zombie...");
+        
 		Zombie *zombie = [[Zombie alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"zombie-front-1.png"]];
 		[zombie setCharacterHealth:initialHealth];
 		[zombie setPosition:spawnLocation];
-		[zombieSpriteBatchNode addChild:zombie z:ZValue];
+		[_zombieSpriteBatchNode addChild:zombie z:zValue];
 		[zombie setDelegate:self];
         [zombie release];
+    }
+    else if (kObjectTypeGoldCart == objectType) {
+		CCLOG(@"Creating a gold cart...");
+        
+		GoldCart *cart = [[GoldCart alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-front-32.png"]];
+        CGPoint spawnPoint = [self computeTileFittingPosition:spawnLocation];
+		[cart setPosition:spawnPoint];
+		[_cartSpriteBatchNode addChild:cart z:zValue];
+        [cart release];
     }
 }
 
 -(void)addEnemyAtX:(int)x Y:(int)y
 {	
-	CCLOG(@"Creating Zombie");
-	[self createObjectOfType:kEnemyTypeZombie withHealth:100 
-				  atLocation:ccp(x, y) 
-				  withZValue:2];
+	[self createObjectOfType:kEnemyTypeZombie withHealth:100 atLocation:ccp(x, y) withZValue:2];
+}
+
+-(void)addCartAtX:(int)x andY:(int)y
+{
+	[self createObjectOfType:kObjectTypeGoldCart withHealth:0 atLocation:ccp(x, y) withZValue:0];
 }
 
 #pragma mark Setting Up Scene
@@ -537,17 +744,22 @@ int maxSight = 400;
 -(void) loadMinerSpritesheet
 {
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"miner.plist"];
-    sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner.png"];
-    [self addChild:sceneSpriteBatchNode z:0];
-
+    _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner.png"];
+    [self addChild:_sceneSpriteBatchNode z:0];
 }
 
 -(void) loadZombieSpritesheet
 {
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie-32.plist"];
-    zombieSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"zombie-32.png"];
-    [self addChild:zombieSpriteBatchNode z:0];
+    _zombieSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"zombie-32.png"];
+    [self addChild:_zombieSpriteBatchNode z:0];
+}
 
+-(void) loadCartSpritesheet
+{
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"cart-32.plist"];
+    _cartSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"cart-32.png"];
+    [self addChild:_cartSpriteBatchNode z:0];
 }
 
 // on "init" you need to initialize your instance
@@ -579,6 +791,7 @@ int maxSight = 400;
         
         [self loadMinerSpritesheet];
         [self loadZombieSpritesheet];
+        [self loadCartSpritesheet];
         
 		self.player = [[CCHero alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-1.png"]];
 		CGPoint initialPosition = [self computeTileFittingPosition:ccp(x, y)];
@@ -614,18 +827,21 @@ int maxSight = 400;
         _prevPos = CGPointZero;
         _playerAction = nil;
 		_mode = 0;
-		
-        _enemies = [[NSMutableArray alloc] init];
-        _projectiles = [[NSMutableArray alloc] init];
+        
 		_powerups = [[NSMutableArray alloc] init];
 		
         NSMutableDictionary *objectTile;
         for (objectTile in [objects objects]) {
             if ([[objectTile valueForKey:@"Enemy"] intValue] == 1) {
-                // no enemy for now
                 x = [[objectTile valueForKey:@"x"] intValue];
                 y = [[objectTile valueForKey:@"y"] intValue];
                 [self addEnemyAtX:x Y:y];
+            }
+            else if ([[objectTile valueForKey:@"Cart"] intValue] == 1) {
+                // gold cart
+                x = [[objectTile valueForKey:@"x"] intValue];
+                y = [[objectTile valueForKey:@"y"] intValue];
+                [self addCartAtX:x andY:y];
             }
             else {
                 int type = [[objectTile valueForKey:@"PowerupType"] intValue];
@@ -663,7 +879,7 @@ int maxSight = 400;
 		_spotlight = [CCSpotLight initWithRenderTexture:_mask spotLightRadius:_player.light renderColor:ccc4(0, 0, 0, 255)];
 		[self addChild:_spotlight z:2 tag:999];
 		
-        [sceneSpriteBatchNode addChild:_player z:kHeroSpriteZValue tag:kHeroSpriteTagValue];
+        [_sceneSpriteBatchNode addChild:_player z:kHeroSpriteZValue tag:kHeroSpriteTagValue];
         self.position = [self getViewpointPosition:_player.position];
         
         _tmpPathFindingDelta = 0.0f;
@@ -691,7 +907,7 @@ int maxSight = 400;
         
         CCLOG(@"Updating path finding...");
         
-        CCArray* zombies = [zombieSpriteBatchNode children];
+        CCArray* zombies = [_zombieSpriteBatchNode children];
         
         for (GameCharacter *zombie in zombies) {
             [zombie updateStateWithDeltaTime:delta andGameObject:_player];

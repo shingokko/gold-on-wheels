@@ -36,12 +36,11 @@
     id _playerAction;
     
 	CCHero *_player;
-    NSMutableArray *_enemies;
-    NSMutableArray *_projectiles;
     NSMutableArray *_powerups;
 	
-	CCSpriteBatchNode *sceneSpriteBatchNode;
-	CCSpriteBatchNode *zombieSpriteBatchNode;
+	CCSpriteBatchNode *_sceneSpriteBatchNode;
+	CCSpriteBatchNode *_zombieSpriteBatchNode;
+    CCSpriteBatchNode *_cartSpriteBatchNode;
     
     ccTime _tmpPathFindingDelta;
     ccTime _pathFindingThreshold;
@@ -72,7 +71,6 @@
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(CGPoint) computeTileFittingPosition:(CGPoint)position;
 -(void)setPlayerPosition:(CGPoint)position facing:(FacingDirection)direction;
--(void)projectileMoveFinished:(id)sender;
 -(void)playerMoveFinished:(id)sender;
 
 - (NSArray *)walkableAdjacentTilesCoordForTileCoord:(CGPoint)tileCoord;

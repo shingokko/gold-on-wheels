@@ -34,7 +34,8 @@ typedef enum {
 typedef enum {
 	kObjectTypeNone,
 	kHeroType,
-    kEnemyTypeZombie
+    kEnemyTypeZombie,
+    kObjectTypeGoldCart,
 } GameObjectType;
 
 @protocol GameplayLayerDelegate

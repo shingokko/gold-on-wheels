@@ -65,27 +65,21 @@
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"selection.caf"];
         
         // Add sprites that make up the title screen
-		CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
+		CCSprite *bg = [CCSprite spriteWithFile:@"title-background.png"];
         bg.tag = 1;
         bg.anchorPoint = CGPointMake(0, 0);
         
-		CCSprite *title = [CCSprite spriteWithFile:@"title.png"];
+		CCSprite *title = [CCSprite spriteWithFile:@"title-caption.png"];
         title.tag = 1;
-        
-		CCSprite *zombie = [CCSprite spriteWithFile:@"zombie.png"];
-        zombie.tag = 1;
         
         title.position = ccp(winSize.width * 0.5, winSize.height * 0.8);
         
-        zombie.position = ccp(winSize.width * 0.5, winSize.height/2.5);
-        
         [self addChild:bg z:0];
-        [self addChild:zombie z:0];
         [self addChild:title z:0];
         
         // Add start button
         CCMenuItem *button = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button-clicked.png" target:self selector:@selector(startButtonTapped:)];
-        button.position = ccp(winSize.width * 0.5, winSize.height * 0.2);
+        button.position = ccp(winSize.width * 0.77, winSize.height * 0.2);
         
         CCMenu *starMenu = [CCMenu menuWithItems:button, nil];
         starMenu.position = CGPointZero;
