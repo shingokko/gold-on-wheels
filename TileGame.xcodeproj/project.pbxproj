@@ -19,7 +19,6 @@
 		F49F45DE15E6019A007ED9E8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F49F45D915E6019A007ED9E8 /* background.png */; };
 		F49F45DF15E6019A007ED9E8 /* start-button-clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = F49F45DA15E6019A007ED9E8 /* start-button-clicked.png */; };
 		F49F45E015E6019A007ED9E8 /* start-button.png in Resources */ = {isa = PBXBuildFile; fileRef = F49F45DB15E6019A007ED9E8 /* start-button.png */; };
-		F49F45E115E6019A007ED9E8 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = F49F45DC15E6019A007ED9E8 /* title.png */; };
 		F49F45E215E6019A007ED9E8 /* zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = F49F45DD15E6019A007ED9E8 /* zombie.png */; };
 		F49F45E815E603DA007ED9E8 /* adventure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F49F45E415E603DA007ED9E8 /* adventure.mp3 */; };
 		F49F45EA15E603DA007ED9E8 /* intermission.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F49F45E615E603DA007ED9E8 /* intermission.mp3 */; };
@@ -177,7 +176,6 @@
 		F4DBBDF515A5813400071821 /* meta_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DBBDEE15A5813400071821 /* meta_tiles.png */; };
 		F4DBBDF615A5813400071821 /* move.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4DBBDEF15A5813400071821 /* move.caf */; };
 		F4DBBDF715A5813400071821 /* pickup.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4DBBDF015A5813400071821 /* pickup.caf */; };
-		F4DBBDF815A5813400071821 /* Player.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DBBDF115A5813400071821 /* Player.png */; };
 		F4DBBDF915A5813400071821 /* TileMap.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4DBBDF215A5813400071821 /* TileMap.caf */; };
 		F4DBBDFA15A5813400071821 /* tmw_desert_spacing.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DBBDF315A5813400071821 /* tmw_desert_spacing.png */; };
 		F4DBBDFC15A58A0300071821 /* TileMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = F4DBBDFB15A58A0300071821 /* TileMap.tmx */; };
@@ -210,7 +208,6 @@
 		F49F45D915E6019A007ED9E8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
 		F49F45DA15E6019A007ED9E8 /* start-button-clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button-clicked.png"; path = "Resources/start-button-clicked.png"; sourceTree = "<group>"; };
 		F49F45DB15E6019A007ED9E8 /* start-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button.png"; path = "Resources/start-button.png"; sourceTree = "<group>"; };
-		F49F45DC15E6019A007ED9E8 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = Resources/title.png; sourceTree = "<group>"; };
 		F49F45DD15E6019A007ED9E8 /* zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zombie.png; path = Resources/zombie.png; sourceTree = "<group>"; };
 		F49F45E415E603DA007ED9E8 /* adventure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = adventure.mp3; path = Resources/adventure.mp3; sourceTree = "<group>"; };
 		F49F45E615E603DA007ED9E8 /* intermission.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = intermission.mp3; path = Resources/intermission.mp3; sourceTree = "<group>"; };
@@ -503,7 +500,6 @@
 		F4DBBDEE15A5813400071821 /* meta_tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = meta_tiles.png; path = Resources/meta_tiles.png; sourceTree = "<group>"; };
 		F4DBBDEF15A5813400071821 /* move.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = move.caf; path = Resources/move.caf; sourceTree = "<group>"; };
 		F4DBBDF015A5813400071821 /* pickup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = pickup.caf; path = Resources/pickup.caf; sourceTree = "<group>"; };
-		F4DBBDF115A5813400071821 /* Player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Player.png; path = Resources/Player.png; sourceTree = "<group>"; };
 		F4DBBDF215A5813400071821 /* TileMap.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TileMap.caf; path = Resources/TileMap.caf; sourceTree = "<group>"; };
 		F4DBBDF315A5813400071821 /* tmw_desert_spacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmw_desert_spacing.png; path = Resources/tmw_desert_spacing.png; sourceTree = "<group>"; };
 		F4DBBDFB15A58A0300071821 /* TileMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = TileMap.tmx; path = Resources/TileMap.tmx; sourceTree = "<group>"; };
@@ -707,13 +703,11 @@
 				F49F45D915E6019A007ED9E8 /* background.png */,
 				F49F45DA15E6019A007ED9E8 /* start-button-clicked.png */,
 				F49F45DB15E6019A007ED9E8 /* start-button.png */,
-				F49F45DC15E6019A007ED9E8 /* title.png */,
 				F49F45DD15E6019A007ED9E8 /* zombie.png */,
 				F4A9FB9915A8125500E51FCB /* enemy1.png */,
 				F4A9FB9C15A8125500E51FCB /* Projectile.png */,
 				F4DBBDFB15A58A0300071821 /* TileMap.tmx */,
 				F4DBBDEE15A5813400071821 /* meta_tiles.png */,
-				F4DBBDF115A5813400071821 /* Player.png */,
 				F4DBBDF315A5813400071821 /* tmw_desert_spacing.png */,
 				F4DBBC6B15A57F4800071821 /* Default.png */,
 				F4DBBC6D15A57F4800071821 /* fps_images.png */,
@@ -1148,7 +1142,6 @@
 				F4DBBDF515A5813400071821 /* meta_tiles.png in Resources */,
 				F4DBBDF615A5813400071821 /* move.caf in Resources */,
 				F4DBBDF715A5813400071821 /* pickup.caf in Resources */,
-				F4DBBDF815A5813400071821 /* Player.png in Resources */,
 				F4DBBDF915A5813400071821 /* TileMap.caf in Resources */,
 				F4DBBDFA15A5813400071821 /* tmw_desert_spacing.png in Resources */,
 				F4DBBDFC15A58A0300071821 /* TileMap.tmx in Resources */,
@@ -1159,7 +1152,6 @@
 				F49F45DE15E6019A007ED9E8 /* background.png in Resources */,
 				F49F45DF15E6019A007ED9E8 /* start-button-clicked.png in Resources */,
 				F49F45E015E6019A007ED9E8 /* start-button.png in Resources */,
-				F49F45E115E6019A007ED9E8 /* title.png in Resources */,
 				F49F45E215E6019A007ED9E8 /* zombie.png in Resources */,
 				F49F45E815E603DA007ED9E8 /* adventure.mp3 in Resources */,
 				F49F45EA15E603DA007ED9E8 /* intermission.mp3 in Resources */,
