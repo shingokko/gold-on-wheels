@@ -72,7 +72,10 @@
 		CCSprite *title = [CCSprite spriteWithFile:@"title-caption.png"];
         title.tag = 1;
         
-        title.position = ccp(winSize.width * 0.5, winSize.height * 0.8);
+        title.position = ccp(winSize.width * 0.5, winSize.height * 1.2f);
+        
+        id actionTitleMove = [CCMoveTo actionWithDuration:1.0f position:ccp(winSize.width * 0.5, winSize.height * 0.85)];
+        id bounceTitleMove = [CCEaseBounceOut actionWithAction:actionTitleMove];
         
         [self addChild:bg z:0];
         [self addChild:title z:0];
@@ -84,6 +87,8 @@
         CCMenu *starMenu = [CCMenu menuWithItems:button, nil];
         starMenu.position = CGPointZero;
         [self addChild:starMenu];
+        
+        [title runAction:bounceTitleMove];
 
     }
     return self;
