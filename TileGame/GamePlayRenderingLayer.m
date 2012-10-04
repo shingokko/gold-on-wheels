@@ -267,7 +267,7 @@ int maxSight = 400;
         NSDictionary* meta = [_tileMap propertiesForGID:metaGid];
         NSString* railTileName = [self getRailTileNameForMeta:meta];
         
-        if (railTileName == @"Straight" || railTileName == @"Curved") {
+        if (railTileName == @"Straight") {
             return YES;
         }
     }
@@ -773,7 +773,8 @@ int maxSight = 400;
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"adventure.mp3"];
         
         self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels-32.tmx"];
-        self.foreground = [_tileMap layerNamed:@"Foreground"];
+        //self.background = [_tileMap layerNamed:@"Background"];
+		self.foreground = [_tileMap layerNamed:@"Foreground"];
         self.meta = [_tileMap layerNamed:@"Meta"];
         _meta.visible = NO;
 		[self addChild:_tileMap z:-1];
@@ -902,7 +903,7 @@ int maxSight = 400;
     _tmpPathFindingDelta += delta;
     
     if (_tmpPathFindingDelta >= _pathFindingThreshold) {
-        _tmpPathFindingDelta = 0.0f;
+        _tmpPathFindingDelta = 0.5f;
         
         CCLOG(@"Updating path finding...");
         

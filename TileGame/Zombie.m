@@ -23,7 +23,8 @@
 - (void)constructPathAndStartAnimationFromStep:(ShortestPathStep *)step;
 - (void)popStepAndAnimate;
 - (void)runAnimation:(CCAnimation *)animation;
-
+-(CGRect)zombieRadarBoundingBox;
+-(BOOL)collidingWithZombie:(CGPoint)heroPosition;
 @end
 
 @implementation Zombie
@@ -177,8 +178,7 @@
 			[self runAnimation:_facingBackAnimation];
 		}
 	}
-	
-	
+
 	// Prepare the action and the callback
 	id moveAction = [CCMoveTo actionWithDuration:1.0f position:[layer positionForTileCoord:s.position]];
 	id moveCallback = [CCCallFunc actionWithTarget:self selector:@selector(popStepAndAnimate)]; // set the method itself as the callback
@@ -189,6 +189,7 @@
 	
 	// Play actions
 	[self runAction:currentStepAction];
+	
 }
 
 #pragma mark Zombie Character
@@ -338,6 +339,37 @@
     }
 }
 
+-(CGRect)zombieRadarBoundingBox
+{
+    CGRect zombieSightBoundingBox;
+    CGRect zombieBoundingBox = [self adjustedBoundingBox];
+
+	zombieSightBoundingBox = CGRectMake(zombieBoundingBox.origin.x - zombieBoundingBox.size.width*0.5f, 
+										zombieBoundingBox.origin.y - zombieBoundingBox.size.height*0.5f,
+										zombieBoundingBox.size.width*1.0f, 
+										zombieBoundingBox.size.height*1.0f);
+	return zombieSightBoundingBox;
+}
+
+-(BOOL)collidingWithZombie:(CGPoint)heroPosition
+{
+	CCSpriteBatchNode *zombieSpriteBatchNode = (CCSpriteBatchNode *)[self parent];
+	CCArray* zombies = [zombieSpriteBatchNode children];
+
+	for (Zombie *zombie in zombies) {		
+		if (CGRectIntersectsRect([self zombieRadarBoundingBox], [zombie zombieRadarBoundingBox]))
+		{
+			//Get distance from hero to know which zombie should give way
+			int currentZombieDistance = ccpDistance(heroPosition, self.position);
+			int overlappingZombieDistance = ccpDistance(heroPosition, zombie.position);
+			if (currentZombieDistance > overlappingZombieDistance) {
+				return YES;
+			}
+		}
+	}
+	return NO;
+}
+
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andGameObject:(GameObject *)gameObject {
     if ((characterState != kStateDead) && (characterHealth <= 0)) {
 		[self changeState:kStateDead];
@@ -353,20 +385,24 @@
 	isHeroWithinBoundingBox = CGRectIntersectsRect(heroBoundingBox, zombieBoundingBox);
     isHeroWithinSight = CGRectIntersectsRect(heroBoundingBox, zombieSightBoundingBox)? YES : NO;
 	
-	//[self stopAllActions];
-	
-    //if ([self numberOfRunningActions] == 0) {
-	if (characterState == kStateDead) {
-		[self setVisible:NO];
-		[self removeFromParentAndCleanup:YES];
+	if ([self collidingWithZombie:hero.position] == YES) {
+		[self pauseSchedulerAndActions];
 	}
-    else if (isHeroWithinSight) {
-		CCLOG(@"hero coordinates: (%f, %f)", hero.position.x, hero.position.y);
-		CCLOG(@"zombie coordinates: (%f, %f)", self.position.x, self.position.y);
-		[self changeState:kStateAttacking];
-	}
-    else {
-		[self changeState:kStateWalking];
+	else {
+		[self resumeSchedulerAndActions];
+		//if ([self numberOfRunningActions] == 0) {
+		if (characterState == kStateDead) {
+			[self setVisible:NO];
+			[self removeFromParentAndCleanup:YES];
+		}
+		else if (isHeroWithinSight) {
+			CCLOG(@"hero coordinates: (%f, %f)", hero.position.x, hero.position.y);
+			CCLOG(@"zombie coordinates: (%f, %f)", self.position.x, self.position.y);
+			[self changeState:kStateAttacking];
+		}
+		else {
+			[self changeState:kStateWalking];
+		}
 	}
 }
 
