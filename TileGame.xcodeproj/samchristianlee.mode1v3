@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CE41F2D01617EC1400D51B31</string>
+										<string>CEBE1CFD1620591800E48129</string>
 										<key>history</key>
 										<array>
 											<string>CEF34C45160AF07F00F47521</string>
@@ -367,7 +367,7 @@
 											<string>CE9C387E1616C35D0052B2E4</string>
 											<string>CED7928A1617358600BE73F6</string>
 											<string>CED7928B1617358600BE73F6</string>
-											<string>CED792951617365E00BE73F6</string>
+											<string>CE41F2D01617EC1400D51B31</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -379,14 +379,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {917, 505}}</string>
+								<string>{{0, 0}, {917, 501}}</string>
 								<key>RubberWindowFrame</key>
 								<string>66 110 1213 668 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>505pt</string>
+							<string>501pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -399,14 +399,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 510}, {917, 117}}</string>
+								<string>{{0, 506}, {917, 121}}</string>
 								<key>RubberWindowFrame</key>
 								<string>66 110 1213 668 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>117pt</string>
+							<string>121pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -425,9 +425,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CE41F2D11617EC1400D51B31</string>
+				<string>CEBE1CFE1620591800E48129</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>CE41F2D21617EC1400D51B31</string>
+				<string>CEBE1CFF1620591800E48129</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -565,11 +565,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>CE41F2DB1617EC1400D51B31</string>
-		<string>CE41F2DC1617EC1400D51B31</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>CEF34C51160AF07F00F47521</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/samchristianlee/Downloads/GameCurry/gold-on-wheels/TileGame.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -650,7 +646,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>CEF34C51160AF07F00F47521</string>
-				<string>CE41F2D31617EC1400D51B31</string>
+				<string>CEBE1D001620591800E48129</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
