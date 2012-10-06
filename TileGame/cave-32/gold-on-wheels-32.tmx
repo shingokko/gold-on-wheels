@@ -62,7 +62,7 @@
  </layer>
  <layer name="Foreground" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt08ERACAIAzBeTu/QTqA/D8FkAeu1RHAyR3aC+xle+CN05sZq0BM/sPO/6Judatuolhe6yr7F7Pepy3bepyNuWs5mB2s=
+   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
   </data>
  </layer>
  <objectgroup name="Objects" width="40" height="40">
@@ -136,10 +136,81 @@
     <property name="Spawn" value="1"/>
    </properties>
   </object>
+  <object name="Gold" x="264" y="1157" width="21" height="23">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object x="272" y="1163" height="6"/>
+  <object name="Gold" x="264" y="1157" width="21" height="23">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="9" y="967" width="19" height="20">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="261" y="933" width="22" height="23">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="740" y="1062" width="23" height="21">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="676" y="742" width="24" height="21">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="548" y="709" width="24" height="23">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="389" y="359" width="21" height="20">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="294" y="103" width="23" height="21">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="805" y="70" width="23" height="22">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="836" y="262" width="24" height="23">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="71" y="615" width="20" height="22">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="1221" y="486" width="23" height="22">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="Gold" x="1028" y="36" width="23" height="25">
+   <properties>
+    <property name="Gold" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Meta" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJztl71uwzAMhDPl/RcLsJ627UCUIO6OPDnoVAIaEpHixz/Zvt6v1/XHayqfPvOEdYmzq2+HzdkPBuRvGi9j/JF6/jSOSQxTPle36rO9zsb1OanXiQ7jdrgmuXT1JnufvgOUvtOXLl+W+/v3LutuuJWvBXhO+G7Bcr9/l+Lu4p/MF7PfTY5uwINsXL5pbNlXzlMwofse5bzrH3cOa32rP5ZXpj/lezJnWYJPzYw7h2rfvW/2Acf0rmDinBdz4eirXHf76yDebeQD9SvrVWbj9K/iQ/kI/06Nt7DJPlDPx17+L+cl86g4T+uzkn/WG+h/lSuHs+Ob5Bfl7mROVW+oMxX/1di6nGhWujui42c1nL7/I1/VDuWozkWXg1qbOhvoXWqaC5TDrq6q59hMs37rej32OmbVP0/4QtRdith30ZmwuXx1Jpw+q3xMUB46vqqL4ox91EeovogLifoemPChnFYd1AshSzAz34i/1lTVMvOtho/Z5r3K0b2/1jtJnc3uIsbXzbi6i5yZQvGoWGq+2FmKO9fUmUXG6Ngjqc+R7vnZxXhij/RZTp27CPUn61u02Dtil382R9N3yjr3uUbd98PE98n3KIpZfV9N7LOccvyv5+sLEtuN2A==
+   eJztmLFyAzEIRF35/5srpK9NXDBhmGXZ1V1ShRkVZyHpsYDs8/V+va4/Hqo9vefTrNXH2eNkHj2r8XaMnb8ShxKDyuf6TuxqvO6ZSr5OfKZcK1yKlq6fMvdbfaXkk9Wly5dtfT/vMtbAzc56im8RlvX+GYx7Yjy5G8J/DxotwIPWuHxqbPmsrBPLLdLczbEaX8fU6dr5q3x3+ixb8LGecfuQzbv3zT7gUO+Kzpz9oi8cf6a1cn+58W5DD1SvU7/VNU79Mj6kR5zv5HiTNfkMVPMxlz/LumQeFued/OzCWfVAnzOtHE6Hj+Wie3b6lNUG25PxX8NalxP1ynRHTPx3c4jOquuQRrUvJg1qbrremHKF5pGGU15ZzXU9zRg/1vHF3MSs5tHlC2N3KWLfxUetMYev9oRTZ5WvM6TDxFd9UZwxj+oI5RdxIWPvAwof0rT6oFqobI42iL/mlOUynxt7q/1QLd8z7Luvasa4qj/ql45v6nF2Fzk9heJhsVS9ur0Yd86p04sdo7N+si5PTm5O1iP/TlPnLkL12dUtGt1vxEn/ro/U35TT/xvs/UE5++R9FMXM3q+U9dlOOf7H/fEFd4WF7A==
   </data>
  </layer>
 </map>

@@ -98,8 +98,15 @@
 	[viewController setView:glView];
 	
 	// make the View Controller a child of the main window
-	[window addSubview: viewController.view];
-	
+	if ([[UIDevice currentDevice].systemVersion floatValue] < 6.0) {
+        // iOS5 and below
+        [window addSubview: viewController.view];
+    }
+    else {
+        // Use this method on iOS6 and greater
+        [window setRootViewController:viewController];
+    }
+    
 	[window makeKeyAndVisible];
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images

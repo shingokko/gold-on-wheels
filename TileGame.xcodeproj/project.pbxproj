@@ -20,6 +20,8 @@
 		F4374CE115AEAE83008F26A8 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F4374CE015AEAE83008F26A8 /* GameOverScene.m */; };
 		F4374CEA15AEBB2F008F26A8 /* broken.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4374CE715AEBB2F008F26A8 /* broken.caf */; };
 		F4374CEB15AEBB2F008F26A8 /* great.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4374CE815AEBB2F008F26A8 /* great.caf */; };
+		F44B3BF5161D6EFA00EA9EE6 /* grabbed.png in Resources */ = {isa = PBXBuildFile; fileRef = F44B3BF2161D6EFA00EA9EE6 /* grabbed.png */; };
+		F44B3BF6161D6EFA00EA9EE6 /* released.png in Resources */ = {isa = PBXBuildFile; fileRef = F44B3BF3161D6EFA00EA9EE6 /* released.png */; };
 		F47F4BB5161857F500A16AD1 /* title-background.png in Resources */ = {isa = PBXBuildFile; fileRef = F47F4BB2161857F400A16AD1 /* title-background.png */; };
 		F47F4BB6161857F500A16AD1 /* title-caption.png in Resources */ = {isa = PBXBuildFile; fileRef = F47F4BB3161857F400A16AD1 /* title-caption.png */; };
 		F49F45DE15E6019A007ED9E8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F49F45D915E6019A007ED9E8 /* background.png */; };
@@ -40,6 +42,11 @@
 		F49F461215E61650007ED9E8 /* SneakyJoystickSkinnedJoystickExample.m in Sources */ = {isa = PBXBuildFile; fileRef = F49F460815E61650007ED9E8 /* SneakyJoystickSkinnedJoystickExample.m */; };
 		F49F852615F61248001FCBE3 /* Lightup.m in Sources */ = {isa = PBXBuildFile; fileRef = F49F852515F61248001FCBE3 /* Lightup.m */; };
 		F49F852B15F616C6001FCBE3 /* CCActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F49F852A15F616C6001FCBE3 /* CCActor.m */; };
+		F4A055D1161EE93B00CB7A6F /* arrow-down.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A055D0161EE93B00CB7A6F /* arrow-down.png */; };
+		F4A055D6161EE96200CB7A6F /* gold-32.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A055D2161EE96100CB7A6F /* gold-32.plist */; };
+		F4A055D7161EE96200CB7A6F /* gold-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A055D3161EE96100CB7A6F /* gold-32.png */; };
+		F4A055D8161EE96200CB7A6F /* gold-64.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A055D4161EE96100CB7A6F /* gold-64.plist */; };
+		F4A055D9161EE96200CB7A6F /* gold-64.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A055D5161EE96200CB7A6F /* gold-64.png */; };
 		F4A099811614380400D5BDE9 /* boot-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A099731614380400D5BDE9 /* boot-32.png */; };
 		F4A099821614380400D5BDE9 /* boot-64.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A099741614380400D5BDE9 /* boot-64.png */; };
 		F4A0998B1614380400D5BDE9 /* lamp-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A0997D1614380400D5BDE9 /* lamp-32.png */; };
@@ -62,6 +69,9 @@
 		F4A63CCE15F1902000982A64 /* Speedup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A63CCD15F1902000982A64 /* Speedup.m */; };
 		F4A9FB9D15A8125500E51FCB /* enemy1.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A9FB9915A8125500E51FCB /* enemy1.png */; };
 		F4A9FBA015A8125500E51FCB /* Projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A9FB9C15A8125500E51FCB /* Projectile.png */; };
+		F4B505DA161FC37700E23256 /* Gold.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B505D9161FC37700E23256 /* Gold.m */; };
+		F4B505E9161FF6BC00E23256 /* gold.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4B505E7161FF6BC00E23256 /* gold.caf */; };
+		F4B505EA161FF6BC00E23256 /* miss.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4B505E8161FF6BC00E23256 /* miss.caf */; };
 		F4C10CFD15F37C0400398A5D /* run.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4C10CFA15F37C0400398A5D /* run.caf */; };
 		F4DBBC5A15A57F4800071821 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DBBC5915A57F4800071821 /* QuartzCore.framework */; };
 		F4DBBC5C15A57F4800071821 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DBBC5B15A57F4800071821 /* OpenGLES.framework */; };
@@ -215,6 +225,8 @@
 		F4374CE015AEAE83008F26A8 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		F4374CE715AEBB2F008F26A8 /* broken.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = broken.caf; sourceTree = "<group>"; };
 		F4374CE815AEBB2F008F26A8 /* great.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = great.caf; sourceTree = "<group>"; };
+		F44B3BF2161D6EFA00EA9EE6 /* grabbed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grabbed.png; path = Resources/grabbed.png; sourceTree = "<group>"; };
+		F44B3BF3161D6EFA00EA9EE6 /* released.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = released.png; path = Resources/released.png; sourceTree = "<group>"; };
 		F47F4BB2161857F400A16AD1 /* title-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-background.png"; path = "Resources/title-background.png"; sourceTree = "<group>"; };
 		F47F4BB3161857F400A16AD1 /* title-caption.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-caption.png"; path = "Resources/title-caption.png"; sourceTree = "<group>"; };
 		F49F45D915E6019A007ED9E8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
@@ -245,6 +257,11 @@
 		F49F852515F61248001FCBE3 /* Lightup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lightup.m; path = TileGame/Resources/Lightup.m; sourceTree = "<group>"; };
 		F49F852915F616C6001FCBE3 /* CCActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCActor.h; path = Classes/CCSpriteExtensions/CCActor.h; sourceTree = "<group>"; };
 		F49F852A15F616C6001FCBE3 /* CCActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCActor.m; path = Classes/CCSpriteExtensions/CCActor.m; sourceTree = "<group>"; };
+		F4A055D0161EE93B00CB7A6F /* arrow-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-down.png"; sourceTree = "<group>"; };
+		F4A055D2161EE96100CB7A6F /* gold-32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gold-32.plist"; sourceTree = "<group>"; };
+		F4A055D3161EE96100CB7A6F /* gold-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gold-32.png"; sourceTree = "<group>"; };
+		F4A055D4161EE96100CB7A6F /* gold-64.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gold-64.plist"; sourceTree = "<group>"; };
+		F4A055D5161EE96200CB7A6F /* gold-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gold-64.png"; sourceTree = "<group>"; };
 		F4A099731614380400D5BDE9 /* boot-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boot-32.png"; path = "Resources/boot-32.png"; sourceTree = "<group>"; };
 		F4A099741614380400D5BDE9 /* boot-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boot-64.png"; path = "Resources/boot-64.png"; sourceTree = "<group>"; };
 		F4A0997D1614380400D5BDE9 /* lamp-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lamp-32.png"; path = "Resources/lamp-32.png"; sourceTree = "<group>"; };
@@ -272,8 +289,12 @@
 		F4A63CCD15F1902000982A64 /* Speedup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Speedup.m; path = TileGame/Classes/Powerups/Speedup.m; sourceTree = "<group>"; };
 		F4A9FB9915A8125500E51FCB /* enemy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy1.png; path = Resources/enemy1.png; sourceTree = "<group>"; };
 		F4A9FB9C15A8125500E51FCB /* Projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Projectile.png; path = Resources/Projectile.png; sourceTree = "<group>"; };
+		F4B505D8161FC37700E23256 /* Gold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gold.h; sourceTree = "<group>"; };
+		F4B505D9161FC37700E23256 /* Gold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gold.m; sourceTree = "<group>"; };
+		F4B505E7161FF6BC00E23256 /* gold.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gold.caf; path = Resources/gold.caf; sourceTree = "<group>"; };
+		F4B505E8161FF6BC00E23256 /* miss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = miss.caf; path = Resources/miss.caf; sourceTree = "<group>"; };
 		F4C10CFA15F37C0400398A5D /* run.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = run.caf; path = Resources/run.caf; sourceTree = "<group>"; };
-		F4DBBC5515A57F4800071821 /* TileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4DBBC5515A57F4800071821 /* GoldOnWheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldOnWheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DBBC5915A57F4800071821 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F4DBBC5B15A57F4800071821 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F4DBBC5D15A57F4800071821 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -558,6 +579,8 @@
 				CE219B88160D1D940096C496 /* GameCharacter.m */,
 				F4A099901614464000D5BDE9 /* GoldCart.h */,
 				F4A099911614464000D5BDE9 /* GoldCart.m */,
+				F4B505D8161FC37700E23256 /* Gold.h */,
+				F4B505D9161FC37700E23256 /* Gold.m */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -678,7 +701,7 @@
 		F4DBBC5615A57F4800071821 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F4DBBC5515A57F4800071821 /* TileGame.app */,
+				F4DBBC5515A57F4800071821 /* GoldOnWheels.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1063,6 +1086,8 @@
 		F4F849CA16043398009945BC /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				F4B505E7161FF6BC00E23256 /* gold.caf */,
+				F4B505E8161FF6BC00E23256 /* miss.caf */,
 				F4C10CFA15F37C0400398A5D /* run.caf */,
 				F4A63CC315F1857A00982A64 /* powerup.caf */,
 				F4E35D5615EE234F0001ABBA /* shoot.caf */,
@@ -1083,6 +1108,13 @@
 		F4F849CC160433EE009945BC /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				F4A055D2161EE96100CB7A6F /* gold-32.plist */,
+				F4A055D3161EE96100CB7A6F /* gold-32.png */,
+				F4A055D4161EE96100CB7A6F /* gold-64.plist */,
+				F4A055D5161EE96200CB7A6F /* gold-64.png */,
+				F4A055D0161EE93B00CB7A6F /* arrow-down.png */,
+				F44B3BF2161D6EFA00EA9EE6 /* grabbed.png */,
+				F44B3BF3161D6EFA00EA9EE6 /* released.png */,
 				F4A0999316144AB200D5BDE9 /* cart-32.plist */,
 				F4A0999416144AB200D5BDE9 /* cart-32.png */,
 				F4A0999516144AB200D5BDE9 /* cart-64.plist */,
@@ -1108,9 +1140,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F4DBBC5415A57F4800071821 /* TileGame */ = {
+		F4DBBC5415A57F4800071821 /* GoldOnWheels */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F4DBBDC715A57F4A00071821 /* Build configuration list for PBXNativeTarget "TileGame" */;
+			buildConfigurationList = F4DBBDC715A57F4A00071821 /* Build configuration list for PBXNativeTarget "GoldOnWheels" */;
 			buildPhases = (
 				F4DBBC5115A57F4800071821 /* Sources */,
 				F4DBBC5215A57F4800071821 /* Frameworks */,
@@ -1120,9 +1152,9 @@
 			);
 			dependencies = (
 			);
-			name = TileGame;
+			name = GoldOnWheels;
 			productName = TileGame;
-			productReference = F4DBBC5515A57F4800071821 /* TileGame.app */;
+			productReference = F4DBBC5515A57F4800071821 /* GoldOnWheels.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1131,7 +1163,7 @@
 		F4DBBC4C15A57F4700071821 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = F4DBBC4F15A57F4700071821 /* Build configuration list for PBXProject "TileGame" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1145,7 +1177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F4DBBC5415A57F4800071821 /* TileGame */,
+				F4DBBC5415A57F4800071821 /* GoldOnWheels */,
 			);
 		};
 /* End PBXProject section */
@@ -1212,6 +1244,15 @@
 				CED7924F16172A5800BE73F6 /* rails.png in Resources */,
 				CED7925016172A5800BE73F6 /* rocks.png in Resources */,
 				CED79277161734C600BE73F6 /* base.png in Resources */,
+				F44B3BF5161D6EFA00EA9EE6 /* grabbed.png in Resources */,
+				F44B3BF6161D6EFA00EA9EE6 /* released.png in Resources */,
+				F4A055D1161EE93B00CB7A6F /* arrow-down.png in Resources */,
+				F4A055D6161EE96200CB7A6F /* gold-32.plist in Resources */,
+				F4A055D7161EE96200CB7A6F /* gold-32.png in Resources */,
+				F4A055D8161EE96200CB7A6F /* gold-64.plist in Resources */,
+				F4A055D9161EE96200CB7A6F /* gold-64.png in Resources */,
+				F4B505E9161FF6BC00E23256 /* gold.caf in Resources */,
+				F4B505EA161FF6BC00E23256 /* miss.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1342,6 +1383,7 @@
 				CE219B8D160D1DF50096C496 /* Zombie.m in Sources */,
 				CE219B92160D1E640096C496 /* ShortestPathStep.m in Sources */,
 				F4A099921614464000D5BDE9 /* GoldCart.m in Sources */,
+				F4B505DA161FC37700E23256 /* Gold.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1363,8 +1405,9 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1378,9 +1421,10 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1396,7 +1440,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TileGame/Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = TileGame/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1418,7 +1464,9 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TileGame/Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = TileGame/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				ONLY_ACTIVE_ARCH = NO;
@@ -1442,7 +1490,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F4DBBDC715A57F4A00071821 /* Build configuration list for PBXNativeTarget "TileGame" */ = {
+		F4DBBDC715A57F4A00071821 /* Build configuration list for PBXNativeTarget "GoldOnWheels" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4DBBDC815A57F4A00071821 /* Debug */,

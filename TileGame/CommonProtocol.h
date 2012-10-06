@@ -28,14 +28,26 @@ typedef enum {
     kStateTraveling,
     kStateRotating, 
     kStateDrilling,
-    kStateAfterJumping
+    kStateAfterJumping,
 } CharacterStates;
+
+typedef enum {
+    kStateStatic,
+    kStatePressed,
+    kStateReleased,
+} ButtonStates;
+
+typedef enum {
+    kStateEmpy,
+    kStateFilled,
+} ContainerStates;
 
 typedef enum {
 	kObjectTypeNone,
 	kHeroType,
     kEnemyTypeZombie,
     kObjectTypeGoldCart,
+    kObjectTypeGold,
 } GameObjectType;
 
 @protocol GameplayLayerDelegate

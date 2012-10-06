@@ -15,6 +15,7 @@
 #import "Speedup.h"
 #import "Lightup.h"
 #import "GoldCart.h"
+#import "Gold.h"
 
 @interface GamePlayRenderingLayer (PrivateMethods)
 -(void)testCollisions:(ccTime)dt;
@@ -35,10 +36,8 @@
 @synthesize background = _background;
 @synthesize player = _player;
 @synthesize meta = _meta;
-@synthesize foreground = _foreground;
 @synthesize melonCount = _melonCount;
 @synthesize hud = _hud;
-@synthesize mode = _mode;
 @synthesize moving = _moving;
 @synthesize mask = _mask;
 @synthesize spotlight = _spotlight;
@@ -53,17 +52,16 @@ int maxSight = 400;
     self.background = nil;
 	self.player = nil;
     self.meta = nil;
-    self.foreground = nil;
     self.hud = nil;
 	self.mask = nil;
     
 	[_tileMap release];
-	[_foreground release];
 	[_background release];
 	[_meta release];
 	[_hud release];
 	[heroSprite release];
 
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
 	[super dealloc];
@@ -110,64 +108,6 @@ int maxSight = 400;
 }
 
 #pragma mark Hero
-
-- (void)testCollisions:(ccTime)dt {
-    /*
-    NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
-    
-    // iterate through projectiles
-    for (CCSprite *projectile in _projectiles) {
-        CGRect projectileRect = CGRectMake(
-                                           projectile.position.x - (projectile.contentSize.width/2),
-                                           projectile.position.y - (projectile.contentSize.height/2),
-                                           projectile.contentSize.width,
-                                           projectile.contentSize.height);
-        
-        NSMutableArray *targetsToDelete = [[NSMutableArray alloc] init];
-        
-        // iterate through enemies, see if any intersect with current projectile
-        for (CCSprite *target in _enemies) {
-            CGRect targetRect = CGRectMake(
-                                           target.position.x - (target.contentSize.width/2),
-                                           target.position.y - (target.contentSize.height/2),
-                                           target.contentSize.width,
-                                           target.contentSize.height);
-            
-            if (CGRectIntersectsRect(projectileRect, targetRect)) {
-                [targetsToDelete addObject:target];
-                [[SimpleAudioEngine sharedEngine] playEffect:@"broken.caf"];
-            }
-        }
-        
-        // delete all hit enemies
-        for (CCSprite *target in targetsToDelete) {
-            [_enemies removeObject:target];
-            [self removeChild:target cleanup:YES];
-        }
-        
-        if (targetsToDelete.count > 0) {
-            // add the projectile to the list of ones to remove
-            [projectilesToDelete addObject:projectile];
-        }
-        [targetsToDelete release];
-    }
-    
-    // detect player colliding with an enemy
-    for (CCSprite *target in _enemies) {
-        CGRect targetRect = CGRectMake(target.position.x - (target.contentSize.width/2), target.position.y - (target.contentSize.height/2), target.contentSize.width, target.contentSize.height);
-        
-        if (CGRectContainsPoint(targetRect, _player.position)) {
-            [self lose];
-        }
-    }
-    // remove all the projectiles that hit.
-    for (CCSprite *projectile in projectilesToDelete) {
-        [_projectiles removeObject:projectile];
-        [self removeChild:projectile cleanup:YES];
-    }
-    [projectilesToDelete release];
-     */
-}
 
 -(void)win {
     GameOverScene *gameOverScene = [GameOverScene node];
@@ -341,21 +281,6 @@ int maxSight = 400;
             if ([self isCollidableTile:position forMeta:properties]) {
                 return;
             }
-            
-            if ([self isCollectableTile:position forMeta:properties]) {
-                [[SimpleAudioEngine sharedEngine] playEffect:@"pickup.caf"];
-                
-                [_meta removeTileAt:tileCoord];
-                [_foreground removeTileAt:tileCoord];
-                
-                self.melonCount++;
-                [_hud melonCountChanged:_melonCount];
-                
-                // TODO turn it into a const
-                if (_melonCount == 11) {
-                    [self win];
-                }
-            }
         }
     }
     
@@ -431,91 +356,60 @@ int maxSight = 400;
     [_player runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
     [_mask runAction:[CCSequence actions:actionMaskMove, nil]];
     [self runAction:[CCSequence actions:actionViewpointMove, nil]];
-    
-    id action = nil;
-    
-    switch (direction) {
-        case kFacingDown:
-            if (_player.facingDirection != direction) {
-                _player.facingDirection = direction;
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_player.frontAnim restoreOriginalFrame:YES]];
-            }
-            break;
-        case kFacingUp:
-            if (_player.facingDirection != direction) {
-                _player.facingDirection = direction;
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_player.backAnim restoreOriginalFrame:YES]];
-            }
-            break;
-        case kFacingLeft:
-            if (_player.flipX) {
-                _player.flipX = NO;
-            }
-			
-            if (_player.facingDirection != direction) {
-                _player.facingDirection = direction;
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_player.sideAnim restoreOriginalFrame:YES]];
-            }
-            break;
-			
-        default:
-            if (!_player.flipX) {
-                _player.flipX = YES;
-            }
-			
-            if (_player.facingDirection != direction) {
-                _player.facingDirection = direction;
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_player.sideAnim restoreOriginalFrame:YES]];
-            }
-            break;
-    }
-    
-    if (action != nil) {
-        [_player runAction:action];
-    }
+    [_player adjustAnimation:direction];
 }
 
--(void)throwProjectile:(CGPoint)touchLocation {
-    /*
-    // Create a projectile and put it at the player's location
-    CCSprite *projectile = [CCSprite spriteWithFile:@"Projectile.png"];
-    projectile.position = _player.position;
-    [self addChild:projectile];
-    
-    // Determine where we wish to shoot the projectile to
-    int realX;
-    
-    // Are we shooting to the left or right?
-    CGPoint diff = ccpSub(touchLocation, _player.position);
-    if (diff.x > 0)
-    {
-        realX = (_tileMap.mapSize.width * _tileMap.tileSize.width) + (projectile.contentSize.width/2);
+-(BOOL)canPickupGold:(Gold*)targetGold atPosition:(CGPoint)position facing:(FacingDirection)direction {
+    if (targetGold.collected) {
+        // Already collected
+        return NO;
     }
     else {
-        realX = -(_tileMap.mapSize.width * _tileMap.tileSize.width) - (projectile.contentSize.width/2);
+        CGPoint tileCoord = [self tileCoordForPosition:position];
+        CGPoint tilePos = [self positionForTileCoord:tileCoord];
+        CGRect rect = CGRectMake(tilePos.x, tilePos.y, _tileMap.tileSize.width, _tileMap.tileSize.height);
+        
+        CGRect targetBox = targetGold.boundingBox;
+        if (CGRectIntersectsRect(targetBox, rect)) {
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }    
+}
+
+-(void)dropGold:(CGPoint)position facing:(FacingDirection)direction {
+    // If player doesn't currently hold gold, quit here
+    if (_player.goldInPossession == nil) {
+        return;
+    }
+
+    CGPoint tileCoord = [self tileCoordForPosition:position];
+    CGPoint tilePos = [self positionForTileCoord:tileCoord];
+    
+    _player.goldInPossession.position = ccp(tilePos.x, tilePos.y);
+    [_player.goldInPossession uncollect];
+    _player.goldInPossession = nil; // unreference
+    [[SimpleAudioEngine sharedEngine] playEffect:@"miss.caf"];
+}
+
+-(void)pickupGold:(CGPoint)position facing:(FacingDirection)direction {
+    // If player already has a gold in hand, quit here
+    if (_player.goldInPossession != nil) {
+        return;
     }
     
-    float ratio = (float) diff.y / (float) diff.x;
-    int realY = ((realX - projectile.position.x) * ratio) + projectile.position.y;
-    CGPoint realDest = ccp(realX, realY);
+    CCArray* golds = [_goldSpriteBatchNode children];
     
-    // Determine the length of how far we're shooting
-    int offRealX = realX - projectile.position.x;
-    int offRealY = realY - projectile.position.y;
-    float length = sqrtf((offRealX*offRealX) + (offRealY*offRealY));
-    float velocity = 480/1; // 480pixels/1sec
-    float realMoveDuration = length/velocity;
-    
-    // Move projectile to actual endpoint
-    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector (projectileMoveFinished:)];
-    
-    [[SimpleAudioEngine sharedEngine] playEffect:@"shoot.caf"];
-    
-    [projectile runAction:
-     [CCSequence actionOne:[CCMoveTo actionWithDuration: realMoveDuration position: realDest] two: actionMoveDone]];
-    
-    [_projectiles addObject:projectile];
-     */
+    for (Gold* gold in golds) {
+        if ([self canPickupGold:gold atPosition:position facing:direction]) {
+            _player.goldInPossession = gold;
+            [gold collect];
+            [[SimpleAudioEngine sharedEngine] playEffect:@"gold.caf"];
+            break;
+        }
+    }
 }
 
 -(void)moveHero:(CGPoint)touchLocation facing:(FacingDirection)direction
@@ -670,7 +564,7 @@ int maxSight = 400;
 	return [NSArray arrayWithArray:tmp];
 }
 
-#pragma mark Zombie Outbreak
+#pragma mark Adding characters to the scene
 
 -(void)createObjectOfType:(GameObjectType)objectType withHealth:(int)initialHealth atLocation:(CGPoint)spawnLocation withZValue:(int)zValue {
     
@@ -693,6 +587,15 @@ int maxSight = 400;
 		[_cartSpriteBatchNode addChild:cart z:zValue];
         [cart release];
     }
+    else if (kObjectTypeGold == objectType) {
+		CCLOG(@"Creating a gold...");
+        
+		Gold *gold = [[Gold alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-32-1.png"]];
+        CGPoint spawnPoint = [self computeTileFittingPosition:spawnLocation];
+		[gold setPosition:spawnPoint];
+		[_goldSpriteBatchNode addChild:gold z:zValue];
+        [gold release];
+    }
 }
 
 -(void)addEnemyAtX:(int)x Y:(int)y
@@ -703,6 +606,11 @@ int maxSight = 400;
 -(void)addCartAtX:(int)x andY:(int)y
 {
 	[self createObjectOfType:kObjectTypeGoldCart withHealth:0 atLocation:ccp(x, y) withZValue:0];
+}
+
+-(void)addGoldAtX:(int)x andY:(int)y
+{
+	[self createObjectOfType:kObjectTypeGold withHealth:0 atLocation:ccp(x, y) withZValue:-1];
 }
 
 #pragma mark Setting Up Scene
@@ -717,6 +625,8 @@ int maxSight = 400;
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"great.caf"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"selection.caf"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"shoot.caf"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"gold.caf"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.caf"];
 }
 
 +(CCScene *) scene
@@ -741,25 +651,23 @@ int maxSight = 400;
 	return scene;
 }
 
--(void) loadMinerSpritesheet
+-(void) loadSprites
 {
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"miner.plist"];
     _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner.png"];
     [self addChild:_sceneSpriteBatchNode z:0];
-}
-
--(void) loadZombieSpritesheet
-{
+    
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie-32.plist"];
     _zombieSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"zombie-32.png"];
     [self addChild:_zombieSpriteBatchNode z:0];
-}
-
--(void) loadCartSpritesheet
-{
+    
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"cart-32.plist"];
     _cartSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"cart-32.png"];
     [self addChild:_cartSpriteBatchNode z:0];
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"gold-32.plist"];
+    _goldSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"gold-32.png"];
+    [self addChild:_goldSpriteBatchNode z:0];
 }
 
 // on "init" you need to initialize your instance
@@ -773,8 +681,7 @@ int maxSight = 400;
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"adventure.mp3"];
         
         self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels-32.tmx"];
-        //self.background = [_tileMap layerNamed:@"Background"];
-		self.foreground = [_tileMap layerNamed:@"Foreground"];
+        
         self.meta = [_tileMap layerNamed:@"Meta"];
         _meta.visible = NO;
 		[self addChild:_tileMap z:-1];
@@ -789,59 +696,36 @@ int maxSight = 400;
         int x = [[spawnPoint valueForKey:@"x"] intValue];
         int y = [[spawnPoint valueForKey:@"y"] intValue];
         
-        [self loadMinerSpritesheet];
-        [self loadZombieSpritesheet];
-        [self loadCartSpritesheet];
+        [self loadSprites];
         
 		self.player = [[CCHero alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-1.png"]];
 		CGPoint initialPosition = [self computeTileFittingPosition:ccp(x, y)];
         _player.position = ccp(initialPosition.x, initialPosition.y);
-		
-		NSMutableArray *frontAnimFrames = [NSMutableArray array];
-        [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-1.png"]];
-        [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-2.png"]];
-        [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-1.png"]];
-        [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-3.png"]];
-        
-        NSMutableArray *backAnimFrames = [NSMutableArray array];
-        [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-back-1.png"]];
-        [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-back-2.png"]];
-        [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-back-1.png"]];
-        [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-back-3.png"]];
-        
-        NSMutableArray *sideAnimFrames = [NSMutableArray array];
-        [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-side-1.png"]];
-        [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-side-2.png"]];
-        [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-side-1.png"]];
-        [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-side-3.png"]];
-		
-		// set up walking animations
-        _player.frontAnim = [CCAnimation animationWithFrames:frontAnimFrames delay:0.3f];
-        _player.backAnim = [CCAnimation animationWithFrames:backAnimFrames delay:0.3f];
-        _player.sideAnim = [CCAnimation animationWithFrames:sideAnimFrames delay:0.3f];
 		
         _prevPos = ccp(initialPosition.x, initialPosition.y);
         _player.speed = 20.0f;
         _player.light = 150.0f;
         _hud.movingThreshold = _player.speed;
         _prevPos = CGPointZero;
-        _playerAction = nil;
-		_mode = 0;
         
 		_powerups = [[NSMutableArray alloc] init];
 		
         NSMutableDictionary *objectTile;
         for (objectTile in [objects objects]) {
+            x = [[objectTile valueForKey:@"x"] intValue];
+            y = [[objectTile valueForKey:@"y"] intValue];
+
             if ([[objectTile valueForKey:@"Enemy"] intValue] == 1) {
-                x = [[objectTile valueForKey:@"x"] intValue];
-                y = [[objectTile valueForKey:@"y"] intValue];
+                // enemy
                 [self addEnemyAtX:x Y:y];
             }
             else if ([[objectTile valueForKey:@"Cart"] intValue] == 1) {
                 // gold cart
-                x = [[objectTile valueForKey:@"x"] intValue];
-                y = [[objectTile valueForKey:@"y"] intValue];
                 [self addCartAtX:x andY:y];
+            }
+            else if ([[objectTile valueForKey:@"Gold"] intValue] == 1) {
+                // gold
+                [self addGoldAtX:x andY:y];
             }
             else {
                 int type = [[objectTile valueForKey:@"PowerupType"] intValue];
@@ -859,9 +743,6 @@ int maxSight = 400;
                 }
                 
                 if (powerup != nil) {
-                    x = [[objectTile valueForKey:@"x"] intValue];
-                    y = [[objectTile valueForKey:@"y"] intValue];
-                    
                     // Fit object to tile grid
                     CGPoint objTilePos = [self computeTileFittingPosition:ccp(x, y)];
                     powerup.position = ccp(objTilePos.x, objTilePos.y);
@@ -890,7 +771,6 @@ int maxSight = 400;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(speedupUsedUp:) name:@"usedUp" object:nil];
     
 		//Schedule updates
-		[self schedule:@selector(testCollisions:)];
 		[self scheduleUpdate];
 	}
 	return self;

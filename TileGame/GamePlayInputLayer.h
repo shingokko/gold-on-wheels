@@ -7,8 +7,10 @@
 //
 
 #import "cocos2d.h"
+#import "CommonProtocol.h"
 
 @class SneakyJoystick;
+@class SneakyButton;
 @class GamePlayRenderingLayer;
 
 @interface GamePlayInputLayer : CCLayer
@@ -16,7 +18,9 @@
     CCLabelTTF *_label;
     GamePlayRenderingLayer *_gameLayer;
     
-	SneakyJoystick *leftJoystick;
+	SneakyJoystick *_leftJoystick;
+    SneakyButton *_rightButton;
+    ButtonStates _buttonState;
     
     ccTime _tmpMovingDelta;
     ccTime _tmpAttackingDelta;

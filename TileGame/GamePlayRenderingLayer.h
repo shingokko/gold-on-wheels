@@ -20,7 +20,6 @@
 @interface GamePlayRenderingLayer : CCLayer <GameplayLayerDelegate>
 {
     CCTMXTiledMap *_tileMap;
-    CCTMXLayer *_foreground;
     CCTMXLayer *_background;
     CCTMXLayer *_meta;
 	
@@ -30,10 +29,8 @@
     CCRenderTexture *_mask;
     CCSpotLight *_spotlight;
 	
-    int _mode;
 	bool _moving;
     CGPoint _prevPos;
-    id _playerAction;
     
 	CCHero *_player;
     NSMutableArray *_powerups;
@@ -41,6 +38,7 @@
 	CCSpriteBatchNode *_sceneSpriteBatchNode;
 	CCSpriteBatchNode *_zombieSpriteBatchNode;
     CCSpriteBatchNode *_cartSpriteBatchNode;
+    CCSpriteBatchNode *_goldSpriteBatchNode;
     
     ccTime _tmpPathFindingDelta;
     ccTime _pathFindingThreshold;
@@ -50,14 +48,12 @@
 @property (nonatomic, retain) CCTMXLayer *background;
 @property (nonatomic, retain) CCHero *player;
 @property (nonatomic, retain) CCTMXLayer *meta;
-@property (nonatomic, retain) CCTMXLayer *foreground;
 @property (nonatomic, retain) CCRenderTexture *mask;
 @property (nonatomic, retain) CCSpotLight *spotlight;
 
 @property (nonatomic, assign) int melonCount;
 @property (nonatomic, retain) GamePlayInputLayer *hud;
 
-@property (nonatomic, assign) int mode;
 @property (nonatomic, assign) bool moving;
 @property (nonatomic, assign) CGPoint prevPos;
 @property (nonatomic, retain) GameCharacter *heroSprite;
@@ -65,8 +61,8 @@
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
 -(void)moveHero:(CGPoint)touchPosition facing:(FacingDirection)direction;
--(void)throwProjectile:(CGPoint)touchLocation;
-
+-(void)pickupGold:(CGPoint)position facing:(FacingDirection)direction;
+-(void)dropGold:(CGPoint)position facing:(FacingDirection)direction;
 -(CGPoint)tileCoordForPosition:(CGPoint)position;
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(CGPoint) computeTileFittingPosition:(CGPoint)position;

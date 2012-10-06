@@ -21,6 +21,14 @@
 
 @synthesize movingThreshold = _movingThreshold;
 
+- (void) dealloc
+{
+    [_rightButton release];
+    _rightButton = nil;
+    
+	[super dealloc];
+}
+
 -(CGPoint) applyVelocity: (CGPoint)velocity position:(CGPoint)position delta:(ccTime)delta {
 	return CGPointMake(position.x + velocity.x * delta, position.y + velocity.y * delta);
 }
@@ -69,23 +77,33 @@
         }
     }
 }
--(void)applyAttackingJoystick:(SneakyJoystick*)joystick toNode:(CCNode*)node forTimeDelta:(ccTime)delta
+
+-(void)applyCollectionButton:(SneakyButton*)button toNode:(CCHero*)node forTimeDelta:(ccTime)delta
 {
-	// you can create a velocity specific to the node if you wanted, just supply a different multiplier
-	// which will allow you to do a parallax scrolling of sorts
-	//CGPoint scaledVelocity = ccpMult(joystick.velocity, 240.0f);
-    
-    if (joystick.isActive) {
+    // If button is currently pressed/active...
+    if (button.active) {
         
-        _tmpAttackingDelta += delta;
+        // And previous state of button is either released or static...
+        if (_buttonState == kStateReleased || _buttonState == kStateStatic) {
+            // Then notify hero
+            [_gameLayer pickupGold:node.position facing:node.facingDirection];
+        }
         
-        if (_tmpAttackingDelta >= _attackingThreshold) {
-            CGPoint newPosition = ccp(node.position.x, node.position.y);
-            newPosition.x += joystick.stickPosition.x;
-            newPosition.y += joystick.stickPosition.y;
-            
-            _tmpAttackingDelta = 0.0f;
-            [_gameLayer throwProjectile:newPosition];
+        // Whatever the current state is, set it to pressed
+        _buttonState = kStatePressed;
+    }
+    else {
+        // button is currently not pressed
+        
+        // If previous state of button is 'pressed'...
+        if (_buttonState == kStatePressed) {
+            // Notify that button's been just released
+            _buttonState = kStateReleased;
+            [_gameLayer dropGold:node.position facing:node.facingDirection];
+        }
+        else if (_buttonState == kStateReleased) {
+            // previously state was 'released', set it to 'static' now
+            _buttonState = kStateStatic;
         }
     }
 }
@@ -93,7 +111,8 @@
 
 -(void)update:(ccTime)deltaTime {
     // need to add [glView setMultipleTouchEnabled:YES]; to AppDelegate.m to enable multi-touch
-    [self applyDirectionalJoystick:leftJoystick toNode:_gameLayer.player forTimeDelta:deltaTime];
+    [self applyDirectionalJoystick:_leftJoystick toNode:_gameLayer.player forTimeDelta:deltaTime];
+    [self applyCollectionButton:_rightButton toNode:_gameLayer.player forTimeDelta:deltaTime];
 }
 
 -(void) onEnter
@@ -122,9 +141,23 @@
     leftJoy.backgroundSprite = [CCSprite spriteWithFile:@"wheel.png"];
     leftJoy.thumbSprite = [CCSprite spriteWithFile:@"lever.png"];
     leftJoy.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0,0,128,128)];
-    leftJoystick = [leftJoy.joystick retain];
+    _leftJoystick = [leftJoy.joystick retain];
+
+    SneakyButtonSkinnedBase *rightButton = [[[SneakyButtonSkinnedBase alloc] init] autorelease];
+    rightButton.position = ccp(416,32);
     
-    [self addChild:leftJoy z:2];}
+    //hook images to button control
+    rightButton.defaultSprite = [CCSprite spriteWithFile:@"released.png"];
+    rightButton.activatedSprite = [CCSprite spriteWithFile:@"grabbed.png"];
+    rightButton.pressSprite = [CCSprite spriteWithFile:@"grabbed.png"];
+    rightButton.button = [[SneakyButton alloc] initWithRect:CGRectMake(0, 0, 64, 64)];
+    [rightButton.button setRadius:64.0f];
+    _rightButton = [rightButton.button retain];
+    _rightButton.isHoldable = YES;
+    
+    [self addChild:leftJoy z:2];
+    [self addChild:rightButton z:2];
+}
 
 -(id) init
 {

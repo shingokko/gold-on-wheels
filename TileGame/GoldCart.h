@@ -11,8 +11,14 @@
 
 @interface GoldCart : GameObject {
     FacingDirection _facingDirection;
+    int _capacity;
+    int _currentAmount;
 }
 
+-(void)changeState:(ContainerStates)newState;
+
 @property (nonatomic, assign) FacingDirection facingDirection;
+@property (nonatomic, assign) int capacity;
+@property (nonatomic, assign) int currentAmount;
 
 @end

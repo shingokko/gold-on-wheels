@@ -11,6 +11,8 @@
 @implementation GoldCart
 
 @synthesize facingDirection = _facingDirection;
+@synthesize capacity = _capacity;
+@synthesize currentAmount = _currentAmount;
 
 -(void) dealloc {
     [super dealloc];
@@ -20,6 +22,10 @@
     if (gameObject.gameObjectType == kHeroType) {
         
     }
+}
+
+-(void)changeState:(ContainerStates)newState {
+    
 }
 
 -(id) init
