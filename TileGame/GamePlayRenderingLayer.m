@@ -16,6 +16,7 @@
 #import "Lightup.h"
 #import "GoldCart.h"
 #import "Gold.h"
+#import "Arrow.h"
 
 @interface GamePlayRenderingLayer (PrivateMethods)
 -(void)testCollisions:(ccTime)dt;
@@ -60,7 +61,6 @@ int maxSight = 400;
 	[_meta release];
 	[_hud release];
 	[heroSprite release];
-
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
@@ -136,6 +136,7 @@ int maxSight = 400;
     }
     return nil;
 }
+
 -(BOOL)isCollectableTile:(CGPoint)position forMeta:(NSDictionary*)meta {
     if (!meta) {
         meta = [self getTileMetaData:position];
@@ -210,12 +211,14 @@ int maxSight = 400;
         if (railTileName == @"Straight") {
             return YES;
         }
+        else if (railTileName == @"Curved") {
+            return YES;
+        }
     }
     return NO;
 }
 
 -(CGPoint)findNextRailPosition:(CGPoint)subjectPos playerFacing:(FacingDirection)direction {
-    
     CGPoint tilePos = [self tileCoordForPosition:subjectPos];
         
     // Find the final destination of the cart based on the next destination
@@ -271,10 +274,7 @@ int maxSight = 400;
     
     CGPoint tileCoord = [self tileCoordForPosition:position];
     
-    CCLOG(@"Tile coord: %f, %f", tileCoord.x, tileCoord.y);
-    
     int metaGid = [_meta tileGIDAt:tileCoord];
-    
     if (metaGid) {
         NSDictionary *properties = [_tileMap propertiesForGID:metaGid];
         if (properties) {
@@ -388,10 +388,24 @@ int maxSight = 400;
     CGPoint tileCoord = [self tileCoordForPosition:position];
     CGPoint tilePos = [self positionForTileCoord:tileCoord];
     
-    _player.goldInPossession.position = ccp(tilePos.x, tilePos.y);
-    [_player.goldInPossession uncollect];
-    _player.goldInPossession = nil; // unreference
-    [[SimpleAudioEngine sharedEngine] playEffect:@"miss.caf"];
+    CCArray* carts = [_cartSpriteBatchNode children];
+    
+    for (GoldCart *cart in carts) {
+        if (cart.readyForLoading && CGRectIntersectsRect(_player.boundingBox, cart.boundingBox)) {
+            int currentAmount = [cart loadGold];
+            [cart setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-with-gold-front-32.png"]];
+            _player.goldInPossession = nil; // unreference
+            [[SimpleAudioEngine sharedEngine] playEffect:@"gold.caf"];
+            CCLOG(@"Load: %d / %d", currentAmount, cart.capacity);
+        }
+    }
+
+    if (_player.goldInPossession != nil) {
+        _player.goldInPossession.position = ccp(tilePos.x, tilePos.y);
+        [_player.goldInPossession uncollect];
+        _player.goldInPossession = nil; // unreference
+        [[SimpleAudioEngine sharedEngine] playEffect:@"miss.caf"];
+    }
 }
 
 -(void)pickupGold:(CGPoint)position facing:(FacingDirection)direction {
@@ -406,14 +420,13 @@ int maxSight = 400;
         if ([self canPickupGold:gold atPosition:position facing:direction]) {
             _player.goldInPossession = gold;
             [gold collect];
-            [[SimpleAudioEngine sharedEngine] playEffect:@"gold.caf"];
+            [[SimpleAudioEngine sharedEngine] playEffect:@"pickup.caf"];
             break;
         }
     }
 }
 
--(void)moveHero:(CGPoint)touchLocation facing:(FacingDirection)direction
-{
+-(void)moveHero:(CGPoint)touchLocation facing:(FacingDirection)direction {
     CGPoint playerPos = touchLocation;
     
     if (playerPos.x <= (_tileMap.mapSize.width * _tileMap.tileSize.width) &&
@@ -473,6 +486,12 @@ int maxSight = 400;
 - (void) speedupUsedUp:(NSNotification *) notification
 {
     CCLOG(@"Speedup used up");
+}
+
+#pragma mark GoldCartEvents
+
+-(void) handleFullCart:(NSNotification *) notification {
+    CCLOG(@"Cart is full!");
 }
 
 #pragma mark PathFinding
@@ -769,6 +788,7 @@ int maxSight = 400;
 		//Observer notifications
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(speedupUsedOnce:) name:@"usedOnce" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(speedupUsedUp:) name:@"usedUp" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleFullCart:) name:@"cartFull" object:nil];
     
 		//Schedule updates
 		[self scheduleUpdate];
@@ -785,12 +805,17 @@ int maxSight = 400;
     if (_tmpPathFindingDelta >= _pathFindingThreshold) {
         _tmpPathFindingDelta = 0.5f;
         
-        CCLOG(@"Updating path finding...");
-        
+        // update path finding
         CCArray* zombies = [_zombieSpriteBatchNode children];
         
         for (GameCharacter *zombie in zombies) {
             [zombie updateStateWithDeltaTime:delta andGameObject:_player];
+        }
+        
+        CCArray* carts = [_cartSpriteBatchNode children];
+        
+        for (GameObject *cart in carts) {
+            [cart updateStateWithDeltaTime:delta andGameObject:_player];
         }
     }
 }

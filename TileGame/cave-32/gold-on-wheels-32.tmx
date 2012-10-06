@@ -26,12 +26,12 @@
   </tile>
   <tile id="4">
    <properties>
-    <property name="Rails" value="Curve"/>
+    <property name="Rail" value="Curved"/>
    </properties>
   </tile>
   <tile id="5">
    <properties>
-    <property name="Rails" value="Straight"/>
+    <property name="Rail" value="Straight"/>
    </properties>
   </tile>
  </tileset>
@@ -205,6 +205,11 @@
   <object name="Gold" x="1028" y="36" width="23" height="25">
    <properties>
     <property name="Gold" value="1"/>
+   </properties>
+  </object>
+  <object name="GoldCart" x="293" y="262" width="24" height="22">
+   <properties>
+    <property name="Cart" value="1"/>
    </properties>
   </object>
  </objectgroup>

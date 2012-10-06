@@ -7,6 +7,7 @@
 //
 
 #import "Gold.h"
+#import "Arrow.h"
 
 @implementation Gold
 

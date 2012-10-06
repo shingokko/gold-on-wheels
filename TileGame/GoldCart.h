@@ -9,16 +9,22 @@
 #import "GameObject.h"
 #import "CommonProtocol.h"
 
+@class Arrow;
+@class CCHero;
+
 @interface GoldCart : GameObject {
     FacingDirection _facingDirection;
     int _capacity;
     int _currentAmount;
+    BOOL _readyForLoading;
+    Arrow *_arrow;
 }
 
--(void)changeState:(ContainerStates)newState;
+-(void)updateStateWithDeltaTime:(ccTime)deltaTime andGameObject:(CCHero *)target;
+-(int)loadGold;
 
 @property (nonatomic, assign) FacingDirection facingDirection;
 @property (nonatomic, assign) int capacity;
-@property (nonatomic, assign) int currentAmount;
+@property (nonatomic, assign) BOOL readyForLoading;
 
 @end

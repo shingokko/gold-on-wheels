@@ -72,6 +72,7 @@
 		F4B505DA161FC37700E23256 /* Gold.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B505D9161FC37700E23256 /* Gold.m */; };
 		F4B505E9161FF6BC00E23256 /* gold.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4B505E7161FF6BC00E23256 /* gold.caf */; };
 		F4B505EA161FF6BC00E23256 /* miss.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4B505E8161FF6BC00E23256 /* miss.caf */; };
+		F4B505ED1620047300E23256 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B505EC1620047300E23256 /* Arrow.m */; };
 		F4C10CFD15F37C0400398A5D /* run.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4C10CFA15F37C0400398A5D /* run.caf */; };
 		F4DBBC5A15A57F4800071821 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DBBC5915A57F4800071821 /* QuartzCore.framework */; };
 		F4DBBC5C15A57F4800071821 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DBBC5B15A57F4800071821 /* OpenGLES.framework */; };
@@ -293,6 +294,8 @@
 		F4B505D9161FC37700E23256 /* Gold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gold.m; sourceTree = "<group>"; };
 		F4B505E7161FF6BC00E23256 /* gold.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gold.caf; path = Resources/gold.caf; sourceTree = "<group>"; };
 		F4B505E8161FF6BC00E23256 /* miss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = miss.caf; path = Resources/miss.caf; sourceTree = "<group>"; };
+		F4B505EB1620047300E23256 /* Arrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrow.h; sourceTree = "<group>"; };
+		F4B505EC1620047300E23256 /* Arrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrow.m; sourceTree = "<group>"; };
 		F4C10CFA15F37C0400398A5D /* run.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = run.caf; path = Resources/run.caf; sourceTree = "<group>"; };
 		F4DBBC5515A57F4800071821 /* GoldOnWheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldOnWheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DBBC5915A57F4800071821 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -581,6 +584,8 @@
 				F4A099911614464000D5BDE9 /* GoldCart.m */,
 				F4B505D8161FC37700E23256 /* Gold.h */,
 				F4B505D9161FC37700E23256 /* Gold.m */,
+				F4B505EB1620047300E23256 /* Arrow.h */,
+				F4B505EC1620047300E23256 /* Arrow.m */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -1384,6 +1389,7 @@
 				CE219B92160D1E640096C496 /* ShortestPathStep.m in Sources */,
 				F4A099921614464000D5BDE9 /* GoldCart.m in Sources */,
 				F4B505DA161FC37700E23256 /* Gold.m in Sources */,
+				F4B505ED1620047300E23256 /* Arrow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

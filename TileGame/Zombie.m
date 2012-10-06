@@ -396,8 +396,6 @@
 			[self removeFromParentAndCleanup:YES];
 		}
 		else if (isHeroWithinSight) {
-			CCLOG(@"hero coordinates: (%f, %f)", hero.position.x, hero.position.y);
-			CCLOG(@"zombie coordinates: (%f, %f)", self.position.x, self.position.y);
 			[self changeState:kStateAttacking];
 		}
 		else {

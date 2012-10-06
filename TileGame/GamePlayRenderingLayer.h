@@ -16,6 +16,7 @@
 @class GamePlayInputLayer;
 @class CCSpotLight;
 @class Speedup;
+@class Arrow;
 
 @interface GamePlayRenderingLayer : CCLayer <GameplayLayerDelegate>
 {
