@@ -52,7 +52,7 @@
             _tmpMovingDelta = 0.0f;
             
             FacingDirection dir;
-            /*Move hero depending on angle
+            //Move hero depending on angle
 			if (joystick.degrees >= 0.0f && joystick.degrees <= 180.0f) {
 				newPosition.y += (fabsf(sin(joystick.degrees)) * node.speed);
 			}
@@ -65,28 +65,28 @@
 			}
 			else {
 				newPosition.x += (fabsf(cos(joystick.degrees)) * node.speed);
-			}*/
+			}
 			
 			//Facing direction of hero
             if (joystick.degrees > 60.0f && joystick.degrees < 120.0f) {
                 // up
                 dir = kFacingUp;
-                newPosition.y += node.speed;
+                //newPosition.y += node.speed;
             }
             else if (joystick.degrees > 135.0f && joystick.degrees < 225.0f) {
                 // left
                 dir = kFacingLeft;
-                newPosition.x -= node.speed;
+                //newPosition.x -= node.speed;
             }
             else if (joystick.degrees > 225.0f && joystick.degrees < 315.0f) {
                 // down
                 dir = kFacingDown;
-                newPosition.y -= node.speed;
+                //newPosition.y -= node.speed;
             }
             else {
                 // right
                 dir = kFacingRight;
-                newPosition.x += node.speed;
+                //newPosition.x += node.speed;
             }            
             [_gameLayer moveHero:newPosition facing:dir];
         }
