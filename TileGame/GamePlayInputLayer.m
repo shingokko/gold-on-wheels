@@ -52,7 +52,7 @@
             _tmpMovingDelta = 0.0f;
             
             FacingDirection dir;
-            //Move hero depending on angle
+            /*Move hero depending on angle
 			if (joystick.degrees >= 0.0f && joystick.degrees <= 180.0f) {
 				newPosition.y += (fabsf(sin(joystick.degrees)) * node.speed);
 			}
@@ -65,28 +65,28 @@
 			}
 			else {
 				newPosition.x += (fabsf(cos(joystick.degrees)) * node.speed);
-			}
+			}*/
 			
 			//Facing direction of hero
-            if (joystick.degrees > 45.0f && joystick.degrees < 135.0f) {
+            if (joystick.degrees > 60.0f && joystick.degrees < 120.0f) {
                 // up
                 dir = kFacingUp;
-                //newPosition.y += node.speed;
+                newPosition.y += node.speed;
             }
             else if (joystick.degrees > 135.0f && joystick.degrees < 225.0f) {
                 // left
                 dir = kFacingLeft;
-                //newPosition.x -= node.speed;
+                newPosition.x -= node.speed;
             }
             else if (joystick.degrees > 225.0f && joystick.degrees < 315.0f) {
                 // down
                 dir = kFacingDown;
-                //newPosition.y -= node.speed;
+                newPosition.y -= node.speed;
             }
             else {
                 // right
                 dir = kFacingRight;
-                //newPosition.x += node.speed;
+                newPosition.x += node.speed;
             }            
             [_gameLayer moveHero:newPosition facing:dir];
         }
@@ -157,16 +157,18 @@
     leftJoy.thumbSprite = [CCSprite spriteWithFile:@"lever.png"];
     leftJoy.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0,0,128,128)];
     _leftJoystick = [leftJoy.joystick retain];
-
+    
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    
     SneakyButtonSkinnedBase *rightButton = [[[SneakyButtonSkinnedBase alloc] init] autorelease];
-    rightButton.position = ccp(416,32);
+    rightButton.position = ccp(winSize.width-64.0f, 64.0f);
     
     //hook images to button control
     rightButton.defaultSprite = [CCSprite spriteWithFile:@"released.png"];
     rightButton.activatedSprite = [CCSprite spriteWithFile:@"grabbed.png"];
     rightButton.pressSprite = [CCSprite spriteWithFile:@"grabbed.png"];
-    rightButton.button = [[SneakyButton alloc] initWithRect:CGRectMake(0, 0, 64, 64)];
-    [rightButton.button setRadius:64.0f];
+    rightButton.button = [[SneakyButton alloc] initWithRect:CGRectMake(0, 0, 128, 128)];
+    [rightButton.button setRadius:128.0f];
     _rightButton = [rightButton.button retain];
     _rightButton.isHoldable = YES;
     

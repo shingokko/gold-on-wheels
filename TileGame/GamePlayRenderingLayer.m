@@ -697,7 +697,7 @@ int maxSight = 400;
 	if( (self=[super init])) {
         
         [self preloadAudio];
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"adventure.mp3"];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"mysterious-cave.mp3"];
         
         self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels-32.tmx"];
         
@@ -772,7 +772,8 @@ int maxSight = 400;
         }
 
 		// Spotlight
-		_mask = [CCRenderTexture renderTextureWithWidth:512 height:352]; // screen size + tile size
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+		_mask = [CCRenderTexture renderTextureWithWidth:winSize.width+_tileMap.tileSize.width height:winSize.height+_tileMap.tileSize.height]; // screen size + tile size
 		_mask.position = _player.position;
 		[[_mask sprite] setBlendFunc: (ccBlendFunc) { GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA }];
 		[self addChild:_mask z:1];

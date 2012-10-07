@@ -39,6 +39,7 @@
 - (void)startButtonTapped:(id)sender
 {
     [[SimpleAudioEngine sharedEngine] playEffect:@"selection.caf"];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
     [[CCDirector sharedDirector] replaceScene:[GamePlayRenderingLayer scene]];
 }
 
@@ -63,6 +64,7 @@
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"selection.caf"];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"opening.mp3"];
         
         // Add sprites that make up the title screen
 		CCSprite *bg = [CCSprite spriteWithFile:@"title-background.png"];

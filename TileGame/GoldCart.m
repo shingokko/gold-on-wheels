@@ -70,7 +70,7 @@
         _readyForLoading = NO;
         _arrow = [[Arrow alloc] initWithSpriteFrameName:@"arrow-down.png"];
         _currentAmount = 0;
-        _capacity = 1;
+        _capacity = 5;
         [self addChild:_arrow];
     }
     return self;
