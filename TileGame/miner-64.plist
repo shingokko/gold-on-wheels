@@ -4,7 +4,7 @@
 <dict>
 	<key>frames</key>
 	<dict>
-		<key>miner-back-1.png</key>
+		<key>miner-normal-back-1.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
@@ -19,11 +19,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{0, 64}, {38, 62}}</string>
+			<string>{{0, 128}, {38, 62}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>miner-back-2.png</key>
+		<key>miner-normal-back-2.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
@@ -38,11 +38,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{276, 62}, {38, 62}}</string>
+			<string>{{40, 128}, {38, 62}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>miner-back-3.png</key>
+		<key>miner-normal-back-3.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
@@ -61,7 +61,7 @@
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>miner-front-1.png</key>
+		<key>miner-normal-front-1.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
@@ -76,11 +76,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{276, 0}, {40, 60}}</string>
+			<string>{{168, 126}, {40, 60}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>miner-front-2.png</key>
+		<key>miner-normal-front-2.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
@@ -95,11 +95,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{192, 0}, {40, 62}}</string>
+			<string>{{126, 64}, {40, 62}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>miner-front-3.png</key>
+		<key>miner-normal-front-3.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
@@ -114,11 +114,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{234, 0}, {40, 62}}</string>
+			<string>{{42, 64}, {40, 62}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>miner-side-1.png</key>
+		<key>miner-normal-side-1.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
@@ -133,11 +133,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{104, 0}, {42, 62}}</string>
+			<string>{{318, 0}, {42, 62}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>miner-side-2.png</key>
+		<key>miner-normal-side-2.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
@@ -152,11 +152,11 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{60, 0}, {42, 62}}</string>
+			<string>{{406, 0}, {42, 62}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>miner-side-3.png</key>
+		<key>miner-normal-side-3.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
@@ -171,7 +171,178 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{148, 0}, {42, 62}}</string>
+			<string>{{450, 0}, {42, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>miner-with-gold-back-1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{6, 1}, {50, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{-1, -0}</string>
+			<key>spriteSize</key>
+			<string>{50, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{64, 64}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{168, 0}, {50, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>miner-with-gold-back-2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{3, 1}, {54, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{-2, -0}</string>
+			<key>spriteSize</key>
+			<string>{54, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{64, 64}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{60, 0}, {54, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>miner-with-gold-back-3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{7, 1}, {50, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{50, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{64, 64}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{116, 0}, {50, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>miner-with-gold-front-1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{12, 2}, {40, 60}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{40, 60}</string>
+			<key>spriteSourceSize</key>
+			<string>{64, 64}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{168, 64}, {40, 60}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>miner-with-gold-front-2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{12, 2}, {40, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -1}</string>
+			<key>spriteSize</key>
+			<string>{40, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{64, 64}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{84, 64}, {40, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>miner-with-gold-front-3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{12, 2}, {40, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -1}</string>
+			<key>spriteSize</key>
+			<string>{40, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{64, 64}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 64}, {40, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>miner-with-gold-side-1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{8, 1}, {46, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{-1, -0}</string>
+			<key>spriteSize</key>
+			<string>{46, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{64, 64}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{270, 0}, {46, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>miner-with-gold-side-2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{4, 1}, {48, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{-4, -0}</string>
+			<key>spriteSize</key>
+			<string>{48, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{64, 64}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{220, 0}, {48, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>miner-with-gold-side-3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{9, 1}, {42, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{-2, -0}</string>
+			<key>spriteSize</key>
+			<string>{42, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{64, 64}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{362, 0}, {42, 62}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -183,7 +354,7 @@
 		<key>format</key>
 		<integer>3</integer>
 		<key>size</key>
-		<string>{512, 128}</string>
+		<string>{512, 256}</string>
 		<key>name</key>
 		<string>miner-64</string>
 		<key>premultipliedAlpha</key>

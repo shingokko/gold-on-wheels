@@ -10,63 +10,127 @@
 
 @implementation CCHero
 
-@synthesize frontAnim = _frontAnim;
-@synthesize backAnim = _backAnim;
-@synthesize sideAnim = _sideAnim;
+@synthesize normalFrontAnim = _normalFrontAnim;
+@synthesize normalBackAnim = _normalBackAnim;
+@synthesize normalSideAnim = _normalSideAnim;
+@synthesize withGoldFrontAnim = _withGoldFrontAnim;
+@synthesize withGoldBackAnim = _withGoldBackAnim;
+@synthesize withGoldSideAnim = _withGoldSideAnim;
+
 @synthesize facingDirection = _facingDirection;
 @synthesize goldInPossession = _goldInPossession;
 
 -(void) dealloc {
-    [_frontAnim release];
-    [_backAnim release];
-    [_sideAnim release];
+    [_normalFrontAnim release];
+    [_normalBackAnim release];
+    [_normalSideAnim release];
     
-    _frontAnim = nil;
-    _backAnim = nil;
-    _sideAnim = nil;
+    [_withGoldFrontAnim release];
+    [_withGoldBackAnim release];
+    [_withGoldSideAnim release];
+    
+    _normalFrontAnim = nil;
+    _normalBackAnim = nil;
+    _normalSideAnim = nil;
+    
+    _withGoldFrontAnim = nil;
+    _withGoldBackAnim = nil;
+    _withGoldSideAnim = nil;
     
     [super dealloc];
 }
 
--(void) loadAnimations {
+-(void) loadNormalAnimations {
     NSMutableArray *frontAnimFrames = [NSMutableArray array];
-    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-1.png"]];
-    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-2.png"]];
-    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-1.png"]];
-    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-3.png"]];
+    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-front-1.png"]];
+    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-front-2.png"]];
+    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-front-1.png"]];
+    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-front-3.png"]];
     
     NSMutableArray *backAnimFrames = [NSMutableArray array];
-    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-back-1.png"]];
-    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-back-2.png"]];
-    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-back-1.png"]];
-    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-back-3.png"]];
+    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-back-1.png"]];
+    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-back-2.png"]];
+    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-back-1.png"]];
+    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-back-3.png"]];
     
     NSMutableArray *sideAnimFrames = [NSMutableArray array];
-    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-side-1.png"]];
-    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-side-2.png"]];
-    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-side-1.png"]];
-    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-side-3.png"]];
+    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-side-1.png"]];
+    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-side-2.png"]];
+    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-side-1.png"]];
+    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-side-3.png"]];
     
     // set up walking animations
-    _frontAnim = [[CCAnimation animationWithFrames:frontAnimFrames delay:0.3f] retain];
-    _backAnim = [[CCAnimation animationWithFrames:backAnimFrames delay:0.3f] retain];
-    _sideAnim = [[CCAnimation animationWithFrames:sideAnimFrames delay:0.3f] retain];
+    _normalFrontAnim = [[CCAnimation animationWithFrames:frontAnimFrames delay:0.3f] retain];
+    _normalBackAnim = [[CCAnimation animationWithFrames:backAnimFrames delay:0.3f] retain];
+    _normalSideAnim = [[CCAnimation animationWithFrames:sideAnimFrames delay:0.3f] retain];
 }
 
--(void) adjustAnimation:(FacingDirection)direction {
+-(void) loadWithGoldAnimations {
+    NSMutableArray *frontAnimFrames = [NSMutableArray array];
+    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-front-1.png"]];
+    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-front-2.png"]];
+    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-front-1.png"]];
+    [frontAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-front-3.png"]];
+    
+    NSMutableArray *backAnimFrames = [NSMutableArray array];
+    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-back-1.png"]];
+    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-back-2.png"]];
+    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-back-1.png"]];
+    [backAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-back-3.png"]];
+    
+    NSMutableArray *sideAnimFrames = [NSMutableArray array];
+    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-side-1.png"]];
+    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-side-2.png"]];
+    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-side-1.png"]];
+    [sideAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-with-gold-side-3.png"]];
+    
+    // set up walking animations
+    _withGoldFrontAnim = [[CCAnimation animationWithFrames:frontAnimFrames delay:0.3f] retain];
+    _withGoldBackAnim = [[CCAnimation animationWithFrames:backAnimFrames delay:0.3f] retain];
+    _withGoldSideAnim = [[CCAnimation animationWithFrames:sideAnimFrames delay:0.3f] retain];
+}
+
+-(void)changeState:(CharacterStates)newState {
+    if (characterState == newState) {
+        // no change to state, quit here
+        return;
+    }
+    
+    id action = [self getAnimation:_facingDirection forState:newState];
+    
+    if (action == nil) {
+        [self stopAllActions];
+    }
+    else {
+        [self runAction:action];
+    }
+    
+    characterState = newState;
+}
+
+-(id)getAnimation:(FacingDirection)direction forState:(CharacterStates)state {
+    
     id action = nil;
     
     switch (direction) {
         case kFacingDown:
-            if (_facingDirection != direction) {
-                _facingDirection = direction;
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_frontAnim restoreOriginalFrame:YES]];
+            _facingDirection = direction;
+            
+            if (state == kStateWalking) {
+                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalFrontAnim restoreOriginalFrame:YES]];
+            }
+            else if (state == kStateCarryingGold) {
+                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldFrontAnim restoreOriginalFrame:YES]];
             }
             break;
         case kFacingUp:
-            if (_facingDirection != direction) {
-                _facingDirection = direction;
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_backAnim restoreOriginalFrame:YES]];
+            _facingDirection = direction;
+            
+            if (state == kStateWalking) {
+                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalBackAnim restoreOriginalFrame:YES]];
+            }
+            else if (state == kStateCarryingGold) {
+                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldBackAnim restoreOriginalFrame:YES]];
             }
             break;
         case kFacingLeft:
@@ -74,9 +138,13 @@
                 self.flipX = NO;
             }
 			
-            if (_facingDirection != direction) {
-                _facingDirection = direction;
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_sideAnim restoreOriginalFrame:YES]];
+            _facingDirection = direction;
+            
+            if (state == kStateWalking) {
+                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalSideAnim restoreOriginalFrame:YES]];
+            }
+            else if (state == kStateCarryingGold) {
+                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldSideAnim restoreOriginalFrame:YES]];
             }
             break;
 			
@@ -85,14 +153,31 @@
                 self.flipX = YES;
             }
 			
-            if (_facingDirection != direction) {
-                _facingDirection = direction;
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_sideAnim restoreOriginalFrame:YES]];
+            _facingDirection = direction;
+            
+            if (state == kStateWalking) {
+                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalSideAnim restoreOriginalFrame:YES]];
+            }
+            else if (state == kStateCarryingGold) {
+                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldSideAnim restoreOriginalFrame:YES]];
             }
             break;
     }
     
-    if (action != nil) {
+    return action;
+}
+
+-(void) adjustAnimation:(FacingDirection)direction {
+    if (_facingDirection == direction) {
+        return;
+    }
+    
+    id action = [self getAnimation:direction forState:characterState];
+        
+    if (action == nil) {
+        [self stopAllActions];
+    }
+    else {
         [self runAction:action];
     }
 }
@@ -103,8 +188,10 @@
     {
         _facingDirection = kFacingDown;
 		self.gameObjectType = kHeroType;
+        characterState = kStateWalking;
         
-        [self loadAnimations];
+        [self loadNormalAnimations];
+        [self loadWithGoldAnimations];
     }
     return self;
 }

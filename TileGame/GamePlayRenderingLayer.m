@@ -396,6 +396,7 @@ int maxSight = 400;
             [cart setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-with-gold-front-32.png"]];
             _player.goldInPossession = nil; // unreference
             [[SimpleAudioEngine sharedEngine] playEffect:@"gold.caf"];
+            [_player changeState:kStateWalking];
             CCLOG(@"Load: %d / %d", currentAmount, cart.capacity);
         }
     }
@@ -403,6 +404,7 @@ int maxSight = 400;
     if (_player.goldInPossession != nil) {
         _player.goldInPossession.position = ccp(tilePos.x, tilePos.y);
         [_player.goldInPossession uncollect];
+        [_player changeState:kStateWalking];
         _player.goldInPossession = nil; // unreference
         [[SimpleAudioEngine sharedEngine] playEffect:@"miss.caf"];
     }
@@ -420,6 +422,7 @@ int maxSight = 400;
         if ([self canPickupGold:gold atPosition:position facing:direction]) {
             _player.goldInPossession = gold;
             [gold collect];
+            [_player changeState:kStateCarryingGold];
             [[SimpleAudioEngine sharedEngine] playEffect:@"pickup.caf"];
             break;
         }
@@ -674,6 +677,7 @@ int maxSight = 400;
 {
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"miner.plist"];
     _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner.png"];
+
     [self addChild:_sceneSpriteBatchNode z:0];
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie-32.plist"];
@@ -717,7 +721,7 @@ int maxSight = 400;
         
         [self loadSprites];
         
-		self.player = [[CCHero alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-front-1.png"]];
+		self.player = [[CCHero alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-front-1.png"]];
 		CGPoint initialPosition = [self computeTileFittingPosition:ccp(x, y)];
         _player.position = ccp(initialPosition.x, initialPosition.y);
 		
