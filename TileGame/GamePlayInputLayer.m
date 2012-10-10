@@ -52,42 +52,55 @@
             _tmpMovingDelta = 0.0f;
             
             FacingDirection dir;
-            //Move hero depending on angle
-			if (joystick.degrees >= 0.0f && joystick.degrees <= 180.0f) {
-				newPosition.y += (fabsf(sin(joystick.degrees)) * node.speed);
-			}
-			else {
-				newPosition.y -= (fabsf(sin(joystick.degrees)) * node.speed);
-			}
 			
-			if (joystick.degrees >= 90.0f && joystick.degrees <= 270.0f) {
-				newPosition.x -= (fabsf(cos(joystick.degrees)) * node.speed);
-			}
-			else {
-				newPosition.x += (fabsf(cos(joystick.degrees)) * node.speed);
-			}
+			float degreeOffset = 1.41; // 45 degree angle is squareroot of 2 which is approx 1.41
 			
 			//Facing direction of hero
-            if (joystick.degrees > 60.0f && joystick.degrees < 120.0f) {
-                // up
+            if (joystick.degrees > 22.5f && joystick.degrees < 67.5f) {
+                // NE
+                dir = kFacingRight;
+                newPosition.y += node.speed/degreeOffset;
+				newPosition.x += node.speed/degreeOffset;
+            }
+			else if (joystick.degrees >= 67.5f && joystick.degrees <= 112.5) {
+                // N
                 dir = kFacingUp;
-                //newPosition.y += node.speed;
+                newPosition.y += node.speed;
             }
-            else if (joystick.degrees > 135.0f && joystick.degrees < 225.0f) {
-                // left
+			else if (joystick.degrees > 112.5f && joystick.degrees < 157.5f) {
+                // NW
                 dir = kFacingLeft;
-                //newPosition.x -= node.speed;
+                newPosition.y += node.speed/degreeOffset;
+				newPosition.x -= node.speed/degreeOffset;
             }
-            else if (joystick.degrees > 225.0f && joystick.degrees < 315.0f) {
-                // down
+			else if (joystick.degrees >= 157.5f && joystick.degrees <= 202.5f) {
+                // W
+                dir = kFacingLeft;
+                newPosition.x -= node.speed;
+            }
+            else if (joystick.degrees > 202.5f && joystick.degrees < 247.5f) {
+                // SW
+                dir = kFacingLeft;
+                newPosition.x -= node.speed/degreeOffset;
+				newPosition.y -= node.speed/degreeOffset;
+            }
+            else if (joystick.degrees >= 247.5f && joystick.degrees <= 292.5f) {
+                // S
                 dir = kFacingDown;
-                //newPosition.y -= node.speed;
+                newPosition.y -= node.speed;
+            }
+			else if (joystick.degrees >= 292.5f && joystick.degrees <= 337.5f) {
+                // SE
+                dir = kFacingRight;
+                newPosition.x += node.speed/degreeOffset;
+				newPosition.y -= node.speed/degreeOffset;
             }
             else {
-                // right
+                // E
                 dir = kFacingRight;
-                //newPosition.x += node.speed;
+                newPosition.x += node.speed;
             }            
+			
             [_gameLayer moveHero:newPosition facing:dir];
         }
     }
