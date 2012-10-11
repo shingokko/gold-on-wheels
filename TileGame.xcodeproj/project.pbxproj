@@ -22,6 +22,7 @@
 		F4374CEB15AEBB2F008F26A8 /* great.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4374CE815AEBB2F008F26A8 /* great.caf */; };
 		F44B3BF5161D6EFA00EA9EE6 /* grabbed.png in Resources */ = {isa = PBXBuildFile; fileRef = F44B3BF2161D6EFA00EA9EE6 /* grabbed.png */; };
 		F44B3BF6161D6EFA00EA9EE6 /* released.png in Resources */ = {isa = PBXBuildFile; fileRef = F44B3BF3161D6EFA00EA9EE6 /* released.png */; };
+		F464DD841627425700E8E3DC /* GamePlayStatusLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F464DD831627425700E8E3DC /* GamePlayStatusLayer.m */; };
 		F47F4BB5161857F500A16AD1 /* title-background.png in Resources */ = {isa = PBXBuildFile; fileRef = F47F4BB2161857F400A16AD1 /* title-background.png */; };
 		F47F4BB6161857F500A16AD1 /* title-caption.png in Resources */ = {isa = PBXBuildFile; fileRef = F47F4BB3161857F400A16AD1 /* title-caption.png */; };
 		F49F45DE15E6019A007ED9E8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F49F45D915E6019A007ED9E8 /* background.png */; };
@@ -77,6 +78,8 @@
 		F4B505E9161FF6BC00E23256 /* gold.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4B505E7161FF6BC00E23256 /* gold.caf */; };
 		F4B505EA161FF6BC00E23256 /* miss.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4B505E8161FF6BC00E23256 /* miss.caf */; };
 		F4B505ED1620047300E23256 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B505EC1620047300E23256 /* Arrow.m */; };
+		F4B5B5371626A6D4007D03F9 /* gold-bar-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = F4B5B5351626A6D4007D03F9 /* gold-bar-retina.png */; };
+		F4B5B5381626A6D4007D03F9 /* gold-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = F4B5B5361626A6D4007D03F9 /* gold-bar.png */; };
 		F4C10CFD15F37C0400398A5D /* run.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4C10CFA15F37C0400398A5D /* run.caf */; };
 		F4DBBC5A15A57F4800071821 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DBBC5915A57F4800071821 /* QuartzCore.framework */; };
 		F4DBBC5C15A57F4800071821 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DBBC5B15A57F4800071821 /* OpenGLES.framework */; };
@@ -232,6 +235,7 @@
 		F4374CE815AEBB2F008F26A8 /* great.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = great.caf; sourceTree = "<group>"; };
 		F44B3BF2161D6EFA00EA9EE6 /* grabbed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grabbed.png; path = Resources/grabbed.png; sourceTree = "<group>"; };
 		F44B3BF3161D6EFA00EA9EE6 /* released.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = released.png; path = Resources/released.png; sourceTree = "<group>"; };
+		F464DD831627425700E8E3DC /* GamePlayStatusLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayStatusLayer.m; sourceTree = "<group>"; };
 		F47F4BB2161857F400A16AD1 /* title-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-background.png"; path = "Resources/title-background.png"; sourceTree = "<group>"; };
 		F47F4BB3161857F400A16AD1 /* title-caption.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-caption.png"; path = "Resources/title-caption.png"; sourceTree = "<group>"; };
 		F49F45D915E6019A007ED9E8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
@@ -304,6 +308,9 @@
 		F4B505E8161FF6BC00E23256 /* miss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = miss.caf; path = Resources/miss.caf; sourceTree = "<group>"; };
 		F4B505EB1620047300E23256 /* Arrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrow.h; sourceTree = "<group>"; };
 		F4B505EC1620047300E23256 /* Arrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrow.m; sourceTree = "<group>"; };
+		F4B5B5311626981B007D03F9 /* GamePlayStatusLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayStatusLayer.h; sourceTree = "<group>"; };
+		F4B5B5351626A6D4007D03F9 /* gold-bar-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gold-bar-retina.png"; path = "Resources/gold-bar-retina.png"; sourceTree = "<group>"; };
+		F4B5B5361626A6D4007D03F9 /* gold-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gold-bar.png"; path = "Resources/gold-bar.png"; sourceTree = "<group>"; };
 		F4C10CFA15F37C0400398A5D /* run.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = run.caf; path = Resources/run.caf; sourceTree = "<group>"; };
 		F4DBBC5515A57F4800071821 /* GoldOnWheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldOnWheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DBBC5915A57F4800071821 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -630,6 +637,8 @@
 			children = (
 				F4A3EB4C15FAB9B600FC3D43 /* GamePlayInputLayer.h */,
 				F4A3EB4A15FAB83400FC3D43 /* GamePlayInputLayer.m */,
+				F4B5B5311626981B007D03F9 /* GamePlayStatusLayer.h */,
+				F464DD831627425700E8E3DC /* GamePlayStatusLayer.m */,
 				F4DBBDC115A57F4A00071821 /* GamePlayRenderingLayer.h */,
 				F4DBBDC215A57F4A00071821 /* GamePlayRenderingLayer.m */,
 				F4EB5A2715C10F03006B811E /* TitleScreenScene.h */,
@@ -1123,6 +1132,8 @@
 		F4F849CC160433EE009945BC /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				F4B5B5351626A6D4007D03F9 /* gold-bar-retina.png */,
+				F4B5B5361626A6D4007D03F9 /* gold-bar.png */,
 				F4A2B5A4162196630052042D /* lever-retina.png */,
 				F4A2B5A5162196630052042D /* wheel-retina.png */,
 				F4A055D2161EE96100CB7A6F /* gold-32.plist */,
@@ -1274,6 +1285,8 @@
 				F4A2B596162195380052042D /* opening.mp3 in Resources */,
 				F4A2B5A6162196630052042D /* lever-retina.png in Resources */,
 				F4A2B5A7162196630052042D /* wheel-retina.png in Resources */,
+				F4B5B5371626A6D4007D03F9 /* gold-bar-retina.png in Resources */,
+				F4B5B5381626A6D4007D03F9 /* gold-bar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1406,6 +1419,7 @@
 				F4A099921614464000D5BDE9 /* GoldCart.m in Sources */,
 				F4B505DA161FC37700E23256 /* Gold.m in Sources */,
 				F4B505ED1620047300E23256 /* Arrow.m in Sources */,
+				F464DD841627425700E8E3DC /* GamePlayStatusLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

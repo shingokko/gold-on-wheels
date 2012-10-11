@@ -53,6 +53,12 @@
     }
     
     _currentAmount += 1;
+    
+    // build data to send in notification
+    NSNumber *amountInNsNumber = [NSNumber numberWithInt:_currentAmount];
+    NSDictionary* data = [NSDictionary dictionaryWithObject:amountInNsNumber forKey:@"currentAmount"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"cartLoaded" object:self userInfo:data];
+    
     if (_currentAmount == _capacity) {
         _readyForLoading = NO;
         [_arrow hide];

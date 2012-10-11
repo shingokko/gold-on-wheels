@@ -9,6 +9,7 @@
 // Import the interfaces
 #import "GamePlayRenderingLayer.h"
 #import "GamePlayInputLayer.h"
+#import "GamePlayStatusLayer.h"
 #import "SimpleAudioEngine.h"
 #import "GameOverScene.h"
 #import "CCSpotLight.h"
@@ -39,6 +40,7 @@
 @synthesize meta = _meta;
 @synthesize melonCount = _melonCount;
 @synthesize hud = _hud;
+@synthesize statusLayer = _statusLayer;
 @synthesize moving = _moving;
 @synthesize mask = _mask;
 @synthesize spotlight = _spotlight;
@@ -53,6 +55,7 @@ int maxSight = 400;
     self.background = nil;
 	self.player = nil;
     self.meta = nil;
+    self.statusLayer = nil;
     self.hud = nil;
 	self.mask = nil;
     
@@ -60,6 +63,7 @@ int maxSight = 400;
 	[_background release];
 	[_meta release];
 	[_hud release];
+    [_statusLayer release];
 	[heroSprite release];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -493,6 +497,14 @@ int maxSight = 400;
 
 #pragma mark GoldCartEvents
 
+-(void) handleUpdateCart:(NSNotification *) notification {
+    NSDictionary *data = [notification userInfo];
+    NSUInteger amount = [[data objectForKey:@"currentAmount"] intValue];
+    GoldCart* cart = (GoldCart*)notification.object;
+
+    [_statusLayer showStatus:cart amount:amount];
+}
+
 -(void) handleFullCart:(NSNotification *) notification {
     CCLOG(@"Cart is full!");
 }
@@ -664,11 +676,14 @@ int maxSight = 400;
 	
     GamePlayInputLayer *inputLayer = [GamePlayInputLayer node];
     [scene addChild: inputLayer];
-    
     renderingLayer.hud = inputLayer;
-    
     inputLayer.gameLayer = renderingLayer;
-    
+	
+    GamePlayStatusLayer *statusDisplayLayer = [GamePlayStatusLayer node];
+    [scene addChild: statusDisplayLayer];
+    renderingLayer.statusLayer = statusDisplayLayer;
+    statusDisplayLayer.gameLayer = renderingLayer;
+
 	// return the scene
 	return scene;
 }
@@ -676,19 +691,19 @@ int maxSight = 400;
 -(void) loadSprites
 {
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"miner.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie-32.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"cart-32.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"gold-32.plist"];
+    
     _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner.png"];
-
     [self addChild:_sceneSpriteBatchNode z:0];
     
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie-32.plist"];
     _zombieSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"zombie-32.png"];
     [self addChild:_zombieSpriteBatchNode z:0];
     
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"cart-32.plist"];
     _cartSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"cart-32.png"];
     [self addChild:_cartSpriteBatchNode z:0];
     
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"gold-32.plist"];
     _goldSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"gold-32.png"];
     [self addChild:_goldSpriteBatchNode z:0];
 }
@@ -794,6 +809,7 @@ int maxSight = 400;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(speedupUsedOnce:) name:@"usedOnce" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(speedupUsedUp:) name:@"usedUp" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleFullCart:) name:@"cartFull" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUpdateCart:) name:@"cartLoaded" object:nil];
     
 		//Schedule updates
 		[self scheduleUpdate];

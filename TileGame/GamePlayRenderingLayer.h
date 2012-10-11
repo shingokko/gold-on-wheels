@@ -14,6 +14,7 @@
 #import "Zombie.h"
 
 @class GamePlayInputLayer;
+@class GamePlayStatusLayer;
 @class CCSpotLight;
 @class Speedup;
 @class Arrow;
@@ -25,6 +26,7 @@
     CCTMXLayer *_meta;
 	
 	GamePlayInputLayer *_hud;
+    GamePlayStatusLayer *_statusLayer;
 	int _melonCount;
 	
     CCRenderTexture *_mask;
@@ -54,6 +56,7 @@
 
 @property (nonatomic, assign) int melonCount;
 @property (nonatomic, retain) GamePlayInputLayer *hud;
+@property (nonatomic, retain) GamePlayStatusLayer *statusLayer;
 
 @property (nonatomic, assign) bool moving;
 @property (nonatomic, assign) CGPoint prevPos;
