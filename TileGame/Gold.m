@@ -22,12 +22,12 @@
 
 -(void) loadAnimations {
     NSMutableArray *shineAnimFrames = [NSMutableArray array];
-    [shineAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-32-1.png"]];
-    [shineAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-32-2.png"]];
-    [shineAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-32-3.png"]];
-    [shineAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-32-2.png"]];
+    [shineAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-1.png"]];
+    [shineAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-2.png"]];
+    [shineAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-3.png"]];
+    [shineAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-2.png"]];
     
-    _shineAnim = [CCAnimation animationWithFrames:shineAnimFrames delay:0.2f];
+    _shineAnim = [[CCAnimation animationWithFrames:shineAnimFrames delay:0.2f] retain];
 }
 
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andGameObject:(GameObject *)gameObject {
@@ -39,10 +39,9 @@
             [self stopAction:_animationHandle];
             _animationHandle = nil;
         }
-        _animationHandle = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_shineAnim]];
+        _animationHandle = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_shineAnim]] retain];
         
         [self runAction:_animationHandle];
-        [_animationHandle retain];
     }
 }
 

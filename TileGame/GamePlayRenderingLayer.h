@@ -15,6 +15,7 @@
 
 @class GamePlayInputLayer;
 @class GamePlayStatusLayer;
+@class GameCompleteLayer;
 @class CCSpotLight;
 @class Speedup;
 @class Arrow;
@@ -27,7 +28,7 @@
 	
 	GamePlayInputLayer *_hud;
     GamePlayStatusLayer *_statusLayer;
-	int _melonCount;
+    GameCompleteLayer *_completeLayer;
 	
     CCRenderTexture *_mask;
     CCSpotLight *_spotlight;
@@ -54,9 +55,9 @@
 @property (nonatomic, retain) CCRenderTexture *mask;
 @property (nonatomic, retain) CCSpotLight *spotlight;
 
-@property (nonatomic, assign) int melonCount;
 @property (nonatomic, retain) GamePlayInputLayer *hud;
 @property (nonatomic, retain) GamePlayStatusLayer *statusLayer;
+@property (nonatomic, retain) GameCompleteLayer *completeLayer;
 
 @property (nonatomic, assign) bool moving;
 @property (nonatomic, assign) CGPoint prevPos;

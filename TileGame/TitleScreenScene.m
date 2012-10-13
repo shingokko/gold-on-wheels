@@ -58,22 +58,33 @@
 	return scene;
 }
 
-
 -(id) init {
     if ((self=[super initWithColor:ccc4(255, 255, 255, 255)])) {
         CGSize winSize = [[CCDirector sharedDirector] winSize];
+        CGSize pixelSize = [[CCDirector sharedDirector] winSizeInPixels];
         
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"selection.caf"];
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"opening.mp3"];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"opening.mp3" loop:NO];
         
         // Add sprites that make up the title screen
-		CCSprite *bg = [CCSprite spriteWithFile:@"title-background.png"];
+        CCSprite *bg, *title;
+        
+        if (pixelSize.width == 1136) {
+            bg = [CCSprite spriteWithFile:@"title-background-1136x640.png"];
+            title = [CCSprite spriteWithFile:@"title-caption-for-1136x640.png"];
+        }
+        else if (pixelSize.width == 960) {
+            bg = [CCSprite spriteWithFile:@"title-background-960x640.png"];
+            title = [CCSprite spriteWithFile:@"title-caption-for-960x640.png"];
+        }
+        else {
+            bg = [CCSprite spriteWithFile:@"title-background.png"];
+            title = [CCSprite spriteWithFile:@"title-caption.png"];
+        }
+        
         bg.tag = 1;
         bg.anchorPoint = CGPointMake(0, 0);
-        
-		CCSprite *title = [CCSprite spriteWithFile:@"title-caption.png"];
         title.tag = 1;
-        
         title.position = ccp(winSize.width * 0.5, winSize.height * 1.2f);
         
         id actionTitleMove = [CCMoveTo actionWithDuration:1.0f position:ccp(winSize.width * 0.5, winSize.height * 0.85)];
@@ -83,8 +94,15 @@
         [self addChild:title z:0];
         
         // Add start button
-        CCMenuItem *button = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button-clicked.png" target:self selector:@selector(startButtonTapped:)];
-        button.position = ccp(winSize.width * 0.77, winSize.height * 0.2);
+        CCMenuItem *button;
+        if (pixelSize.width == 1136 || pixelSize.width == 960) {
+            button = [CCMenuItemImage itemFromNormalImage:@"start-button-retina.png" selectedImage:@"start-button-pressed-retina.png" target:self selector:@selector(startButtonTapped:)];
+        }
+        else {
+            button = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button-pressed.png" target:self selector:@selector(startButtonTapped:)];
+        }
+
+        button.position = ccp(winSize.width * 0.8, winSize.height * 0.2);
         
         CCMenu *starMenu = [CCMenu menuWithItems:button, nil];
         starMenu.position = CGPointZero;

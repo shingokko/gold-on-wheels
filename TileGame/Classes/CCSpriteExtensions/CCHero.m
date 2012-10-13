@@ -91,6 +91,10 @@
 }
 
 -(void)changeState:(CharacterStates)newState {
+    if (newState == kStateIdle) {
+        [self stopAllActions];
+    }
+    
     if (characterState == newState) {
         // no change to state, quit here
         return;
@@ -117,20 +121,20 @@
             _facingDirection = direction;
             
             if (state == kStateWalking) {
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalFrontAnim restoreOriginalFrame:YES]];
+                action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalFrontAnim restoreOriginalFrame:YES]] retain];
             }
             else if (state == kStateCarryingGold) {
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldFrontAnim restoreOriginalFrame:YES]];
+                action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldFrontAnim restoreOriginalFrame:YES]] retain];
             }
             break;
         case kFacingUp:
             _facingDirection = direction;
             
             if (state == kStateWalking) {
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalBackAnim restoreOriginalFrame:YES]];
+                action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalBackAnim restoreOriginalFrame:YES]] retain];
             }
             else if (state == kStateCarryingGold) {
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldBackAnim restoreOriginalFrame:YES]];
+                action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldBackAnim restoreOriginalFrame:YES]] retain];
             }
             break;
         case kFacingLeft:
@@ -141,10 +145,10 @@
             _facingDirection = direction;
             
             if (state == kStateWalking) {
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalSideAnim restoreOriginalFrame:YES]];
+                action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalSideAnim restoreOriginalFrame:YES]] retain];
             }
             else if (state == kStateCarryingGold) {
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldSideAnim restoreOriginalFrame:YES]];
+                action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldSideAnim restoreOriginalFrame:YES]] retain];
             }
             break;
 			
@@ -156,10 +160,10 @@
             _facingDirection = direction;
             
             if (state == kStateWalking) {
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalSideAnim restoreOriginalFrame:YES]];
+                action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_normalSideAnim restoreOriginalFrame:YES]] retain];
             }
             else if (state == kStateCarryingGold) {
-                action = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldSideAnim restoreOriginalFrame:YES]];
+                action = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_withGoldSideAnim restoreOriginalFrame:YES]] retain];
             }
             break;
     }

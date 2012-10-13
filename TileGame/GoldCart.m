@@ -26,6 +26,7 @@
 -(BOOL)isFull {
     return _currentAmount >= _capacity;
 }
+
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andGameObject:(CCHero *)target {
     if ([self isFull]) {
         return;
@@ -74,7 +75,7 @@
     {
         _facingDirection = kFacingDown;
         _readyForLoading = NO;
-        _arrow = [[Arrow alloc] initWithSpriteFrameName:@"arrow-down.png"];
+        _arrow = [[[Arrow alloc] initWithSpriteFrameName:@"arrow-down.png"] retain];
         _currentAmount = 0;
         _capacity = 5;
         [self addChild:_arrow];

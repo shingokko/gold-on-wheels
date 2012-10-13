@@ -15,7 +15,6 @@
 
 @interface GamePlayInputLayer : CCLayer
 {
-    CCLabelTTF *_label;
     GamePlayRenderingLayer *_gameLayer;
     
 	SneakyJoystick *_leftJoystick;
@@ -27,8 +26,6 @@
     ccTime _movingThreshold;
     ccTime _attackingThreshold;
 }
-
--(void)melonCountChanged:(int)melonCount;
 
 @property (nonatomic, assign) GamePlayRenderingLayer *gameLayer;
 @property (nonatomic, assign) ccTime movingThreshold;

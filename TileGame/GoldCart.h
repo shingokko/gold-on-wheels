@@ -22,6 +22,7 @@
 
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andGameObject:(CCHero *)target;
 -(int)loadGold;
+-(BOOL)isFull;
 
 @property (nonatomic, assign) FacingDirection facingDirection;
 @property (nonatomic, assign) int capacity;

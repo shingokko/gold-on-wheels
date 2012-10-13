@@ -59,7 +59,7 @@
         [self stopAction:_curAnimate];
     }
     
-    _curAnimate = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]];
+    _curAnimate = [[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]] retain];
     [self runAction:_curAnimate];
 }
 
@@ -72,7 +72,7 @@
     [animFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"zombie-%@-3.png", animType]]];
     
     // set up walking animations
-    CCAnimation *animation = [CCAnimation animationWithFrames:animFrames delay:0.3f];
+    CCAnimation *animation = [[CCAnimation animationWithFrames:animFrames delay:0.3f] retain];
     
     return animation;
 }
@@ -309,8 +309,13 @@
 }
 
 -(void)changeState:(CharacterStates)newState {
-    if (characterState == kStateDead)
+    if (characterState == kStateDead) {
         return; // No need to change state further once I am dead
+    }
+    
+    if (newState == kStateIdle) {
+        [self stopAllActions];
+    }
     
     //[self stopAllActions];
     characterState = newState;

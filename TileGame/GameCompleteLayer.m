@@ -1,0 +1,57 @@
+//
+//  GameCompleteLayer.m
+//  TileGame
+//
+//  Created by Shingo Tamura on 12/10/12.
+//
+//
+
+#import "GameCompleteLayer.h"
+
+@implementation GameCompleteLayer
+
+-(void) animationDone {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"animationDone" object:self ];
+}
+
+-(void) startAnimation {
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    CGSize pixelSize = [[CCDirector sharedDirector] winSizeInPixels];
+    
+    // Title
+    CCSprite *title;
+    if (pixelSize.width == 1136 || pixelSize.width == 960) {
+        title = [CCSprite spriteWithFile:@"you-win-retina.png"];
+    }
+    else {
+        title = [CCSprite spriteWithFile:@"you-win.png"];
+    }
+    title.position = ccp(winSize.width * 0.5, winSize.height * 3.0f);
+    title.scale = 1.5f;
+    title.opacity = 0.0f;
+    
+    id actionTitleFade = [CCFadeTo actionWithDuration:1.0f opacity:255.0f];
+    id actionTitleMove = [CCMoveTo actionWithDuration:1.0f position:ccp(winSize.width * 0.5, winSize.height * 0.5)];
+    id actionTitleScale = [CCScaleTo actionWithDuration:1.0f scale:1.0f];
+    id bounceTitleMove = [CCEaseBounce actionWithAction:actionTitleMove];
+    
+    [self addChild:title z:2];
+    
+    id actionLayer = [CCFadeIn actionWithDuration:0.3];
+    [self runAction:actionLayer];
+    
+    [title runAction:actionTitleFade];
+    [title runAction:actionTitleScale];
+    [title runAction:bounceTitleMove];
+    
+    [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:10], [CCCallFunc actionWithTarget:self selector:@selector(animationDone)], nil]];
+}
+
+-(id) init
+{
+    if ((self=[super initWithColor:ccc4(255, 255, 255, 0)])) {
+    }
+    return self;
+}
+
+@end

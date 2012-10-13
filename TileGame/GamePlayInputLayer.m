@@ -163,11 +163,21 @@
 }
 
 -(void)initJoystickAndButtons {
+    CGSize pixelSize = [[CCDirector sharedDirector] winSizeInPixels];
+    
     // initialize a joystick
     SneakyJoystickSkinnedBase *leftJoy = [[[SneakyJoystickSkinnedBase alloc] init] autorelease];
     leftJoy.position = ccp(64, 64);
-    leftJoy.backgroundSprite = [CCSprite spriteWithFile:@"wheel.png"];
-    leftJoy.thumbSprite = [CCSprite spriteWithFile:@"lever.png"];
+    
+    if (pixelSize.width == 1136 || pixelSize.width == 960) {
+        leftJoy.backgroundSprite = [CCSprite spriteWithFile:@"wheel-retina.png"];
+        leftJoy.thumbSprite = [CCSprite spriteWithFile:@"lever-retina.png"];
+    }
+    else {
+        leftJoy.backgroundSprite = [CCSprite spriteWithFile:@"wheel.png"];
+        leftJoy.thumbSprite = [CCSprite spriteWithFile:@"lever.png"];
+    }
+    
     leftJoy.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0,0,128,128)];
     _leftJoystick = [leftJoy.joystick retain];
     
@@ -177,9 +187,16 @@
     rightButton.position = ccp(winSize.width-64.0f, 64.0f);
     
     //hook images to button control
-    rightButton.defaultSprite = [CCSprite spriteWithFile:@"released.png"];
-    rightButton.activatedSprite = [CCSprite spriteWithFile:@"grabbed.png"];
-    rightButton.pressSprite = [CCSprite spriteWithFile:@"grabbed.png"];
+    if (pixelSize.width == 1136 || pixelSize.width == 960) {
+        rightButton.defaultSprite = [CCSprite spriteWithFile:@"released-retina.png"];
+        rightButton.activatedSprite = [CCSprite spriteWithFile:@"grabbed-retina.png"];
+        rightButton.pressSprite = [CCSprite spriteWithFile:@"grabbed-retina.png"];
+    }
+    else {
+        rightButton.defaultSprite = [CCSprite spriteWithFile:@"released.png"];
+        rightButton.activatedSprite = [CCSprite spriteWithFile:@"grabbed.png"];
+        rightButton.pressSprite = [CCSprite spriteWithFile:@"grabbed.png"];
+    }
     rightButton.button = [[SneakyButton alloc] initWithRect:CGRectMake(0, 0, 128, 128)];
     [rightButton.button setRadius:128.0f];
     _rightButton = [rightButton.button retain];
@@ -194,18 +211,6 @@
     if ((self = [super init])) {
         self.isTouchEnabled = YES;
         
-        CGSize winSize = [[CCDirector sharedDirector] winSize];
-        _label = [CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(50, 30)
-                                   alignment:UITextAlignmentRight fontName:@"Verdana-Bold"
-                                    fontSize:26.0];
-        
-        _label.color = ccc3(255,255,255);
-        int margin = 10;
-        _label.position = ccp((winSize.width/2) - (_label.contentSize.width/2)
-                              - margin, _label.contentSize.height/2 + margin);
-        
-        [self addChild:_label];
-        
         [self initJoystickAndButtons];
         [self scheduleUpdate];
         
@@ -216,10 +221,6 @@
         _tmpMovingDelta = _movingThreshold;
     }
     return self;
-}
-
-- (void)melonCountChanged:(int)melonCount {
-    [_label setString:[NSString stringWithFormat:@"%d", melonCount]];
 }
 
 @synthesize gameLayer = _gameLayer;

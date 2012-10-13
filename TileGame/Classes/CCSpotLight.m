@@ -20,10 +20,20 @@
 				renderColor:(ccColor4B)color
 {
 	if( (self = [super init] )) {
-		
-		self.position = ccp(240, 160);
+        CGSize pixelWinSize = [[CCDirector sharedDirector] winSizeInPixels];
+        if (pixelWinSize.width == 1136) {
+            self.position = ccp(568, 320);
+            self.spotLightRadius = radius * 2.0f;
+        }
+        else if (pixelWinSize.width == 960) {
+            self.position = ccp(480, 320);
+            self.spotLightRadius = radius * 2.0f;
+        }
+        else {
+            self.position = ccp(240, 160);
+            self.spotLightRadius = radius;
+        }
 		self.renderTexture = texture;
-		self.spotLightRadius = radius;
 		self.renderColor = color;
 		[self schedule: @selector(tick:)];
 	}

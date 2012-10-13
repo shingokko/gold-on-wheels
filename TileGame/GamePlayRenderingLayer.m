@@ -10,6 +10,8 @@
 #import "GamePlayRenderingLayer.h"
 #import "GamePlayInputLayer.h"
 #import "GamePlayStatusLayer.h"
+#import "GameCompleteLayer.h"
+#import "TitleScreenScene.h"
 #import "SimpleAudioEngine.h"
 #import "GameOverScene.h"
 #import "CCSpotLight.h"
@@ -38,9 +40,9 @@
 @synthesize background = _background;
 @synthesize player = _player;
 @synthesize meta = _meta;
-@synthesize melonCount = _melonCount;
 @synthesize hud = _hud;
 @synthesize statusLayer = _statusLayer;
+@synthesize completeLayer = _completeLayer;
 @synthesize moving = _moving;
 @synthesize mask = _mask;
 @synthesize spotlight = _spotlight;
@@ -55,6 +57,7 @@ int maxSight = 400;
     self.background = nil;
 	self.player = nil;
     self.meta = nil;
+    self.completeLayer = nil;
     self.statusLayer = nil;
     self.hud = nil;
 	self.mask = nil;
@@ -64,6 +67,7 @@ int maxSight = 400;
 	[_meta release];
 	[_hud release];
     [_statusLayer release];
+    [_completeLayer release];
 	[heroSprite release];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -113,10 +117,34 @@ int maxSight = 400;
 
 #pragma mark Hero
 
--(void)win {
-    GameOverScene *gameOverScene = [GameOverScene node];
-    [gameOverScene.layer.label setString:@"You Win!"];
-    [[CCDirector sharedDirector] replaceScene:gameOverScene];
+-(void) handlePushedToExit:(id)sender {
+    [[SimpleAudioEngine sharedEngine]  stopBackgroundMusic];
+    [_hud setIsTouchEnabled:NO];
+    
+    // update path finding
+    CCArray* zombies = [_zombieSpriteBatchNode children];
+    
+    for (GameCharacter *zombie in zombies) {
+        [zombie changeState:kStateIdle];
+    }
+    
+    CCArray* carts = [_cartSpriteBatchNode children];
+    
+    for (GameObject *cart in carts) {
+        [cart changeState:kStateIdle];
+    }
+
+    [_player changeState:kStateIdle];
+    
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"win!.mp3" loop:NO];
+    
+    [_completeLayer startAnimation];
+}
+
+- (void) win:(NSNotification *) notification
+{
+    TitleScreenScene *titleScene = [TitleScreenScene node];
+    [[CCDirector sharedDirector] replaceScene:titleScene];
 }
 
 - (void)lose {
@@ -199,6 +227,10 @@ int maxSight = 400;
         else if (properties && [properties compare:@"Curved"] == NSOrderedSame) {
             return @"Curved";
         }
+        else if (properties && [properties compare:@"Exit"] == NSOrderedSame) {
+            return @"Exit";
+        }
+
     }
     
     return nil;
@@ -290,7 +322,7 @@ int maxSight = 400;
     
     CCArray* carts = [_cartSpriteBatchNode children];
     BOOL cartWillHitSomething = NO;
-    for (GameObject *cart in carts) {
+    for (GoldCart *cart in carts) {
         CGRect targetRect = CGRectMake(cart.position.x - (cart.contentSize.width/2), cart.position.y - (cart.contentSize.height/2), cart.contentSize.width, cart.contentSize.height);
             
         if (CGRectContainsPoint(targetRect, position)) {
@@ -336,6 +368,16 @@ int maxSight = 400;
                         bezier.endPosition = finalDest;
                         id actionCartMove = [CCBezierTo actionWithDuration:0.4f bezier:bezier];
                         [cart runAction:[CCSequence actions:actionCartMove, nil]];
+                    }
+                }
+                else if (railTileName == @"Exit") {
+                    if ([cart isFull]) {
+                        id actionCartMove = [CCMoveTo actionWithDuration:0.2f position:dest];
+                        id actionCartMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(handlePushedToExit:)];
+                        [cart runAction:[CCSequence actions:actionCartMove, actionCartMoveDone, nil]];
+                    }
+                    else {
+                        cartWillHitSomething = NO;
                     }
                 }
                 else {
@@ -397,7 +439,7 @@ int maxSight = 400;
     for (GoldCart *cart in carts) {
         if (cart.readyForLoading && CGRectIntersectsRect(_player.boundingBox, cart.boundingBox)) {
             int currentAmount = [cart loadGold];
-            [cart setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-with-gold-front-32.png"]];
+            [cart setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-with-gold-front.png"]];
             _player.goldInPossession = nil; // unreference
             [[SimpleAudioEngine sharedEngine] playEffect:@"gold.caf"];
             [_player changeState:kStateWalking];
@@ -615,7 +657,7 @@ int maxSight = 400;
     else if (kObjectTypeGoldCart == objectType) {
 		CCLOG(@"Creating a gold cart...");
         
-		GoldCart *cart = [[GoldCart alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-front-32.png"]];
+		GoldCart *cart = [[GoldCart alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-front.png"]];
         CGPoint spawnPoint = [self computeTileFittingPosition:spawnLocation];
 		[cart setPosition:spawnPoint];
 		[_cartSpriteBatchNode addChild:cart z:zValue];
@@ -624,7 +666,7 @@ int maxSight = 400;
     else if (kObjectTypeGold == objectType) {
 		CCLOG(@"Creating a gold...");
         
-		Gold *gold = [[Gold alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-32-1.png"]];
+		Gold *gold = [[Gold alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-1.png"]];
         CGPoint spawnPoint = [self computeTileFittingPosition:spawnLocation];
 		[gold setPosition:spawnPoint];
 		[_goldSpriteBatchNode addChild:gold z:zValue];
@@ -661,6 +703,10 @@ int maxSight = 400;
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"shoot.caf"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"gold.caf"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.caf"];
+    
+    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"mysterious-cave.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"win!.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"lose!.mp3"];
 }
 
 +(CCScene *) scene
@@ -683,6 +729,11 @@ int maxSight = 400;
     [scene addChild: statusDisplayLayer];
     renderingLayer.statusLayer = statusDisplayLayer;
     statusDisplayLayer.gameLayer = renderingLayer;
+	
+    GameCompleteLayer *gameCompleteLayer = [GameCompleteLayer node];
+    [scene addChild: gameCompleteLayer];
+    renderingLayer.completeLayer = gameCompleteLayer;
+    gameCompleteLayer.gameLayer = renderingLayer;
 
 	// return the scene
 	return scene;
@@ -690,21 +741,35 @@ int maxSight = 400;
 
 -(void) loadSprites
 {
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"miner.plist"];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie-32.plist"];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"cart-32.plist"];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"gold-32.plist"];
+    CGSize pixelSize = [[CCDirector sharedDirector] winSizeInPixels];
     
-    _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner.png"];
+    if (pixelSize.width == 1136 || pixelSize.width == 960) {
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"miner-64.plist"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie-64.plist"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"cart-64.plist"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"gold-64.plist"];
+        
+        _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner-64.png"];
+        _zombieSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"zombie-64.png"];
+        _cartSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"cart-64.png"];
+        _goldSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"gold-64.png"];
+    }
+    else {
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"miner.plist"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie-32.plist"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"cart-32.plist"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"gold-32.plist"];
+        
+        _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner.png"];
+        _zombieSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"zombie-32.png"];
+        _cartSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"cart-32.png"];
+        _goldSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"gold-32.png"];
+
+    }
+    
     [self addChild:_sceneSpriteBatchNode z:0];
-    
-    _zombieSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"zombie-32.png"];
     [self addChild:_zombieSpriteBatchNode z:0];
-    
-    _cartSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"cart-32.png"];
     [self addChild:_cartSpriteBatchNode z:0];
-    
-    _goldSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"gold-32.png"];
     [self addChild:_goldSpriteBatchNode z:0];
 }
 
@@ -716,7 +781,6 @@ int maxSight = 400;
 	if( (self=[super init])) {
         
         [self preloadAudio];
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"mysterious-cave.mp3"];
         
         self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels-32.tmx"];
         
@@ -768,13 +832,24 @@ int maxSight = 400;
             else {
                 int type = [[objectTile valueForKey:@"PowerupType"] intValue];
                 Powerup* powerup = nil;
+                CGSize pixelScreenSize = [[CCDirector sharedDirector] winSizeInPixels];
                 
                 switch (type) {
                     case 1:
-                        powerup = [[Speedup alloc] initWithFile:@"boot-32.png"];
+                        if (pixelScreenSize.width == 1136 || pixelScreenSize.width == 960) {
+                            powerup = [[Speedup alloc] initWithFile:@"boot-64.png"];
+                        }
+                        else {
+                            powerup = [[Speedup alloc] initWithFile:@"boot-32.png"];
+                        }
                         break;
                     case 2:
-                        powerup = [[Lightup alloc] initWithFile:@"lamp-32.png"];
+                        if (pixelScreenSize.width == 1136 || pixelScreenSize.width == 960) {
+                            powerup = [[Lightup alloc] initWithFile:@"lamp-64.png"];
+                        }
+                        else {
+                            powerup = [[Lightup alloc] initWithFile:@"lamp-32.png"];
+                        }
                         break;
                     default:
                         break;
@@ -810,7 +885,10 @@ int maxSight = 400;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(speedupUsedUp:) name:@"usedUp" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleFullCart:) name:@"cartFull" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUpdateCart:) name:@"cartLoaded" object:nil];
-    
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(win:) name:@"animationDone" object:nil];
+        
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"mysterious-cave.mp3"];
+        
 		//Schedule updates
 		[self scheduleUpdate];
 	}
