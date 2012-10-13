@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="rocks" tilewidth="32" tileheight="32">
-  <image source="rocks-32.png" width="256" height="256"/>
+<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="rocks" tilewidth="64" tileheight="64">
+  <image source="rocks-64.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="65" name="rails" tilewidth="32" tileheight="32">
-  <image source="rails-32.png" width="128" height="128"/>
+ <tileset firstgid="65" name="rails" tilewidth="64" tileheight="64">
+  <image source="rails-64.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="81" name="meta" tilewidth="32" tileheight="32">
-  <image source="meta-32.png" width="192" height="32"/>
+ <tileset firstgid="81" name="meta" tilewidth="64" tileheight="64">
+  <image source="meta-64.png" width="384" height="64"/>
   <tile id="0">
    <properties>
     <property name="Collidable" value="True"/>
@@ -39,11 +39,11 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="87" name="gold-on-wheels" tilewidth="32" tileheight="32">
-  <image source="gold-on-wheels-32.png" width="256" height="256"/>
+ <tileset firstgid="87" name="gold-on-wheels" tilewidth="64" tileheight="64">
+  <image source="gold-on-wheels-64.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="151" name="cliff" tilewidth="32" tileheight="32">
-  <image source="cliff-32.png" width="384" height="384"/>
+ <tileset firstgid="151" name="cliff" tilewidth="64" tileheight="64">
+  <image source="cliff-64.png" width="768" height="768"/>
  </tileset>
  <layer name="base" width="40" height="40">
   <data encoding="base64" compression="zlib">
@@ -77,7 +77,7 @@
  </layer>
  <layer name="stalactites" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmMEKgCAMhq1u1cWjj2K9/3u1oIGIVKLTCf8HP3aobUzZcsa0YyYtDf3lspI20tTYrxW07UkH6Syw4Z71KA/nFS9svxbSeWgBnwsAgByj1DQAQH801wsfrJJx+kia/lP23gEo5L6/aNqjGPf9CgBAMbVmJHFvKe0z/E2PGiM5N6phOycn4R78mVWxbZsQo6EnuYSADsLzxs815qV//GknlZsR4s7lAiaHDQw=
+   eJzt2FEKgCAMBuBFJ/DRI9QNZve/V/YwMBFi6GzF/8HoJaaYbCbRPGuOZeJ4WluOvXjOEgxzc46U4+jIEYtclpJx/lGs12EG2RcAYOcPtaJlRF8BgDvP9aKcm+XZQWoLasw3XP8vns+S8fkVAHBs1B1J3VuY+vqM9MQ3aozlvdGI3Jo1YdJ9C8kdGiE89KTYCPCh3GtM+j3YM5539dp8Zd5aJxXADns=
   </data>
  </layer>
  <layer name="rails" width="40" height="40">
@@ -86,82 +86,82 @@
   </data>
  </layer>
  <objectgroup name="Objects" width="40" height="40">
-  <object name="Powerup" x="515" y="164" width="23" height="19">
+  <object name="Powerup" x="1030" y="328" width="45" height="37">
    <properties>
     <property name="PowerupType" value="1"/>
    </properties>
   </object>
-  <object name="Powerup" x="390" y="359" width="20" height="20">
+  <object name="Powerup" x="781" y="719" width="41" height="41">
    <properties>
     <property name="PowerupType" value="2"/>
    </properties>
   </object>
-  <object name="Powerup" x="818" y="72" width="19" height="18">
+  <object name="Powerup" x="1615" y="145" width="37" height="35">
    <properties>
     <property name="PowerupType" value="1"/>
    </properties>
   </object>
-  <object name="Powerup" x="711" y="747" width="20" height="16">
+  <object name="Powerup" x="1421" y="1493" width="41" height="33">
    <properties>
     <property name="PowerupType" value="2"/>
    </properties>
   </object>
-  <object name="Powerup" x="775" y="1066" width="19" height="17">
+  <object name="Powerup" x="1549" y="2131" width="37" height="33">
    <properties>
     <property name="PowerupType" value="2"/>
    </properties>
   </object>
-  <object name="Powerup" x="198" y="872" width="20" height="19">
+  <object name="Powerup" x="396" y="1744" width="41" height="39">
    <properties>
     <property name="PowerupType" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn1" x="936" y="71" width="19" height="18">
+  <object name="EnemySpawn1" x="1872" y="142" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn2" x="102" y="298" width="38" height="36">
+  <object name="EnemySpawn2" x="204" y="596" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn3" x="582" y="425" width="19" height="18">
+  <object name="EnemySpawn3" x="1164" y="850" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn4" x="838" y="649" width="19" height="18">
+  <object name="EnemySpawn4" x="1676" y="1298" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn5" x="1190" y="46" width="19" height="18">
+  <object name="EnemySpawn5" x="2380" y="92" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn6" x="1127" y="1004" width="19" height="18">
+  <object name="EnemySpawn6" x="2254" y="2008" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn7" x="775" y="842" width="19" height="18">
+  <object name="EnemySpawn7" x="1550" y="1684" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn8" x="1030" y="1097" width="19" height="18">
+  <object name="EnemySpawn8" x="2060" y="2194" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn9" x="357" y="777" width="19" height="18">
+  <object name="EnemySpawn9" x="714" y="1554" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="SpawnPoint" x="73" y="105" width="15" height="19"/>
+  <object name="SpawnPoint" x="146" y="210" width="30" height="38"/>
  </objectgroup>
  <layer name="Foreground" width="40" height="40">
   <data encoding="base64" compression="zlib">

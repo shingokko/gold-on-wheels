@@ -10,11 +10,10 @@
 		vrLen = 1546;
 		vrLoc = 18630;
 	};
-	CE095AEA1625842200F52A1D /* XCBuildMessageTextBookmark */ = {
+	CE095AEA1625842200F52A1D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Use of undeclared identifier 'UIInterfaceOrientationMaskLandscapeRight'; did you mean 'UIInterfaceOrientationLandscapeRight'?";
 		fRef = F4DBBDBF15A57F4A00071821 /* RootViewController.m */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 126;
 		rType = 1;
@@ -39,11 +38,10 @@
 		vrLen = 1456;
 		vrLoc = 1147;
 	};
-	CE095AEF1625842A00F52A1D /* XCBuildMessageTextBookmark */ = {
+	CE095AEF1625842A00F52A1D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Use of undeclared identifier 'UIInterfaceOrientationMaskLandscapeRight'; did you mean 'UIInterfaceOrientationLandscapeRight'?";
 		fRef = F4DBBDBF15A57F4A00071821 /* RootViewController.m */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 126;
 		rType = 1;
@@ -493,6 +491,13 @@
 		vrLen = 1595;
 		vrLoc = 18630;
 	};
+	CED7924B16172A5800BE73F6 /* rocks.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = rocks.png;
+		path = "/Users/samchristianlee/Downloads/GameCurry/gold-on-wheels/TileGame/cave-32/rocks.png";
+		sourceTree = "<absolute>";
+	};
 	CED7928A1617358600BE73F6 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = F4DBBD2015A57F4900071821 /* CCTMXXMLParser.m */;
@@ -700,23 +705,23 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 371557342;
-			PBXWorkspaceStateSaveDate = 371557342;
+			PBXPerProjectTemplateStateSaveDate = 371820111;
+			PBXWorkspaceStateSaveDate = 371820111;
 		};
 		perUserProjectItems = {
-			CE095AE2162583DF00F52A1D /* PBXTextBookmark */ = CE095AE2162583DF00F52A1D /* PBXTextBookmark */;
-			CE095AEA1625842200F52A1D /* XCBuildMessageTextBookmark */ = CE095AEA1625842200F52A1D /* XCBuildMessageTextBookmark */;
-			CE095AED1625842A00F52A1D /* PBXTextBookmark */ = CE095AED1625842A00F52A1D /* PBXTextBookmark */;
-			CE095AEE1625842A00F52A1D /* PBXTextBookmark */ = CE095AEE1625842A00F52A1D /* PBXTextBookmark */;
-			CE095AEF1625842A00F52A1D /* XCBuildMessageTextBookmark */ = CE095AEF1625842A00F52A1D /* XCBuildMessageTextBookmark */;
-			CE095AF01625842A00F52A1D /* PBXTextBookmark */ = CE095AF01625842A00F52A1D /* PBXTextBookmark */;
-			CE095AF31625842A00F52A1D /* PBXTextBookmark */ = CE095AF31625842A00F52A1D /* PBXTextBookmark */;
-			CE095B071625846800F52A1D /* PBXTextBookmark */ = CE095B071625846800F52A1D /* PBXTextBookmark */;
-			CE095B081625846800F52A1D /* PBXTextBookmark */ = CE095B081625846800F52A1D /* PBXTextBookmark */;
-			CE095B091625846800F52A1D /* PBXTextBookmark */ = CE095B091625846800F52A1D /* PBXTextBookmark */;
-			CE095B0D162584B000F52A1D /* PBXTextBookmark */ = CE095B0D162584B000F52A1D /* PBXTextBookmark */;
-			CE095B0E162584B000F52A1D /* PBXTextBookmark */ = CE095B0E162584B000F52A1D /* PBXTextBookmark */;
-			CE095B0F162584B000F52A1D /* PBXTextBookmark */ = CE095B0F162584B000F52A1D /* PBXTextBookmark */;
+			CE095AE2162583DF00F52A1D = CE095AE2162583DF00F52A1D /* PBXTextBookmark */;
+			CE095AEA1625842200F52A1D = CE095AEA1625842200F52A1D /* PBXTextBookmark */;
+			CE095AED1625842A00F52A1D = CE095AED1625842A00F52A1D /* PBXTextBookmark */;
+			CE095AEE1625842A00F52A1D = CE095AEE1625842A00F52A1D /* PBXTextBookmark */;
+			CE095AEF1625842A00F52A1D = CE095AEF1625842A00F52A1D /* PBXTextBookmark */;
+			CE095AF01625842A00F52A1D = CE095AF01625842A00F52A1D /* PBXTextBookmark */;
+			CE095AF31625842A00F52A1D = CE095AF31625842A00F52A1D /* PBXTextBookmark */;
+			CE095B071625846800F52A1D = CE095B071625846800F52A1D /* PBXTextBookmark */;
+			CE095B081625846800F52A1D = CE095B081625846800F52A1D /* PBXTextBookmark */;
+			CE095B091625846800F52A1D = CE095B091625846800F52A1D /* PBXTextBookmark */;
+			CE095B0D162584B000F52A1D = CE095B0D162584B000F52A1D /* PBXTextBookmark */;
+			CE095B0E162584B000F52A1D = CE095B0E162584B000F52A1D /* PBXTextBookmark */;
+			CE095B0F162584B000F52A1D = CE095B0F162584B000F52A1D /* PBXTextBookmark */;
 			CE219B75160D1BEA0096C496 = CE219B75160D1BEA0096C496 /* PBXBookmark */;
 			CE219BC5160D2EAF0096C496 = CE219BC5160D2EAF0096C496 /* PBXTextBookmark */;
 			CE219BC7160D2EAF0096C496 = CE219BC7160D2EAF0096C496 /* PBXTextBookmark */;

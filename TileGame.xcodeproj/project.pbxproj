@@ -11,12 +11,18 @@
 		CE219B89160D1D940096C496 /* GameCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE219B88160D1D940096C496 /* GameCharacter.m */; };
 		CE219B8D160D1DF50096C496 /* Zombie.m in Sources */ = {isa = PBXBuildFile; fileRef = CE219B8C160D1DF50096C496 /* Zombie.m */; };
 		CE219B92160D1E640096C496 /* ShortestPathStep.m in Sources */ = {isa = PBXBuildFile; fileRef = CE219B91160D1E640096C496 /* ShortestPathStep.m */; };
-		CED7924C16172A5800BE73F6 /* cave-on-wheels.png in Resources */ = {isa = PBXBuildFile; fileRef = CED7924716172A5800BE73F6 /* cave-on-wheels.png */; };
-		CED7924D16172A5800BE73F6 /* gold-on-wheels-32.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CED7924816172A5800BE73F6 /* gold-on-wheels-32.tmx */; };
-		CED7924E16172A5800BE73F6 /* meta.png in Resources */ = {isa = PBXBuildFile; fileRef = CED7924916172A5800BE73F6 /* meta.png */; };
-		CED7924F16172A5800BE73F6 /* rails.png in Resources */ = {isa = PBXBuildFile; fileRef = CED7924A16172A5800BE73F6 /* rails.png */; };
-		CED7925016172A5800BE73F6 /* rocks.png in Resources */ = {isa = PBXBuildFile; fileRef = CED7924B16172A5800BE73F6 /* rocks.png */; };
-		CED79277161734C600BE73F6 /* base.png in Resources */ = {isa = PBXBuildFile; fileRef = CED79276161734C600BE73F6 /* base.png */; };
+		CED3BB53162986A000539B07 /* cliff-32.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB46162986A000539B07 /* cliff-32.png */; };
+		CED3BB54162986A000539B07 /* gold-on-wheels-32.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB47162986A000539B07 /* gold-on-wheels-32.png */; };
+		CED3BB55162986A000539B07 /* gold-on-wheels-32.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB48162986A000539B07 /* gold-on-wheels-32.tmx */; };
+		CED3BB56162986A000539B07 /* meta-32.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB49162986A000539B07 /* meta-32.png */; };
+		CED3BB57162986A000539B07 /* rails-32.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB4A162986A000539B07 /* rails-32.png */; };
+		CED3BB58162986A000539B07 /* rocks-32.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB4B162986A000539B07 /* rocks-32.png */; };
+		CED3BB59162986A000539B07 /* cliff-64.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB4D162986A000539B07 /* cliff-64.png */; };
+		CED3BB5A162986A000539B07 /* gold-on-wheels-64.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB4E162986A000539B07 /* gold-on-wheels-64.png */; };
+		CED3BB5B162986A000539B07 /* gold-on-wheels-64.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB4F162986A000539B07 /* gold-on-wheels-64.tmx */; };
+		CED3BB5C162986A000539B07 /* meta-64.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB50162986A000539B07 /* meta-64.png */; };
+		CED3BB5D162986A000539B07 /* rails-64.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB51162986A000539B07 /* rails-64.png */; };
+		CED3BB5E162986A000539B07 /* rocks-64.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3BB52162986A000539B07 /* rocks-64.png */; };
 		F4374CE115AEAE83008F26A8 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F4374CE015AEAE83008F26A8 /* GameOverScene.m */; };
 		F4374CEA15AEBB2F008F26A8 /* broken.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4374CE715AEBB2F008F26A8 /* broken.caf */; };
 		F4374CEB15AEBB2F008F26A8 /* great.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4374CE815AEBB2F008F26A8 /* great.caf */; };
@@ -238,12 +244,18 @@
 		CE219B8C160D1DF50096C496 /* Zombie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Zombie.m; sourceTree = "<group>"; };
 		CE219B90160D1E640096C496 /* ShortestPathStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortestPathStep.h; sourceTree = "<group>"; };
 		CE219B91160D1E640096C496 /* ShortestPathStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortestPathStep.m; sourceTree = "<group>"; };
-		CED7924716172A5800BE73F6 /* cave-on-wheels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cave-on-wheels.png"; sourceTree = "<group>"; };
-		CED7924816172A5800BE73F6 /* gold-on-wheels-32.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "gold-on-wheels-32.tmx"; sourceTree = "<group>"; };
-		CED7924916172A5800BE73F6 /* meta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meta.png; sourceTree = "<group>"; };
-		CED7924A16172A5800BE73F6 /* rails.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rails.png; sourceTree = "<group>"; };
-		CED7924B16172A5800BE73F6 /* rocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocks.png; sourceTree = "<group>"; };
-		CED79276161734C600BE73F6 /* base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = base.png; sourceTree = "<group>"; };
+		CED3BB46162986A000539B07 /* cliff-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cliff-32.png"; sourceTree = "<group>"; };
+		CED3BB47162986A000539B07 /* gold-on-wheels-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gold-on-wheels-32.png"; sourceTree = "<group>"; };
+		CED3BB48162986A000539B07 /* gold-on-wheels-32.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "gold-on-wheels-32.tmx"; sourceTree = "<group>"; };
+		CED3BB49162986A000539B07 /* meta-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "meta-32.png"; sourceTree = "<group>"; };
+		CED3BB4A162986A000539B07 /* rails-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rails-32.png"; sourceTree = "<group>"; };
+		CED3BB4B162986A000539B07 /* rocks-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rocks-32.png"; sourceTree = "<group>"; };
+		CED3BB4D162986A000539B07 /* cliff-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cliff-64.png"; sourceTree = "<group>"; };
+		CED3BB4E162986A000539B07 /* gold-on-wheels-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gold-on-wheels-64.png"; sourceTree = "<group>"; };
+		CED3BB4F162986A000539B07 /* gold-on-wheels-64.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "gold-on-wheels-64.tmx"; sourceTree = "<group>"; };
+		CED3BB50162986A000539B07 /* meta-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "meta-64.png"; sourceTree = "<group>"; };
+		CED3BB51162986A000539B07 /* rails-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rails-64.png"; sourceTree = "<group>"; };
+		CED3BB52162986A000539B07 /* rocks-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rocks-64.png"; sourceTree = "<group>"; };
 		F4374CDF15AEAE83008F26A8 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		F4374CE015AEAE83008F26A8 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		F4374CE715AEBB2F008F26A8 /* broken.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = broken.caf; sourceTree = "<group>"; };
@@ -691,17 +703,30 @@
 			name = Singletons;
 			sourceTree = "<group>";
 		};
-		CED7924616172A5800BE73F6 /* cave-32 */ = {
+		CED3BB45162986A000539B07 /* cave-32 */ = {
 			isa = PBXGroup;
 			children = (
-				CED79276161734C600BE73F6 /* base.png */,
-				CED7924716172A5800BE73F6 /* cave-on-wheels.png */,
-				CED7924816172A5800BE73F6 /* gold-on-wheels-32.tmx */,
-				CED7924916172A5800BE73F6 /* meta.png */,
-				CED7924A16172A5800BE73F6 /* rails.png */,
-				CED7924B16172A5800BE73F6 /* rocks.png */,
+				CED3BB46162986A000539B07 /* cliff-32.png */,
+				CED3BB47162986A000539B07 /* gold-on-wheels-32.png */,
+				CED3BB48162986A000539B07 /* gold-on-wheels-32.tmx */,
+				CED3BB49162986A000539B07 /* meta-32.png */,
+				CED3BB4A162986A000539B07 /* rails-32.png */,
+				CED3BB4B162986A000539B07 /* rocks-32.png */,
 			);
 			path = "cave-32";
+			sourceTree = "<group>";
+		};
+		CED3BB4C162986A000539B07 /* cave-64 */ = {
+			isa = PBXGroup;
+			children = (
+				CED3BB4D162986A000539B07 /* cliff-64.png */,
+				CED3BB4E162986A000539B07 /* gold-on-wheels-64.png */,
+				CED3BB4F162986A000539B07 /* gold-on-wheels-64.tmx */,
+				CED3BB50162986A000539B07 /* meta-64.png */,
+				CED3BB51162986A000539B07 /* rails-64.png */,
+				CED3BB52162986A000539B07 /* rocks-64.png */,
+			);
+			path = "cave-64";
 			sourceTree = "<group>";
 		};
 		F49F45F215E615FF007ED9E8 /* Classes */ = {
@@ -799,13 +824,14 @@
 		F4DBBC6A15A57F4800071821 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CED3BB45162986A000539B07 /* cave-32 */,
+				CED3BB4C162986A000539B07 /* cave-64 */,
 				F4FEDB7F16282ED800117F89 /* title-background-960x640.png */,
 				F4FEDB8016282ED900117F89 /* title-background-1136x640.png */,
 				F4FEDB8116282ED900117F89 /* title-caption-for-960x640.png */,
 				F4FEDB8216282ED900117F89 /* title-caption-for-1136x640.png */,
 				F47F4BB2161857F400A16AD1 /* title-background.png */,
 				F47F4BB3161857F400A16AD1 /* title-caption.png */,
-				CED7924616172A5800BE73F6 /* cave-32 */,
 				F4F849CC160433EE009945BC /* Sprites */,
 				F4F849CA16043398009945BC /* Sounds */,
 				F49F45D915E6019A007ED9E8 /* background.png */,
@@ -1313,12 +1339,6 @@
 				F4A0999A16144AB200D5BDE9 /* cart-64.png in Resources */,
 				F47F4BB5161857F500A16AD1 /* title-background.png in Resources */,
 				F47F4BB6161857F500A16AD1 /* title-caption.png in Resources */,
-				CED7924C16172A5800BE73F6 /* cave-on-wheels.png in Resources */,
-				CED7924D16172A5800BE73F6 /* gold-on-wheels-32.tmx in Resources */,
-				CED7924E16172A5800BE73F6 /* meta.png in Resources */,
-				CED7924F16172A5800BE73F6 /* rails.png in Resources */,
-				CED7925016172A5800BE73F6 /* rocks.png in Resources */,
-				CED79277161734C600BE73F6 /* base.png in Resources */,
 				F44B3BF5161D6EFA00EA9EE6 /* grabbed.png in Resources */,
 				F44B3BF6161D6EFA00EA9EE6 /* released.png in Resources */,
 				F4A055D1161EE93B00CB7A6F /* arrow-down.png in Resources */,
@@ -1348,6 +1368,18 @@
 				F49C7B951628B916001C4851 /* released-retina.png in Resources */,
 				F49C7B9816290D94001C4851 /* lose!.mp3 in Resources */,
 				F49C7B9916290D94001C4851 /* win!.mp3 in Resources */,
+				CED3BB53162986A000539B07 /* cliff-32.png in Resources */,
+				CED3BB54162986A000539B07 /* gold-on-wheels-32.png in Resources */,
+				CED3BB55162986A000539B07 /* gold-on-wheels-32.tmx in Resources */,
+				CED3BB56162986A000539B07 /* meta-32.png in Resources */,
+				CED3BB57162986A000539B07 /* rails-32.png in Resources */,
+				CED3BB58162986A000539B07 /* rocks-32.png in Resources */,
+				CED3BB59162986A000539B07 /* cliff-64.png in Resources */,
+				CED3BB5A162986A000539B07 /* gold-on-wheels-64.png in Resources */,
+				CED3BB5B162986A000539B07 /* gold-on-wheels-64.tmx in Resources */,
+				CED3BB5C162986A000539B07 /* meta-64.png in Resources */,
+				CED3BB5D162986A000539B07 /* rails-64.png in Resources */,
+				CED3BB5E162986A000539B07 /* rocks-64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
