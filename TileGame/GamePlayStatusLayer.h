@@ -21,9 +21,9 @@
 
 -(void) showStatus:(GoldCart*)cart amount:(int)amount;
 
-@property (nonatomic, assign) GamePlayRenderingLayer *gameLayer;
-@property (nonatomic, assign) CCProgressTimer *goldGauge;
-@property (nonatomic, assign) CCSprite *icon;
+@property (nonatomic, retain) GamePlayRenderingLayer *gameLayer;
+@property (nonatomic, retain) CCProgressTimer *goldGauge;
+@property (nonatomic, retain) CCSprite *icon;
 
 
 @end

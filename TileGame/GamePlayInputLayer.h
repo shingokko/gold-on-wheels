@@ -27,7 +27,7 @@
     ccTime _attackingThreshold;
 }
 
-@property (nonatomic, assign) GamePlayRenderingLayer *gameLayer;
+@property (nonatomic, retain) GamePlayRenderingLayer *gameLayer;
 @property (nonatomic, assign) ccTime movingThreshold;
 @end
 

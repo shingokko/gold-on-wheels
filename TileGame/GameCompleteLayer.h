@@ -13,10 +13,12 @@
 @interface GameCompleteLayer : CCLayerColor
 {
     GamePlayRenderingLayer *_gameLayer;
+    BOOL _isInProgress;
 }
 
 -(void) startAnimation;
 
-@property (nonatomic, assign) GamePlayRenderingLayer *gameLayer;
+@property (nonatomic, retain) GamePlayRenderingLayer *gameLayer;
+@property (nonatomic, assign) BOOL isInProgress;
 
 @end

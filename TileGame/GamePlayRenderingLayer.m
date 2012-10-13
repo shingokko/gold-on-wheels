@@ -118,6 +118,10 @@ int maxSight = 400;
 #pragma mark Hero
 
 -(void) handlePushedToExit:(id)sender {
+    if ([_completeLayer isInProgress]) {
+        return;
+    }
+    
     [[SimpleAudioEngine sharedEngine]  stopBackgroundMusic];
     [_hud setIsTouchEnabled:NO];
     
@@ -806,7 +810,16 @@ int maxSight = 400;
 		
         _prevPos = ccp(initialPosition.x, initialPosition.y);
         _player.speed = 20.0f;
-        _player.light = 150.0f;
+        
+        CGSize pixelWinSize = [[CCDirector sharedDirector] winSizeInPixels];
+        if (pixelWinSize.width == 1136 || pixelWinSize.width == 960) {
+            // retina
+            _player.light = 240.0f;
+        }
+        else {
+            _player.light = 120.0f;
+        }
+        
         _hud.movingThreshold = _player.speed;
         _prevPos = CGPointZero;
         

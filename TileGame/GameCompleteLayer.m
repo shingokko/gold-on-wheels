@@ -12,9 +12,12 @@
 
 -(void) animationDone {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"animationDone" object:self ];
+    self.isInProgress = NO;
 }
 
 -(void) startAnimation {
+    self.isInProgress = YES;
+        
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CGSize pixelSize = [[CCDirector sharedDirector] winSizeInPixels];
     
@@ -27,13 +30,13 @@
         title = [CCSprite spriteWithFile:@"you-win.png"];
     }
     title.position = ccp(winSize.width * 0.5, winSize.height * 3.0f);
-    title.scale = 1.5f;
+    title.scale = 5.0f;
     title.opacity = 0.0f;
     
-    id actionTitleFade = [CCFadeTo actionWithDuration:1.0f opacity:255.0f];
-    id actionTitleMove = [CCMoveTo actionWithDuration:1.0f position:ccp(winSize.width * 0.5, winSize.height * 0.5)];
-    id actionTitleScale = [CCScaleTo actionWithDuration:1.0f scale:1.0f];
-    id bounceTitleMove = [CCEaseBounce actionWithAction:actionTitleMove];
+    id actionTitleFade = [CCFadeTo actionWithDuration:1.5f opacity:255.0f];
+    id actionTitleMove = [CCMoveTo actionWithDuration:1.5f position:ccp(winSize.width * 0.5, winSize.height * 0.5)];
+    id actionTitleScale = [CCScaleTo actionWithDuration:1.5f scale:1.0f];
+    id bounceTitleMove = [CCEaseBounceOut actionWithAction:actionTitleMove];
     
     [self addChild:title z:2];
     
@@ -50,6 +53,7 @@
 -(id) init
 {
     if ((self=[super initWithColor:ccc4(255, 255, 255, 0)])) {
+        self.isInProgress = NO;
     }
     return self;
 }
