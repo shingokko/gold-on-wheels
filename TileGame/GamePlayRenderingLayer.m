@@ -786,8 +786,13 @@ int maxSight = 400;
         
         [self preloadAudio];
         
-        self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels-32.tmx"];
-        
+		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+			self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels-64.tmx"];
+        }
+		else {
+			self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels-32.tmx"];
+		}
+
         self.meta = [_tileMap layerNamed:@"Meta"];
         _meta.visible = NO;
 		[self addChild:_tileMap z:-1];
