@@ -328,7 +328,7 @@
             if (isHeroWithinBoundingBox) 
                 break;
 			break;
-        case kStateAttacking:
+        case kStateChasing:
 			//CCLOG(@"Zombie -> Changing State to Attacking");
 			//Get hero's current position
 			target = CGPointMake(hero.position.x, hero.position.y);
@@ -401,7 +401,7 @@
 			[self removeFromParentAndCleanup:YES];
 		}
 		else if (isHeroWithinSight) {
-			[self changeState:kStateAttacking];
+			[self changeState:kStateChasing];
 		}
 		else {
 			[self changeState:kStateWalking];

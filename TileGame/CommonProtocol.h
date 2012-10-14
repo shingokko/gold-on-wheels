@@ -30,6 +30,7 @@ typedef enum {
     kStateDrilling,
     kStateAfterJumping,
     kStateCarryingGold,
+	kStateChasing
 } CharacterStates;
 
 typedef enum {
