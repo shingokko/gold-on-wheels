@@ -268,55 +268,23 @@
 								<string>F4DBBC4A15A57F4700071821</string>
 								<string>F49F45F215E615FF007ED9E8</string>
 								<string>F4DBBC6915A57F4800071821</string>
-								<string>CE219B9B160D256C0096C496</string>
-								<string>F4DBBC6A15A57F4800071821</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>42</integer>
+									<integer>30</integer>
 									<integer>20</integer>
 									<integer>0</integer>
 								</array>
 								<array>
-									<integer>43</integer>
-									<integer>20</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>44</integer>
-									<integer>43</integer>
-									<integer>20</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>45</integer>
-									<integer>43</integer>
-									<integer>20</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>46</integer>
-									<integer>43</integer>
-									<integer>20</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>47</integer>
-									<integer>43</integer>
-									<integer>20</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>48</integer>
-									<integer>43</integer>
+									<integer>31</integer>
 									<integer>20</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 432}, {274, 606}}</string>
+							<string>{{0, 142}, {274, 606}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -335,7 +303,7 @@
 							<real>274</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>67 113 1213 665 0 0 1280 778 </string>
+						<string>70 110 1213 665 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -405,14 +373,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {917, 487}}</string>
+								<string>{{0, 0}, {917, 483}}</string>
 								<key>RubberWindowFrame</key>
-								<string>67 113 1213 665 0 0 1280 778 </string>
+								<string>70 110 1213 665 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>487pt</string>
+							<string>483pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -425,14 +393,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 492}, {917, 132}}</string>
+								<string>{{0, 488}, {917, 136}}</string>
 								<key>RubberWindowFrame</key>
-								<string>67 113 1213 665 0 0 1280 778 </string>
+								<string>70 110 1213 665 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>132pt</string>
+							<string>136pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -451,9 +419,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CED3BB411629865300539B07</string>
+				<string>CE877A4B162A60850084C365</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>CED3BB421629865300539B07</string>
+				<string>CE877A4C162A60850084C365</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -595,7 +563,7 @@
 		<string>/Users/samchristianlee/Downloads/GameCurry/gold-on-wheels/TileGame.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>67 113 1213 665 0 0 1280 778 </string>
+	<string>70 110 1213 665 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -672,7 +640,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>CEF34C51160AF07F00F47521</string>
-				<string>CED3BB431629865300539B07</string>
+				<string>CE877A4D162A60850084C365</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

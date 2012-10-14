@@ -9,6 +9,8 @@
 #import "GameCompleteLayer.h"
 
 @implementation GameCompleteLayer
+@synthesize gameLayer = _gameLayer;
+@synthesize isInProgress = _isInProgress;
 
 -(void) animationDone {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"animationDone" object:self ];
