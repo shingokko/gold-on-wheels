@@ -56,7 +56,7 @@ typedef enum {
 
 -(void)createObjectOfType:(GameObjectType)objectType 
                withHealth:(int)initialHealth
-               atLocation:(CGPoint)spawnLocation 
+               atLocation:(CGPoint)spawnLocationInPixels 
                withZValue:(int)ZValue;
 
 @end

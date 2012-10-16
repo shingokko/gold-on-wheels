@@ -163,21 +163,11 @@
 }
 
 -(void)initJoystickAndButtons {
-    CGSize pixelSize = [[CCDirector sharedDirector] winSizeInPixels];
-    
     // initialize a joystick
     SneakyJoystickSkinnedBase *leftJoy = [[[SneakyJoystickSkinnedBase alloc] init] autorelease];
     leftJoy.position = ccp(64, 64);
-    
-    if (pixelSize.width == 1136 || pixelSize.width == 960) {
-        leftJoy.backgroundSprite = [CCSprite spriteWithFile:@"wheel-retina.png"];
-        leftJoy.thumbSprite = [CCSprite spriteWithFile:@"lever-retina.png"];
-    }
-    else {
-        leftJoy.backgroundSprite = [CCSprite spriteWithFile:@"wheel.png"];
-        leftJoy.thumbSprite = [CCSprite spriteWithFile:@"lever.png"];
-    }
-    
+    leftJoy.backgroundSprite = [CCSprite spriteWithFile:@"wheel.png"];
+    leftJoy.thumbSprite = [CCSprite spriteWithFile:@"lever.png"];    
     leftJoy.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0,0,128,128)];
     _leftJoystick = [leftJoy.joystick retain];
     
@@ -185,18 +175,9 @@
     
     SneakyButtonSkinnedBase *rightButton = [[[SneakyButtonSkinnedBase alloc] init] autorelease];
     rightButton.position = ccp(winSize.width-64.0f, 64.0f);
-    
-    //hook images to button control
-    if (pixelSize.width == 1136 || pixelSize.width == 960) {
-        rightButton.defaultSprite = [CCSprite spriteWithFile:@"released-retina.png"];
-        rightButton.activatedSprite = [CCSprite spriteWithFile:@"grabbed-retina.png"];
-        rightButton.pressSprite = [CCSprite spriteWithFile:@"grabbed-retina.png"];
-    }
-    else {
-        rightButton.defaultSprite = [CCSprite spriteWithFile:@"released.png"];
-        rightButton.activatedSprite = [CCSprite spriteWithFile:@"grabbed.png"];
-        rightButton.pressSprite = [CCSprite spriteWithFile:@"grabbed.png"];
-    }
+    rightButton.defaultSprite = [CCSprite spriteWithFile:@"released.png"];
+    rightButton.activatedSprite = [CCSprite spriteWithFile:@"grabbed.png"];
+    rightButton.pressSprite = [CCSprite spriteWithFile:@"grabbed.png"];
     rightButton.button = [[SneakyButton alloc] initWithRect:CGRectMake(0, 0, 128, 128)];
     [rightButton.button setRadius:128.0f];
     _rightButton = [rightButton.button retain];

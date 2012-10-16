@@ -21,16 +21,9 @@
     self.isInProgress = YES;
         
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    CGSize pixelSize = [[CCDirector sharedDirector] winSizeInPixels];
     
     // Title
-    CCSprite *title;
-    if (pixelSize.width == 1136 || pixelSize.width == 960) {
-        title = [CCSprite spriteWithFile:@"you-win-retina.png"];
-    }
-    else {
-        title = [CCSprite spriteWithFile:@"you-win.png"];
-    }
+    CCSprite *title = [CCSprite spriteWithFile:@"you-win.png"];
     title.position = ccp(winSize.width * 0.5, winSize.height * 3.0f);
     title.scale = 5.0f;
     title.opacity = 0.0f;

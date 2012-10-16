@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="rocks" tilewidth="32" tileheight="32">
-  <image source="rocks-32.png" width="256" height="256"/>
+<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="rocks" tilewidth="64" tileheight="64">
+  <image source="rocks-64.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="65" name="rails" tilewidth="32" tileheight="32">
-  <image source="rails-32.png" width="128" height="128"/>
+ <tileset firstgid="65" name="rails" tilewidth="64" tileheight="64">
+  <image source="rails-64.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="81" name="meta" tilewidth="32" tileheight="32">
-  <image source="meta-32.png" width="192" height="32"/>
+ <tileset firstgid="81" name="meta" tilewidth="64" tileheight="64">
+  <image source="meta-64.png" width="384" height="64"/>
   <tile id="0">
    <properties>
     <property name="Collidable" value="True"/>
@@ -15,7 +15,7 @@
   </tile>
   <tile id="1">
    <properties>
-    <property name="Collectable" value="True"/>
+    <property name="Rail" value="Exit"/>
    </properties>
   </tile>
   <tile id="2">
@@ -39,11 +39,11 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="87" name="gold-on-wheels" tilewidth="32" tileheight="32">
-  <image source="gold-on-wheels-32.png" width="256" height="256"/>
+ <tileset firstgid="87" name="gold-on-wheels" tilewidth="64" tileheight="64">
+  <image source="gold-on-wheels-64.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="151" name="cliff" tilewidth="32" tileheight="32">
-  <image source="cliff-32.png" width="384" height="384"/>
+ <tileset firstgid="151" name="cliff" tilewidth="64" tileheight="64">
+  <image source="cliff-64.png" width="768" height="768"/>
  </tileset>
  <layer name="base" width="40" height="40">
   <data encoding="base64" compression="zlib">
@@ -77,147 +77,137 @@
  </layer>
  <layer name="rails" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmGEKwzAIhXO1Ffpj6/3vsw4WJkVNozZ5rH4gK1ubPV7UpCklSRILjz1eeyyzhQish080EPXVOf3E9v0OSR+n5Vl+mrUYkacer0b4fOY/pHtG6NPmcmncsx0HGwxSnXBE6qN9Iqq+IvVxY3nH157n/NCCy9Ur9UV4++/6tN4T0Vvu1B+8cPU0u79TkLziSH0yNLekNWumvlW45vbmM5D0WT3rXTt71tYIfVfmAl1zrHOate4DXV/NEaRzllqzFCQftXMCycdWH2r539PHtFq3vn97fz+L9f27dU6DtL+7C2/qbjWr
+   eJztmOEKhTAIhXu1G+xHt/d/nwruQELnpkvl5gdSrLUOp+nGliVJEgmfM75nrN5CCMrtGo3UN06dc1fsv7YNtLXCYp5qvLLwuecbVB8Lfa1/uTJ99vtgxkTKE4yZ+mAezsqvmfqwsbTjU+9jXnCBzdWn9M3y9d/1PV1X3lQftGA55V3fIZG8wvDUB/8dtSZ46ivEPdXHGkoftvf1gNIn9UyyfvaurRvRPkLmuo7Up6PO4UjnLDVnIZF8xLRwPnJ1iPN/pI61apF0TdI+70W6T+bOaSLt797CAV0HNas=
   </data>
  </layer>
  <layer name="stalactites" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmMEKgCAMhq1u1cWjj2K9/3u1oIGIVKLTCf8HP3aobUzZcsa0YyYtDf3lspI20tTYrxW07UkH6Syw4Z71KA/nFS9svxbSeWgBnwsAgByj1DQAQH801wsfrJJx+kia/lP23gEo5L6/aNqjGPf9CgBAMbVmJHFvKe0z/E2PGiM5N6phOycn4R78mVWxbZsQo6EnuYSADsLzxs815qV//GknlZsR4s7lAiaHDQw=
+   eJzt2FEKgCAMBuBFJ/DRI9QNZve/V/YwMBHCdDbj/2D0EjNUNpNonDXGMnC8WluMPXmO4hRzc4wQ42jI4ZNcmoJy/l6052EE2RcAoOcPtaKkR18BgDvL9SL9Ns2zg9QW1Jg5XP8vls+S/vkVADCs1x1J3luY2vqM9MQvaozmvVGP3DVzwlS3FpLbFUJY6Em+EGBDuteY6vfgm/Fmkc/NX8/hJ1/NDgY=
   </data>
  </layer>
  <objectgroup name="Objects" width="40" height="40">
-  <object name="Powerup" x="515" y="164" width="23" height="19">
+  <object name="Powerup" x="1030" y="328" width="45" height="37">
    <properties>
     <property name="PowerupType" value="1"/>
    </properties>
   </object>
-  <object name="Powerup" x="390" y="359" width="20" height="20">
+  <object name="Powerup" x="781" y="719" width="41" height="41">
    <properties>
     <property name="PowerupType" value="2"/>
    </properties>
   </object>
-  <object name="Powerup" x="818" y="72" width="19" height="18">
+  <object name="Powerup" x="1615" y="145" width="37" height="35">
    <properties>
     <property name="PowerupType" value="1"/>
    </properties>
   </object>
-  <object name="Powerup" x="711" y="747" width="20" height="16">
+  <object name="Powerup" x="1421" y="1493" width="41" height="33">
    <properties>
     <property name="PowerupType" value="2"/>
    </properties>
   </object>
-  <object name="Powerup" x="775" y="1066" width="19" height="17">
+  <object name="Powerup" x="1549" y="2131" width="37" height="33">
    <properties>
     <property name="PowerupType" value="2"/>
    </properties>
   </object>
-  <object name="Powerup" x="198" y="872" width="20" height="19">
+  <object name="Powerup" x="396" y="1744" width="41" height="39">
    <properties>
     <property name="PowerupType" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn1" x="936" y="71" width="19" height="18">
+  <object name="EnemySpawn1" x="1872" y="142" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn2" x="102" y="298" width="38" height="36">
+  <object name="EnemySpawn2" x="204" y="596" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn3" x="582" y="425" width="19" height="18">
+  <object name="EnemySpawn3" x="1164" y="850" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn4" x="838" y="649" width="19" height="18">
+  <object name="EnemySpawn4" x="1676" y="1298" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn5" x="1190" y="46" width="19" height="18">
+  <object name="EnemySpawn5" x="2380" y="92" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn6" x="1127" y="1004" width="19" height="18">
+  <object name="EnemySpawn6" x="2254" y="2008" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn7" x="775" y="842" width="19" height="18">
+  <object name="EnemySpawn7" x="1550" y="1684" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn8" x="1030" y="1097" width="19" height="18">
+  <object name="EnemySpawn8" x="2060" y="2194" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="EnemySpawn9" x="357" y="777" width="19" height="18">
+  <object name="EnemySpawn9" x="714" y="1554" width="38" height="36">
    <properties>
     <property name="Enemy" value="1"/>
    </properties>
   </object>
-  <object name="SpawnPoint" x="73" y="105" width="15" height="19"/>
-  <object name="GoldCart" x="485" y="388" width="25" height="27">
+  <object name="SpawnPoint" x="146" y="210" width="30" height="38"/>
+  <object name="GoldCart" x="897" y="772" width="52" height="53">
    <properties>
     <property name="Cart" value="1"/>
    </properties>
   </object>
-  <object name="Gold" x="871" y="293" width="21" height="22">
+  <object name="Gold" x="524" y="652" width="40" height="40">
    <properties>
     <property name="Gold" value="1"/>
    </properties>
   </object>
-  <object name="Gold" x="259" y="327" width="21" height="22">
+  <object name="Gold" x="1740" y="590" width="40" height="40">
    <properties>
     <property name="Gold" value="1"/>
    </properties>
   </object>
-  <object name="Gold" x="742" y="613" width="21" height="22">
+  <object name="Gold" x="1484" y="1230" width="40" height="40">
    <properties>
     <property name="Gold" value="1"/>
    </properties>
   </object>
-  <object name="Gold" x="548" y="709" width="21" height="22">
+  <object name="Gold" x="1100" y="1422" width="40" height="40">
    <properties>
     <property name="Gold" value="1"/>
    </properties>
   </object>
-  <object name="Gold" x="135" y="710" width="21" height="22">
+  <object name="Gold" x="268" y="1422" width="40" height="40">
    <properties>
     <property name="Gold" value="1"/>
    </properties>
   </object>
-  <object name="Gold" x="261" y="932" width="21" height="22">
+  <object name="Gold" x="1230" y="2128" width="40" height="40">
    <properties>
     <property name="Gold" value="1"/>
    </properties>
   </object>
-  <object name="Gold" x="677" y="1062" width="21" height="22">
+  <object name="Gold" x="206" y="2124" width="40" height="40">
    <properties>
     <property name="Gold" value="1"/>
    </properties>
   </object>
-  <object name="Gold" x="933" y="900" width="21" height="22">
+  <object name="Gold" x="1866" y="1802" width="40" height="40">
    <properties>
     <property name="Gold" value="1"/>
    </properties>
   </object>
-  <object name="Gold" x="102" y="1061" width="21" height="22">
-   <properties>
-    <property name="Gold" value="1"/>
-   </properties>
-  </object>
-  <object name="Gold" x="1061" y="36" width="21" height="22">
-   <properties>
-    <property name="Gold" value="1"/>
-   </properties>
-  </object>
-  <object name="Gold" x="1221" y="484" width="21" height="22">
+  <object name="Gold" x="2126" y="76" width="40" height="40">
    <properties>
     <property name="Gold" value="1"/>
    </properties>
@@ -230,7 +220,7 @@
  </layer>
  <layer name="Meta" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmFuOwjAMRbNFPtr9LwWQsBQZ+z7cfiGuFME0iXNsJ06Zx1rr8QON6W673RjFxrS/+hsJ+aCyI1Y1RqxfyeE0ZyzOkzVDx6udn0/FF5ZXlGuFK9s506e6v9X+CRfiQ3ZQ/118b0VOI68VH9KVc+PEbNfOjFr4o+wDtz6EnFhl7XOv1J6rfN0Yhy+PYYwhlMuDjDk2Oy4fqklo/i4ltmptmPCpe9OZ27UqB3v8J4znwKdOVS6UOjvlU2tQFyuFj/VVfJ1tFodK7j261jdfflbZVvjc/a2I1R5WC+7im/RPzknuV+5HtpbDhhhRfZnGp+pT/OrOWp7bMWSxODC/FDvdXd3Zc/PUPauE+Jw11P2DYvpWfsetxqNa2q3TfWdseXx3DyButFZ+hoRshU7hOzvf+xj37nTuVsTHFHzo3nLsVap+b7l72t2r6jnqbCC7VV911pF9lZX5obB1fJN8OjF2fHX/z5LXULkdtmCq6pbjm5PvbBupYkFx3PvVd8DM4tSx7l1mZ+98Yj4r/VdywX5/u/PU+f92f3sCShBA+Q==
+   eJztmO2qwzAIhnOLG6z3fynbYAERfT9sfh2OENrVxDxqYto91lqPP9CYnLbb9VFsTPXVbyTIB5UdsaoxYnolh9OcsThP5tzy+rTrd1V8YXlFuVa4sp0rXdX1reonXIgP2UH6U3xZOj4kd/aNwrfX3F53+Rlqu7/iu1sftjixyhLH3qk9d/m6Pg5f7sMYt6Bcsny/gh2XD9UkND6KElu1Nkz41LXpjO1alYMY/wnjNfCpkyoXSp2d8Kn1B8VK4WO6iq+LBYtDJe45ulbN0a3LtWpbJ9a3IqyusFpwim+in+yTrFf42FwOG2JE9QXZeJp8il9sT7EcZWFxYHlX7HRndWfPzVP37Cv5HQ3xOXOo6wfFNM6976v+XS1F83T3jE3lU+La2YzPkCBbkYnds/0d+0zOT/Vsrb4XkJ8VX3du5b6nRK0nkc9Zq+o+QjY6u1X/aq8z+wor80Nh6/gm+XRi7Pjq/s+S51C5HbYvzzONPfl9ocQN+VGxoDhGPaoriM+pY927TGTPwt7jHf2dXDjvyW5877L9N6+9ARlHQuM=
   </data>
  </layer>
 </map>

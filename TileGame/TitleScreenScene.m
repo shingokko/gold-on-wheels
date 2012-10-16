@@ -94,13 +94,7 @@
         [self addChild:title z:0];
         
         // Add start button
-        CCMenuItem *button;
-        if (pixelSize.width == 1136 || pixelSize.width == 960) {
-            button = [CCMenuItemImage itemFromNormalImage:@"start-button-retina.png" selectedImage:@"start-button-pressed-retina.png" target:self selector:@selector(startButtonTapped:)];
-        }
-        else {
-            button = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button-pressed.png" target:self selector:@selector(startButtonTapped:)];
-        }
+        CCMenuItem *button = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button-pressed.png" target:self selector:@selector(startButtonTapped:)];
 
         button.position = ccp(winSize.width * 0.8, winSize.height * 0.2);
         

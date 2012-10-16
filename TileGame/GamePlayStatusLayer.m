@@ -34,18 +34,12 @@
 
 -(void) initGoldGauge {
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    CGSize pixelWinSize = [[CCDirector sharedDirector] winSizeInPixels];
     
     CGFloat queueX = winSize.width;
     CGFloat padding = 8.0f; // 8px
     CGFloat y = winSize.height - 16.0f - padding; // 16.0f = half the height of sprite
     
-    if (pixelWinSize.width == 1136 || pixelWinSize.width == 960) {
-        _goldGauge = [CCProgressTimer progressWithFile:@"gold-bar-retina.png"];
-    }
-    else {
-        _goldGauge = [CCProgressTimer progressWithFile:@"gold-bar.png"];
-    }
+    _goldGauge = [CCProgressTimer progressWithFile:@"gold-bar.png"];
     _goldGauge.type = kCCProgressTimerTypeHorizontalBarLR;
     _goldGauge.percentage = 0.0f;
     queueX -= ((_goldGauge.contentSize.width / 2.0f) + padding);

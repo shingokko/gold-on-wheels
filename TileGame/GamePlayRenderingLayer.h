@@ -25,6 +25,7 @@
     CCTMXTiledMap *_tileMap;
     CCTMXLayer *_background;
     CCTMXLayer *_meta;
+    CGSize _tileSizeInPoints;
 	
 	GamePlayInputLayer *_hud;
     GamePlayStatusLayer *_statusLayer;
@@ -34,7 +35,7 @@
     CCSpotLight *_spotlight;
 	
 	bool _moving;
-    CGPoint _prevPos;
+    bool _isRetina;
     
 	CCHero *_player;
     NSMutableArray *_powerups;
@@ -60,7 +61,9 @@
 @property (nonatomic, retain) GameCompleteLayer *completeLayer;
 
 @property (nonatomic, assign) bool moving;
+@property (nonatomic, assign) bool isRetina;
 @property (nonatomic, assign) CGPoint prevPos;
+@property (nonatomic, assign) CGSize tileSizeInPoints;
 @property (nonatomic, retain) GameCharacter *heroSprite;
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
@@ -68,9 +71,12 @@
 -(void)moveHero:(CGPoint)touchPosition facing:(FacingDirection)direction;
 -(void)pickupGold:(CGPoint)position facing:(FacingDirection)direction;
 -(void)dropGold:(CGPoint)position facing:(FacingDirection)direction;
--(CGPoint)tileCoordForPosition:(CGPoint)position;
--(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
--(CGPoint) computeTileFittingPosition:(CGPoint)position;
+-(CGPoint)tileCoordForPositionInPoints:(CGPoint)position;
+-(CGPoint)positionInPointsForTileCoord:(CGPoint)tileCoord;
+-(CGPoint) computeTileFittingPositionInPoints:(CGPoint)position;
+-(CGPoint)tileCoordForPositionInPixels:(CGPoint)positionInPixels;
+-(CGPoint)positionInPixelsForTileCoord:(CGPoint)tileCoord;
+-(CGPoint) computeTileFittingPositionInPixels:(CGPoint)positionInPixels;
 -(void)setPlayerPosition:(CGPoint)position facing:(FacingDirection)direction;
 -(void)playerMoveFinished:(id)sender;
 

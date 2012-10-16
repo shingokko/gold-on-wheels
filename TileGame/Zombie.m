@@ -146,7 +146,7 @@
 	//Get reference to layer's tile properties (double because layer is spriteBatchNode's parent)
 	GamePlayRenderingLayer *layer = (GamePlayRenderingLayer *)[[self parent] parent];
 	
-	CGPoint currentPosition = [layer tileCoordForPosition:self.position];
+	CGPoint currentPosition = [layer tileCoordForPositionInPoints:self.position];
 	
 	// Check if there remains path steps to go trough
 	if ([self.shortestPath count] == 0) {
@@ -180,7 +180,7 @@
 	}
 
 	// Prepare the action and the callback
-	id moveAction = [CCMoveTo actionWithDuration:1.0f position:[layer positionForTileCoord:s.position]];
+	id moveAction = [CCMoveTo actionWithDuration:1.0f position:[layer positionInPointsForTileCoord:s.position]];
 	id moveCallback = [CCCallFunc actionWithTarget:self selector:@selector(popStepAndAnimate)]; // set the method itself as the callback
 	self.currentStepAction = [CCSequence actions:moveAction, moveCallback, nil];
 	
@@ -220,8 +220,8 @@
 	
 	//Get reference to layer's tile properties (double because layer is spriteBatchNode's parent)
 	GamePlayRenderingLayer *layer = (GamePlayRenderingLayer *)[[self parent] parent];
-	CGPoint fromTileCoor = [layer tileCoordForPosition:self.position];
-    CGPoint toTileCoord = [layer tileCoordForPosition:target];
+	CGPoint fromTileCoor = [layer tileCoordForPositionInPoints:self.position];
+    CGPoint toTileCoord = [layer tileCoordForPositionInPoints:target];
 	
 	//Check if zombie already reached target
 	if (CGPointEqualToPoint(fromTileCoor, toTileCoord)) {

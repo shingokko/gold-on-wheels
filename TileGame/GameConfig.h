@@ -31,7 +31,7 @@
 
 // ARMv6 (1st and 2nd generation devices): Don't rotate. It is very expensive
 #elif __arm__
-#define GAME_AUTOROTATION kGameAutorotationNone
+#define GAME_AUTOROTATION kGameAutorotationCCDirector
 
 
 // Ignore this value on Mac

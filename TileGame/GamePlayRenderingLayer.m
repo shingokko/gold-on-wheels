@@ -44,9 +44,10 @@
 @synthesize statusLayer = _statusLayer;
 @synthesize completeLayer = _completeLayer;
 @synthesize moving = _moving;
+@synthesize isRetina = _isRetina;
 @synthesize mask = _mask;
 @synthesize spotlight = _spotlight;
-@synthesize prevPos = _prevPos;
+@synthesize tileSizeInPoints = _tileSizeInPoints;
 @synthesize heroSprite;
 
 int maxSight = 400;
@@ -91,28 +92,75 @@ int maxSight = 400;
     return ccpSub(centerOfView, actualPosition);
 }
 
-- (CGPoint)tileCoordForPosition:(CGPoint)position {
-    int x = position.x / _tileMap.tileSize.width;
-    int y = ((_tileMap.mapSize.height * _tileMap.tileSize.height) - position.y) / _tileMap.tileSize.height;
+- (CGPoint)convertPixelsToPoints:(CGPoint)pixels {
+    if (self.isRetina) {
+        return ccp(pixels.x / 2.0f, pixels.y / 2.0f);
+    }
+    else {
+        return ccp(pixels.x, pixels.y);
+    }
+}
+
+- (CGPoint)convertPointsToPixels:(CGPoint)points {
+    if (self.isRetina) {
+        return ccp(points.x * 2.0f, points.y * 2.0f);
+    }
+    else {
+        return ccp(points.x, points.y);
+    }
+}
+
+// Gets tile coordinates for the given position in pixels. Use actual tile size
+- (CGPoint)tileCoordForPositionInPixels:(CGPoint)positionInPixels {
+    // Tile coordinates in int
+    int x = positionInPixels.x / _tileMap.tileSize.width;
+    int y = ((_tileMap.mapSize.height * _tileMap.tileSize.height) - positionInPixels.y) / _tileMap.tileSize.height;
+    
     return ccp(x, y);
 }
 
--(CGPoint)positionForTileCoord:(CGPoint)tileCoord {
-    int x = (tileCoord.x * _tileMap.tileSize.width) + _tileMap.tileSize.width/2;
-    int y = (_tileMap.mapSize.height * _tileMap.tileSize.height) - (tileCoord.y * _tileMap.tileSize.height) - _tileMap.tileSize.height/2;
+// Gets tile coordinates for the given position in points. The position must be
+// in points.
+- (CGPoint)tileCoordForPositionInPoints:(CGPoint)positionInPoints {
+    // Tile coordinates in int
+    int x = positionInPoints.x / _tileSizeInPoints.width;
+    int y = ((_tileMap.mapSize.height * _tileSizeInPoints.height) - positionInPoints.y) / _tileSizeInPoints.height;
+    
     return ccp(x, y);
 }
 
-// Compute a position that fits to the corresponding tile
--(CGPoint) computeTileFittingPosition:(CGPoint)position {
-    CGPoint tilePos = [self tileCoordForPosition:position];
+-(CGPoint)positionInPixelsForTileCoord:(CGPoint)tileCoord {
+    CGFloat x = (tileCoord.x * _tileMap.tileSize.width) + _tileMap.tileSize.width / 2.0f;
+    CGFloat y = (_tileMap.mapSize.height * _tileMap.tileSize.height) - (tileCoord.y * _tileMap.tileSize.height) - _tileMap.tileSize.height / 2.0f;
+    
+    return ccp(x, y);
+}
+
+-(CGPoint)positionInPointsForTileCoord:(CGPoint)tileCoord {
+    CGFloat x = (tileCoord.x * _tileSizeInPoints.width) + _tileSizeInPoints.width / 2.0f;
+    CGFloat y = (_tileMap.mapSize.height * _tileSizeInPoints.height) - (tileCoord.y * _tileSizeInPoints.height) - _tileSizeInPoints.height / 2.0f;
+
+    return ccp(x, y);
+}
+
+// Compute a position (in points) that fits to the corresponding tile
+-(CGPoint) computeTileFittingPositionInPoints:(CGPoint)positionInPoints {
+    CGPoint tilePos = [self tileCoordForPositionInPoints:positionInPoints];
+    
+    CGFloat x = (tilePos.x * _tileSizeInPoints.width) + (_tileSizeInPoints.width / 2.0f);
+    CGFloat y = (_tileMap.mapSize.height * _tileSizeInPoints.height) - (tilePos.y * _tileSizeInPoints.height) - (_tileSizeInPoints.height / 2.0f);
+    
+    return ccp(x, y);
+}
+
+// Compute a position (in pixels) that fits to the corresponding tile
+-(CGPoint) computeTileFittingPositionInPixels:(CGPoint)positionInPixels {
+    CGPoint tilePos = [self tileCoordForPositionInPixels:positionInPixels];
     
     CGFloat x = (tilePos.x * _tileMap.tileSize.width) + (_tileMap.tileSize.width / 2.0f);
     CGFloat y = (_tileMap.mapSize.height * _tileMap.tileSize.height) - (tilePos.y * _tileMap.tileSize.height) - (_tileMap.tileSize.height / 2.0f);
     
-    CGPoint finalPos = ccp(x, y);
-    
-    return finalPos;
+    return ccp(x, y);
 }
 
 #pragma mark Hero
@@ -163,7 +211,7 @@ int maxSight = 400;
 }
 
 -(NSDictionary*)getTileMetaData:(CGPoint)position {
-    CGPoint tileCoord = [self tileCoordForPosition:position];
+    CGPoint tileCoord = [self tileCoordForPositionInPoints:position];
     int metaGid = [_meta tileGIDAt:tileCoord];
     
     if (metaGid) {
@@ -259,7 +307,7 @@ int maxSight = 400;
 }
 
 -(CGPoint)findNextRailPosition:(CGPoint)subjectPos playerFacing:(FacingDirection)direction {
-    CGPoint tilePos = [self tileCoordForPosition:subjectPos];
+    CGPoint tilePos = [self tileCoordForPositionInPoints:subjectPos];
         
     // Find the final destination of the cart based on the next destination
     CGPoint tilePos1, tilePos2, tilePos3;
@@ -296,13 +344,13 @@ int maxSight = 400;
     neighbor2 = [self isRailTile:tilePos2];
     
     if (neighbor1) {
-        return [self positionForTileCoord:tilePos1];
+        return [self positionInPointsForTileCoord:tilePos1];
     }
     if (neighbor2) {
-        return [self positionForTileCoord:tilePos2];
+        return [self positionInPointsForTileCoord:tilePos2];
     }
     if (neighbor3) {
-        return [self positionForTileCoord:tilePos3];
+        return [self positionInPointsForTileCoord:tilePos3];
     }
     return ccp(-1000.0f, -1000.0f);
 }
@@ -312,7 +360,7 @@ int maxSight = 400;
         return;
     }
     
-    CGPoint tileCoord = [self tileCoordForPosition:position];
+    CGPoint tileCoord = [self tileCoordForPositionInPoints:position];
     
     int metaGid = [_meta tileGIDAt:tileCoord];
     if (metaGid) {
@@ -409,15 +457,15 @@ int maxSight = 400;
     [_player adjustAnimation:direction];
 }
 
--(BOOL)canPickupGold:(Gold*)targetGold atPosition:(CGPoint)position facing:(FacingDirection)direction {
+-(BOOL)canPickupGold:(Gold*)targetGold atPosition:(CGPoint)positionInPoints facing:(FacingDirection)direction {
     if (targetGold.collected) {
         // Already collected
         return NO;
     }
     else {
-        CGPoint tileCoord = [self tileCoordForPosition:position];
-        CGPoint tilePos = [self positionForTileCoord:tileCoord];
-        CGRect rect = CGRectMake(tilePos.x, tilePos.y, _tileMap.tileSize.width, _tileMap.tileSize.height);
+        CGPoint tileCoord = [self tileCoordForPositionInPoints:positionInPoints];
+        CGPoint tilePos = [self positionInPointsForTileCoord:tileCoord];
+        CGRect rect = CGRectMake(tilePos.x, tilePos.y, _tileSizeInPoints.width, _tileSizeInPoints.height);
         
         CGRect targetBox = targetGold.boundingBox;
         if (CGRectIntersectsRect(targetBox, rect)) {
@@ -435,8 +483,8 @@ int maxSight = 400;
         return;
     }
 
-    CGPoint tileCoord = [self tileCoordForPosition:position];
-    CGPoint tilePos = [self positionForTileCoord:tileCoord];
+    CGPoint tileCoord = [self tileCoordForPositionInPoints:position];
+    CGPoint tilePos = [self positionInPointsForTileCoord:tileCoord];
     
     CCArray* carts = [_cartSpriteBatchNode children];
     
@@ -482,8 +530,8 @@ int maxSight = 400;
 -(void)moveHero:(CGPoint)touchLocation facing:(FacingDirection)direction {
     CGPoint playerPos = touchLocation;
     
-    if (playerPos.x <= (_tileMap.mapSize.width * _tileMap.tileSize.width) &&
-        playerPos.y <= (_tileMap.mapSize.height * _tileMap.tileSize.height) &&
+    if (playerPos.x <= (_tileMap.mapSize.width * _tileSizeInPoints.width) &&
+        playerPos.y <= (_tileMap.mapSize.height * _tileSizeInPoints.height) &&
         playerPos.y >= 0 &&
         playerPos.x >= 0)
     {
@@ -646,14 +694,15 @@ int maxSight = 400;
 
 #pragma mark Adding characters to the scene
 
--(void)createObjectOfType:(GameObjectType)objectType withHealth:(int)initialHealth atLocation:(CGPoint)spawnLocation withZValue:(int)zValue {
+-(void)createObjectOfType:(GameObjectType)objectType withHealth:(int)initialHealth atLocation:(CGPoint)spawnLocationInPixels withZValue:(int)zValue {
     
     if (kEnemyTypeZombie == objectType) {
 		CCLOG(@"Creating a zombie...");
         
 		Zombie *zombie = [[Zombie alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"zombie-front-1.png"]];
 		[zombie setCharacterHealth:initialHealth];
-		[zombie setPosition:spawnLocation];
+        CGPoint spawnPoint = [self convertPixelsToPoints:spawnLocationInPixels];
+		[zombie setPosition:spawnPoint];
 		[_zombieSpriteBatchNode addChild:zombie z:zValue];
 		[zombie setDelegate:self];
         [zombie release];
@@ -662,7 +711,7 @@ int maxSight = 400;
 		CCLOG(@"Creating a gold cart...");
         
 		GoldCart *cart = [[GoldCart alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-front.png"]];
-        CGPoint spawnPoint = [self computeTileFittingPosition:spawnLocation];
+        CGPoint spawnPoint = [self convertPixelsToPoints:[self computeTileFittingPositionInPixels:spawnLocationInPixels]];
 		[cart setPosition:spawnPoint];
 		[_cartSpriteBatchNode addChild:cart z:zValue];
         [cart release];
@@ -671,7 +720,7 @@ int maxSight = 400;
 		CCLOG(@"Creating a gold...");
         
 		Gold *gold = [[Gold alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"gold-1.png"]];
-        CGPoint spawnPoint = [self computeTileFittingPosition:spawnLocation];
+        CGPoint spawnPoint = [self convertPixelsToPoints:[self computeTileFittingPositionInPixels:spawnLocationInPixels]];
 		[gold setPosition:spawnPoint];
 		[_goldSpriteBatchNode addChild:gold z:zValue];
         [gold release];
@@ -745,31 +794,15 @@ int maxSight = 400;
 
 -(void) loadSprites
 {
-    CGSize pixelSize = [[CCDirector sharedDirector] winSizeInPixels];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"miner.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"cart.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"gold.plist"];
     
-    if (pixelSize.width == 1136 || pixelSize.width == 960) {
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"miner-64.plist"];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie-64.plist"];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"cart-64.plist"];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"gold-64.plist"];
-        
-        _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner-64.png"];
-        _zombieSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"zombie-64.png"];
-        _cartSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"cart-64.png"];
-        _goldSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"gold-64.png"];
-    }
-    else {
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"miner.plist"];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie-32.plist"];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"cart-32.plist"];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"gold-32.plist"];
-        
-        _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner.png"];
-        _zombieSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"zombie-32.png"];
-        _cartSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"cart-32.png"];
-        _goldSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"gold-32.png"];
-
-    }
+    _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"miner.png"];
+    _zombieSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"zombie.png"];
+    _cartSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"cart.png"];
+    _goldSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"gold.png"];
     
     [self addChild:_sceneSpriteBatchNode z:0];
     [self addChild:_zombieSpriteBatchNode z:0];
@@ -783,16 +816,26 @@ int maxSight = 400;
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
+        CGSize pixelWinSize = [[CCDirector sharedDirector] winSizeInPixels];
+        if (pixelWinSize.width == 1136 || pixelWinSize.width == 960) {
+            self.isRetina = YES;
+        }
+        else {
+            self.isRetina = NO;
+        }
         
         [self preloadAudio];
         
-		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-			self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels-64.tmx"];
+        if (self.isRetina) {
+            self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels-hd.tmx"];
         }
-		else {
-			self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels-32.tmx"];
-		}
-
+        else {
+            self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"gold-on-wheels.tmx"];
+        }
+        
+        // Set the tile size in points (this is universal across normal and retina displays)
+        self.tileSizeInPoints = CGSizeMake(32.0f, 32.0f);
+        
         self.meta = [_tileMap layerNamed:@"Meta"];
         _meta.visible = NO;
 		[self addChild:_tileMap z:-1];
@@ -810,23 +853,15 @@ int maxSight = 400;
         [self loadSprites];
         
 		self.player = [[CCHero alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-front-1.png"]];
-		CGPoint initialPosition = [self computeTileFittingPosition:ccp(x, y)];
+		CGPoint initialPosition = [self convertPixelsToPoints:[self computeTileFittingPositionInPixels:ccp(x, y)]];
         _player.position = ccp(initialPosition.x, initialPosition.y);
-		
-        _prevPos = ccp(initialPosition.x, initialPosition.y);
+        
         _player.speed = 20.0f;
         
-        CGSize pixelWinSize = [[CCDirector sharedDirector] winSizeInPixels];
-        if (pixelWinSize.width == 1136 || pixelWinSize.width == 960) {
-            // retina
-            _player.light = 240.0f;
-        }
-        else {
-            _player.light = 120.0f;
-        }
+        // Light is in pixels
+        _player.light = self.isRetina ? 240.0f : 120.0f;
         
         _hud.movingThreshold = _player.speed;
-        _prevPos = CGPointZero;
         
 		_powerups = [[NSMutableArray alloc] init];
 		
@@ -850,24 +885,13 @@ int maxSight = 400;
             else {
                 int type = [[objectTile valueForKey:@"PowerupType"] intValue];
                 Powerup* powerup = nil;
-                CGSize pixelScreenSize = [[CCDirector sharedDirector] winSizeInPixels];
                 
                 switch (type) {
                     case 1:
-                        if (pixelScreenSize.width == 1136 || pixelScreenSize.width == 960) {
-                            powerup = [[Speedup alloc] initWithFile:@"boot-64.png"];
-                        }
-                        else {
-                            powerup = [[Speedup alloc] initWithFile:@"boot-32.png"];
-                        }
+                        powerup = [[Speedup alloc] initWithFile:@"boot.png"];
                         break;
                     case 2:
-                        if (pixelScreenSize.width == 1136 || pixelScreenSize.width == 960) {
-                            powerup = [[Lightup alloc] initWithFile:@"lamp-64.png"];
-                        }
-                        else {
-                            powerup = [[Lightup alloc] initWithFile:@"lamp-32.png"];
-                        }
+                        powerup = [[Lightup alloc] initWithFile:@"lamp.png"];
                         break;
                     default:
                         break;
@@ -875,7 +899,7 @@ int maxSight = 400;
                 
                 if (powerup != nil) {
                     // Fit object to tile grid
-                    CGPoint objTilePos = [self computeTileFittingPosition:ccp(x, y)];
+                    CGPoint objTilePos = [self convertPixelsToPoints:[self computeTileFittingPositionInPixels:ccp(x, y)]];
                     powerup.position = ccp(objTilePos.x, objTilePos.y);
                     [self addChild:powerup];
                     [_powerups addObject:powerup];
@@ -885,6 +909,7 @@ int maxSight = 400;
 
 		// Spotlight
         CGSize winSize = [[CCDirector sharedDirector] winSize];
+        // Mask is in pixels so don't use _tileSizeInPoints
 		_mask = [CCRenderTexture renderTextureWithWidth:winSize.width+_tileMap.tileSize.width height:winSize.height+_tileMap.tileSize.height]; // screen size + tile size
 		_mask.position = _player.position;
 		[[_mask sprite] setBlendFunc: (ccBlendFunc) { GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA }];

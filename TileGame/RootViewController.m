@@ -122,11 +122,11 @@
 - (void)dealloc {
     [super dealloc];
 }
-
+/*
 -(NSUInteger)supportedInterfaceOrientations {
-    //return UIInterfaceOrientationMaskLandscapeRight|UIInterfaceOrientationMaskLandscapeLeft;
+    return UIInterfaceOrientationMaskLandscapeRight|UIInterfaceOrientationMaskLandscapeLeft;
 }
-
+*/
 -(BOOL)shouldAutorotate {
     return [[UIDevice currentDevice] orientation] != UIInterfaceOrientationPortrait;
 }
