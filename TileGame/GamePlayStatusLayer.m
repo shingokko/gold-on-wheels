@@ -46,7 +46,7 @@
     _goldGauge.position = ccp(queueX, y);
     [self addChild:_goldGauge];
     
-    _icon = [[CCSprite alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-with-gold-front.png"]];
+    _icon = [[CCSprite alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-with-gold-front-1.png"]];
     queueX -= ((_goldGauge.contentSize.width / 2.0f) + (_icon.contentSize.width / 2.0f) + padding);
     _icon.position = ccp(queueX, y);
     [self addChild:_icon];

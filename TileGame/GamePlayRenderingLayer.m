@@ -491,7 +491,7 @@ int maxSight = 400;
     for (GoldCart *cart in carts) {
         if (cart.readyForLoading && CGRectIntersectsRect(_player.boundingBox, cart.boundingBox)) {
             int currentAmount = [cart loadGold];
-            [cart setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-with-gold-front.png"]];
+            [cart setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"cart-with-gold-front-1.png"]];
             _player.goldInPossession = nil; // unreference
             [[SimpleAudioEngine sharedEngine] playEffect:@"gold.caf"];
             [_player changeState:kStateWalking];
