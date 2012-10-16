@@ -18,6 +18,9 @@
     int _currentAmount;
     BOOL _readyForLoading;
     Arrow *_arrow;
+    
+    CCAnimation *_withGoldFrontAnim;
+    CCAnimation *_withGoldSideAnim;
 }
 
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andGameObject:(CCHero *)target;
@@ -27,5 +30,7 @@
 @property (nonatomic, assign) FacingDirection facingDirection;
 @property (nonatomic, assign) int capacity;
 @property (nonatomic, assign) BOOL readyForLoading;
+@property (nonatomic, retain) CCAnimation *withGoldFrontAnim;
+@property (nonatomic, retain) CCAnimation *withGoldSideAnim;
 
 @end
