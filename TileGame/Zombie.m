@@ -308,6 +308,10 @@
 	
 }
 
+-(void)biteHero:(CGPoint)target
+{
+}
+
 -(void)changeState:(CharacterStates)newState {
     if (characterState == kStateDead) {
         return; // No need to change state further once I am dead
@@ -335,6 +339,10 @@
 			//CCLOG(@"target position: %d, %d", hero.position.x, hero.position.y);
 			[self chaseHero:target];
             break;
+		case kStateAttacking:
+			CCLOG(@"Zombie biting hero");
+			[self biteHero:target];
+			break;			
 		case kStateDead:
             CCLOG(@"Zombie -> Going to Dead State");
             break;
@@ -399,6 +407,9 @@
 		if (characterState == kStateDead) {
 			[self setVisible:NO];
 			[self removeFromParentAndCleanup:YES];
+		}
+		else if (isHeroWithinBoundingBox) {
+			[self changeState:kStateAttacking];
 		}
 		else if (isHeroWithinSight) {
 			[self changeState:kStateChasing];

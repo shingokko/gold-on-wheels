@@ -170,17 +170,17 @@
 	};
 	CE219B8B160D1DF50096C496 /* Zombie.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {870, 629}}";
+			sepNavIntBoundsRect = "{{0, 0}, {676, 546}}";
 			sepNavSelRange = "{317, 0}";
-			sepNavVisRange = "{0, 1000}";
+			sepNavVisRange = "{0, 955}";
 		};
 	};
 	CE219B8C160D1DF50096C496 /* Zombie.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1111, 290}\";\n            s = 0;\n        },\n                {\n            r = \"{1485, 291}\";\n            s = 0;\n        },\n                {\n            r = \"{2332, 458}\";\n            s = 0;\n        },\n                {\n            r = \"{2952, 111}\";\n            s = 0;\n        },\n                {\n            r = \"{3248, 93}\";\n            s = 0;\n        },\n                {\n            r = \"{3502, 434}\";\n            s = 0;\n        },\n                {\n            r = \"{5887, 399}\";\n            s = 0;\n        },\n                {\n            r = \"{6323, 4022}\";\n            s = 0;\n        },\n                {\n            r = \"{10394, 917}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 12954}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {691, 2353}}";
-			sepNavSelRange = "{2863, 0}";
-			sepNavVisRange = "{2768, 499}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1193, 290}\";\n            s = 0;\n        },\n                {\n            r = \"{1567, 300}\";\n            s = 0;\n        },\n                {\n            r = \"{1934, 814}\";\n            s = 0;\n        },\n                {\n            r = \"{2915, 458}\";\n            s = 0;\n        },\n                {\n            r = \"{3535, 111}\";\n            s = 0;\n        },\n                {\n            r = \"{3831, 93}\";\n            s = 0;\n        },\n                {\n            r = \"{4085, 434}\";\n            s = 0;\n        },\n                {\n            r = \"{4639, 1794}\";\n            s = 0;\n        },\n                {\n            r = \"{6497, 399}\";\n            s = 0;\n        },\n                {\n            r = \"{6933, 4038}\";\n            s = 0;\n        },\n                {\n            r = \"{12189, 398}\";\n            s = 0;\n        },\n                {\n            r = \"{12640, 586}\";\n            s = 0;\n        },\n                {\n            r = \"{14369, 410}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 14787}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {754, 2106}}";
+			sepNavSelRange = "{3093, 0}";
+			sepNavVisRange = "{2377, 1094}";
 			sepNavWindowFrame = "{{1341, 10}, {1250, 743}}";
 		};
 	};
@@ -290,7 +290,7 @@
 	};
 	CE219BD4160D2EAF0096C496 /* PBXBookmark */ = {
 		isa = PBXBookmark;
-		fRef = F4F849E5160452B7009945BC /* miner-64.png */;
+		fRef = F4F849E5160452B7009945BC /* miner-hd.png */;
 	};
 	CE219BD6160D2EAF0096C496 /* PBXBookmark */ = {
 		isa = PBXBookmark;
@@ -329,7 +329,7 @@
 	};
 	CE219C1E160D32980096C496 /* PlistBookmark */ = {
 		isa = PlistBookmark;
-		fRef = F4F849E4160452B7009945BC /* miner-64.plist */;
+		fRef = F4F849E4160452B7009945BC /* miner-hd.plist */;
 		fallbackIsa = PBXBookmark;
 		isK = 0;
 		kPath = (
@@ -355,7 +355,7 @@
 		rLen = 0;
 		rLoc = 317;
 		rType = 0;
-		vrLen = 1000;
+		vrLen = 960;
 		vrLoc = 0;
 	};
 	CE219CAC160D38AF0096C496 /* PBXTextBookmark */ = {
@@ -443,7 +443,7 @@
 		fRef = F4F849DE16044E76009945BC /* CCHero.m */;
 		name = "CCHero.m: 30";
 		rLen = 0;
-		rLoc = 489;
+		rLoc = 597;
 		rType = 0;
 		vrLen = 556;
 		vrLoc = 0;
@@ -457,6 +457,212 @@
 		rType = 0;
 		vrLen = 1637;
 		vrLoc = 18637;
+	};
+	CE4F5FB1162FF4C500BB2B6A /* CCParticleHeroBlood.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {676, 513}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 357}";
+		};
+	};
+	CE4F5FB2162FF4C500BB2B6A /* CCParticleHeroBlood.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {676, 1183}}";
+			sepNavSelRange = "{186, 0}";
+			sepNavVisRange = "{1025, 765}";
+		};
+	};
+	CE4F5FB3162FF4C500BB2B6A /* CCQuadParticleSystem.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {676, 832}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1622}";
+		};
+	};
+	CE4F5FB4162FF4C500BB2B6A /* CCQuadParticleSystem.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {676, 3705}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1461}";
+		};
+	};
+	CE4F5FC0162FF78700BB2B6A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Redefinition of 'action'";
+		fRef = F4F849DE16044E76009945BC /* CCHero.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 138;
+		rType = 1;
+	};
+	CE4F5FC1162FF78700BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F4F849DE16044E76009945BC /* CCHero.m */;
+		name = "CCHero.m: 139";
+		rLen = 0;
+		rLoc = 6231;
+		rType = 0;
+		vrLen = 293;
+		vrLoc = 6147;
+	};
+	CE4F5FC2162FF78800BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE4F5FB3162FF4C500BB2B6A /* CCQuadParticleSystem.h */;
+		name = "CCQuadParticleSystem.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1622;
+		vrLoc = 0;
+	};
+	CE4F5FC3162FF78800BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE4F5FB4162FF4C500BB2B6A /* CCQuadParticleSystem.m */;
+		name = "CCQuadParticleSystem.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1461;
+		vrLoc = 0;
+	};
+	CE4F5FC4162FF78800BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F4DBBDC215A57F4A00071821 /* GamePlayRenderingLayer.m */;
+		name = "GamePlayRenderingLayer.m: 943";
+		rLen = 0;
+		rLoc = 33298;
+		rType = 0;
+		vrLen = 1488;
+		vrLoc = 32594;
+	};
+	CE4F5FC5162FF78800BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE4F5FB1162FF4C500BB2B6A /* CCParticleHeroBlood.h */;
+		name = "CCParticleHeroBlood.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 357;
+		vrLoc = 0;
+	};
+	CE4F5FC6162FF78800BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE4F5FB2162FF4C500BB2B6A /* CCParticleHeroBlood.m */;
+		name = "CCParticleHeroBlood.m: 10";
+		rLen = 0;
+		rLoc = 186;
+		rType = 0;
+		vrLen = 765;
+		vrLoc = 1025;
+	};
+	CE4F5FC7162FF78800BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F4F849DD16044E75009945BC /* CCHero.h */;
+		name = "CCHero.h: 14";
+		rLen = 0;
+		rLoc = 163;
+		rType = 0;
+		vrLen = 1061;
+		vrLoc = 0;
+	};
+	CE4F5FC8162FF78800BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE219B8B160D1DF50096C496 /* Zombie.h */;
+		name = "Zombie.h: 16";
+		rLen = 0;
+		rLoc = 317;
+		rType = 0;
+		vrLen = 955;
+		vrLoc = 0;
+	};
+	CE4F5FC9162FF78800BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE219B8C160D1DF50096C496 /* Zombie.m */;
+		name = "Zombie.m: 340";
+		rLen = 0;
+		rLoc = 11814;
+		rType = 0;
+		vrLen = 1491;
+		vrLoc = 11098;
+	};
+	CE4F5FCA162FF78800BB2B6A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Use of undeclared identifier 'heroBloodParticle'";
+		fRef = F4F849DE16044E76009945BC /* CCHero.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 104;
+		rType = 1;
+	};
+	CE4F5FCB162FF78800BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F4F849DE16044E76009945BC /* CCHero.m */;
+		name = "CCHero.m: 13";
+		rLen = 0;
+		rLoc = 207;
+		rType = 0;
+		vrLen = 5328;
+		vrLoc = 0;
+	};
+	CE4F5FD8162FF7BA00BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F4F849DE16044E76009945BC /* CCHero.m */;
+		name = "CCHero.m: 139";
+		rLen = 0;
+		rLoc = 6231;
+		rType = 0;
+		vrLen = 261;
+		vrLoc = 6147;
+	};
+	CE4F5FD9162FF7BE00BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F4F849DE16044E76009945BC /* CCHero.m */;
+		name = "CCHero.m: 1";
+		rLen = 0;
+		rLoc = 2;
+		rType = 0;
+		vrLen = 5415;
+		vrLoc = 0;
+	};
+	CE4F5FE8162FFD9200BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F4F849DE16044E76009945BC /* CCHero.m */;
+		name = "CCHero.m: 247";
+		rLen = 0;
+		rLoc = 10049;
+		rType = 0;
+		vrLen = 3717;
+		vrLoc = 6970;
+	};
+	CE4F5FE9162FFD9200BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F4DBBDC215A57F4A00071821 /* GamePlayRenderingLayer.m */;
+		name = "GamePlayRenderingLayer.m: 958";
+		rLen = 0;
+		rLoc = 33762;
+		rType = 0;
+		vrLen = 1617;
+		vrLoc = 32464;
+	};
+	CE4F5FEA162FFD9200BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F4F849DD16044E75009945BC /* CCHero.h */;
+		name = "CCHero.h: 14";
+		rLen = 0;
+		rLoc = 163;
+		rType = 0;
+		vrLen = 1061;
+		vrLoc = 0;
+	};
+	CE4F5FEB162FFD9200BB2B6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F4F849DD16044E75009945BC /* CCHero.h */;
+		name = "CCHero.h: 43";
+		rLen = 0;
+		rLoc = 1160;
+		rType = 0;
+		vrLen = 1131;
+		vrLoc = 29;
 	};
 	CE8F6AE7160B3762000F6DB4 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -688,7 +894,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					678,
+					498,
 					20,
 					48,
 					43,
@@ -705,8 +911,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 371875965;
-			PBXWorkspaceStateSaveDate = 371875965;
+			PBXPerProjectTemplateStateSaveDate = 372241452;
+			PBXWorkspaceStateSaveDate = 372241452;
 		};
 		perUserProjectItems = {
 			CE095AE2162583DF00F52A1D = CE095AE2162583DF00F52A1D /* PBXTextBookmark */;
@@ -750,6 +956,24 @@
 			CE219CF9160D3A9F0096C496 = CE219CF9160D3A9F0096C496 /* PBXTextBookmark */;
 			CE219CFA160D3A9F0096C496 = CE219CFA160D3A9F0096C496 /* PBXTextBookmark */;
 			CE41F2D01617EC1400D51B31 = CE41F2D01617EC1400D51B31 /* PBXTextBookmark */;
+			CE4F5FC0162FF78700BB2B6A /* XCBuildMessageTextBookmark */ = CE4F5FC0162FF78700BB2B6A /* XCBuildMessageTextBookmark */;
+			CE4F5FC1162FF78700BB2B6A /* PBXTextBookmark */ = CE4F5FC1162FF78700BB2B6A /* PBXTextBookmark */;
+			CE4F5FC2162FF78800BB2B6A /* PBXTextBookmark */ = CE4F5FC2162FF78800BB2B6A /* PBXTextBookmark */;
+			CE4F5FC3162FF78800BB2B6A /* PBXTextBookmark */ = CE4F5FC3162FF78800BB2B6A /* PBXTextBookmark */;
+			CE4F5FC4162FF78800BB2B6A /* PBXTextBookmark */ = CE4F5FC4162FF78800BB2B6A /* PBXTextBookmark */;
+			CE4F5FC5162FF78800BB2B6A /* PBXTextBookmark */ = CE4F5FC5162FF78800BB2B6A /* PBXTextBookmark */;
+			CE4F5FC6162FF78800BB2B6A /* PBXTextBookmark */ = CE4F5FC6162FF78800BB2B6A /* PBXTextBookmark */;
+			CE4F5FC7162FF78800BB2B6A /* PBXTextBookmark */ = CE4F5FC7162FF78800BB2B6A /* PBXTextBookmark */;
+			CE4F5FC8162FF78800BB2B6A /* PBXTextBookmark */ = CE4F5FC8162FF78800BB2B6A /* PBXTextBookmark */;
+			CE4F5FC9162FF78800BB2B6A /* PBXTextBookmark */ = CE4F5FC9162FF78800BB2B6A /* PBXTextBookmark */;
+			CE4F5FCA162FF78800BB2B6A /* XCBuildMessageTextBookmark */ = CE4F5FCA162FF78800BB2B6A /* XCBuildMessageTextBookmark */;
+			CE4F5FCB162FF78800BB2B6A /* PBXTextBookmark */ = CE4F5FCB162FF78800BB2B6A /* PBXTextBookmark */;
+			CE4F5FD8162FF7BA00BB2B6A /* PBXTextBookmark */ = CE4F5FD8162FF7BA00BB2B6A /* PBXTextBookmark */;
+			CE4F5FD9162FF7BE00BB2B6A /* PBXTextBookmark */ = CE4F5FD9162FF7BE00BB2B6A /* PBXTextBookmark */;
+			CE4F5FE8162FFD9200BB2B6A /* PBXTextBookmark */ = CE4F5FE8162FFD9200BB2B6A /* PBXTextBookmark */;
+			CE4F5FE9162FFD9200BB2B6A /* PBXTextBookmark */ = CE4F5FE9162FFD9200BB2B6A /* PBXTextBookmark */;
+			CE4F5FEA162FFD9200BB2B6A /* PBXTextBookmark */ = CE4F5FEA162FFD9200BB2B6A /* PBXTextBookmark */;
+			CE4F5FEB162FFD9200BB2B6A /* PBXTextBookmark */ = CE4F5FEB162FFD9200BB2B6A /* PBXTextBookmark */;
 			CE8F6AE7160B3762000F6DB4 = CE8F6AE7160B3762000F6DB4 /* PBXTextBookmark */;
 			CE8F6AEE160B3762000F6DB4 = CE8F6AEE160B3762000F6DB4 /* PBXBookmark */;
 			CE9C387E1616C35D0052B2E4 = CE9C387E1616C35D0052B2E4 /* PBXTextBookmark */;
@@ -803,9 +1027,10 @@
 	};
 	F4DBBDC215A57F4A00071821 /* GamePlayRenderingLayer.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1279, 11024}}";
-			sepNavSelRange = "{7787, 0}";
-			sepNavVisRange = "{7223, 1181}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1475, 440}\";\n            s = 0;\n        },\n                {\n            r = \"{2000, 403}\";\n            s = 0;\n        },\n                {\n            r = \"{2456, 143}\";\n            s = 0;\n        },\n                {\n            r = \"{2652, 143}\";\n            s = 0;\n        },\n                {\n            r = \"{2945, 233}\";\n            s = 0;\n        },\n                {\n            r = \"{3342, 233}\";\n            s = 0;\n        },\n                {\n            r = \"{3637, 265}\";\n            s = 0;\n        },\n                {\n            r = \"{3964, 261}\";\n            s = 0;\n        },\n                {\n            r = \"{4371, 346}\";\n            s = 0;\n        },\n                {\n            r = \"{4863, 346}\";\n            s = 0;\n        },\n                {\n            r = \"{5270, 663}\";\n            s = 0;\n        },\n                {\n            r = \"{5982, 120}\";\n            s = 0;\n        },\n                {\n            r = \"{6119, 176}\";\n            s = 0;\n        },\n                {\n            r = \"{6338, 54}\";\n            s = 0;\n        },\n                {\n            r = \"{6446, 251}\";\n            s = 0;\n        },\n                {\n            r = \"{6772, 286}\";\n            s = 0;\n        },\n                {\n            r = \"{7104, 58}\";\n            s = 0;\n        },\n                {\n            r = \"{7236, 286}\";\n            s = 0;\n        },\n                {\n            r = \"{7572, 57}\";\n            s = 0;\n        },\n                {\n            r = \"{7707, 171}\";\n            s = 0;\n        },\n                {\n            r = \"{7937, 465}\";\n            s = 0;\n        },\n                {\n            r = \"{8443, 399}\";\n            s = 0;\n        },\n                {\n            r = \"{8937, 1592}\";\n            s = 0;\n        },\n                {\n            r = \"{10610, 4327}\";\n            s = 0;\n        },\n                {\n            r = \"{15051, 565}\";\n            s = 0;\n        },\n                {\n            r = \"{15688, 1236}\";\n            s = 0;\n        },\n                {\n            r = \"{16998, 530}\";\n            s = 0;\n        },\n                {\n            r = \"{17605, 328}\";\n            s = 0;\n        },\n                {\n            r = \"{18001, 1292}\";\n            s = 0;\n        },\n                {\n            r = \"{19354, 353}\";\n            s = 0;\n        },\n                {\n            r = \"{19766, 32}\";\n            s = 0;\n        },\n                {\n            r = \"{19888, 228}\";\n            s = 0;\n        },\n                {\n            r = \"{20175, 30}\";\n            s = 0;\n        },\n                {\n            r = \"{20278, 209}\";\n            s = 0;\n        },\n                {\n            r = \"{20581, 256}\";\n            s = 0;\n        },\n                {\n            r = \"{20885, 78}\";\n            s = 0;\n        },\n                {\n            r = \"{21037, 1741}\";\n            s = 0;\n        },\n                {\n            r = \"{22975, 1432}\";\n            s = 0;\n        },\n                {\n            r = \"{24446, 96}\";\n            s = 0;\n        },\n                {\n            r = \"{24583, 96}\";\n            s = 0;\n        },\n                {\n            r = \"{24720, 93}\";\n            s = 0;\n        },\n                {\n            r = \"{24869, 981}\";\n            s = 0;\n        },\n                {\n            r = \"{25873, 912}\";\n            s = 0;\n        },\n                {\n            r = \"{26809, 875}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 34087}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1195, 4030}}";
+			sepNavSelRange = "{10725, 0}";
+			sepNavVisRange = "{9427, 1617}";
 			sepNavWindowFrame = "{{526, 29}, {657, 723}}";
 		};
 	};
@@ -832,16 +1057,17 @@
 	};
 	F4F849DD16044E75009945BC /* CCHero.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {870, 629}}";
-			sepNavSelRange = "{100, 0}";
-			sepNavVisRange = "{0, 516}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 572}}";
+			sepNavSelRange = "{1160, 0}";
+			sepNavVisRange = "{29, 1131}";
 		};
 	};
 	F4F849DE16044E76009945BC /* CCHero.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {870, 652}}";
-			sepNavSelRange = "{489, 0}";
-			sepNavVisRange = "{0, 556}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{642, 406}\";\n            s = 0;\n        },\n                {\n            r = \"{1081, 1995}\";\n            s = 0;\n        },\n                {\n            r = \"{3111, 2037}\";\n            s = 0;\n        },\n                {\n            r = \"{7761, 2286}\";\n            s = 0;\n        },\n                {\n            r = \"{10102, 261}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 10687}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {684, 1911}}";
+			sepNavSelRange = "{3329, 0}";
+			sepNavVisRange = "{2535, 1172}";
 		};
 	};
 }

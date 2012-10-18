@@ -7,6 +7,10 @@
 //
 
 #import "CCHero.h"
+#import "CCParticleHeroBlood.h"
+#import "GamePlayRenderingLayer.h"
+
+CCParticleHeroBlood *heroBloodParticle;
 
 @implementation CCHero
 
@@ -90,6 +94,35 @@
     _withGoldSideAnim = [[CCAnimation animationWithFrames:sideAnimFrames delay:0.3f] retain];
 }
 
+-(void) gettingBitten
+{	
+	if (!waitForHitToClear)
+	{
+		self.characterHealth = self.characterHealth - 20.0f;
+		CCLOG(@"Hero getting bitten with life: %d", self.characterHealth);
+		GamePlayRenderingLayer *layer = (GamePlayRenderingLayer *)[[self parent] parent];
+		
+		if (heroBloodParticle !=nil) { [self removeChild:heroBloodParticle cleanup:YES]; }
+		heroBloodParticle = [[CCParticleHeroBlood alloc]init];
+		heroBloodParticle.texture = [[CCTextureCache sharedTextureCache] addImage:@"blood.png"];
+		heroBloodParticle.position = self.position;
+		[layer addChild:heroBloodParticle z:9];
+		heroBloodParticle.autoRemoveOnFinish = YES;
+		waitForHitToClear=1;
+		heroBloodParticle = nil;
+	}
+	
+	if (waitForHitToClear) 
+	{
+		timer++; 
+		if (timer==5) 
+		{
+			timer=0; 
+			waitForHitToClear=0;
+		}
+	}
+}
+
 -(void)changeState:(CharacterStates)newState {
     if (newState == kStateIdle) {
         [self stopAllActions];
@@ -100,16 +133,57 @@
         return;
     }
     
-    id action = [self getAnimation:_facingDirection forState:newState];
-    
-    if (action == nil) {
-        [self stopAllActions];
+	[self setCharacterState:newState];
+	
+	id action = nil;
+	
+	switch (newState) {
+        case kStateIdle:
+			break;
+        case kStateWalking:
+			action = [self getAnimation:_facingDirection forState:newState];
+			if (action == nil) {
+				[self stopAllActions];
+			}
+			else {
+				[self runAction:action];
+			}
+            break;
+        case kStateAttacking:
+			break;
+        case kStateTakingDamage:
+			[self gettingBitten];
+			//set to walking after bite!
+			[self changeState:kStateWalking];
+			break;
+        case kStateDead:
+            break;
+        default:
+            break;
     }
-    else {
-        [self runAction:action];
-    }
+	
+}
+
+-(void)updateStateWithEnemies:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
+{
+	//if (self.characterState == kStateDead) 
+	//  return; // Nothing to do if the Viking is dead
     
-    characterState = newState;
+    //if ((self.characterState == kStateTakingDamage) && ([self numberOfRunningActions] > 0))
+	//  return; // Currently playing the taking damage animation
+    
+    // Check for collisions
+    // Change this to keep the object count from querying it each time
+    CGRect myBoundingBox = [self adjustedBoundingBox];
+    for (GameCharacter *character in listOfGameObjects) {
+        CGRect characterBox = [character adjustedBoundingBox];
+        if (CGRectIntersectsRect(myBoundingBox, characterBox)) {
+            // Remove the PhaserBullet from the scene
+            if ([character gameObjectType] == kEnemyTypeZombie) {
+                [self changeState:kStateTakingDamage];
+            }
+        }
+    }    
 }
 
 -(id)getAnimation:(FacingDirection)direction forState:(CharacterStates)state {
@@ -194,6 +268,9 @@
 		self.gameObjectType = kHeroType;
         characterState = kStateWalking;
         
+		timer = 0;
+		waitForHitToClear = 0;
+		
         [self loadNormalAnimations];
         [self loadWithGoldAnimations];
     }

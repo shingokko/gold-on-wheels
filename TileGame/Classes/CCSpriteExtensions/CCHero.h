@@ -24,6 +24,8 @@
     CCAnimation *_withGoldSideAnim;
 
     Gold *_goldInPossession;
+	int timer;
+	int waitForHitToClear;
 }
 
 @property (nonatomic, retain) CCAnimation *normalFrontAnim;
@@ -36,5 +38,6 @@
 @property (nonatomic, assign) FacingDirection facingDirection;
 
 -(void) adjustAnimation:(FacingDirection)direction;
+-(void)updateStateWithEnemies:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects;
 
 @end

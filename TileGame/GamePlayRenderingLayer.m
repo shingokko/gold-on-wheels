@@ -861,6 +861,8 @@ int maxSight = 400;
         // Light is in pixels
         _player.light = self.isRetina ? 240.0f : 120.0f;
         
+		[_player setCharacterHealth: 100];
+		
         _hud.movingThreshold = _player.speed;
         
 		_powerups = [[NSMutableArray alloc] init];
@@ -954,6 +956,9 @@ int maxSight = 400;
             [zombie updateStateWithDeltaTime:delta andGameObject:_player];
         }
         
+		//check player colliding with zombie
+        [_player updateStateWithEnemies:delta andListOfGameObjects:zombies];
+
         CCArray* carts = [_cartSpriteBatchNode children];
         
         for (GameObject *cart in carts) {
