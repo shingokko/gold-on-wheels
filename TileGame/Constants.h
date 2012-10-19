@@ -13,3 +13,5 @@
 // Debug Enemy States with Labels
 // 0 for OFF, 1 for ON
 #define ENEMY_STATE_DEBUG 1
+
+#define kHeroInitialHealth 100

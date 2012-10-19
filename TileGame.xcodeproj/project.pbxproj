@@ -11,6 +11,8 @@
 		CE219B89160D1D940096C496 /* GameCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE219B88160D1D940096C496 /* GameCharacter.m */; };
 		CE219B8D160D1DF50096C496 /* Zombie.m in Sources */ = {isa = PBXBuildFile; fileRef = CE219B8C160D1DF50096C496 /* Zombie.m */; };
 		CE219B92160D1E640096C496 /* ShortestPathStep.m in Sources */ = {isa = PBXBuildFile; fileRef = CE219B91160D1E640096C496 /* ShortestPathStep.m */; };
+		CE3164EF16315C30008D62A2 /* blood-bar-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3164ED16315C30008D62A2 /* blood-bar-hd.png */; };
+		CE3164F016315C30008D62A2 /* blood-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3164EE16315C30008D62A2 /* blood-bar.png */; };
 		CE4F5FB5162FF4C500BB2B6A /* CCParticleHeroBlood.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F5FB2162FF4C500BB2B6A /* CCParticleHeroBlood.m */; };
 		CE4F5FB6162FF4C500BB2B6A /* CCQuadParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F5FB4162FF4C500BB2B6A /* CCQuadParticleSystem.m */; };
 		CE4F5FDE162FF92F00BB2B6A /* blood.png in Resources */ = {isa = PBXBuildFile; fileRef = CE4F5FDD162FF92F00BB2B6A /* blood.png */; };
@@ -244,6 +246,8 @@
 		CE219B8C160D1DF50096C496 /* Zombie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Zombie.m; sourceTree = "<group>"; };
 		CE219B90160D1E640096C496 /* ShortestPathStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortestPathStep.h; sourceTree = "<group>"; };
 		CE219B91160D1E640096C496 /* ShortestPathStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortestPathStep.m; sourceTree = "<group>"; };
+		CE3164ED16315C30008D62A2 /* blood-bar-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blood-bar-hd.png"; sourceTree = "<group>"; };
+		CE3164EE16315C30008D62A2 /* blood-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blood-bar.png"; sourceTree = "<group>"; };
 		CE4F5FB1162FF4C500BB2B6A /* CCParticleHeroBlood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCParticleHeroBlood.h; sourceTree = "<group>"; };
 		CE4F5FB2162FF4C500BB2B6A /* CCParticleHeroBlood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCParticleHeroBlood.m; sourceTree = "<group>"; };
 		CE4F5FB3162FF4C500BB2B6A /* CCQuadParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQuadParticleSystem.h; sourceTree = "<group>"; };
@@ -830,6 +834,8 @@
 		F4DBBC6A15A57F4800071821 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE3164ED16315C30008D62A2 /* blood-bar-hd.png */,
+				CE3164EE16315C30008D62A2 /* blood-bar.png */,
 				CE4F5FDD162FF92F00BB2B6A /* blood.png */,
 				CED3BB45162986A000539B07 /* cave-32 */,
 				CED3BB4C162986A000539B07 /* cave-64 */,
@@ -1382,6 +1388,8 @@
 				CED3BB5E162986A000539B07 /* rocks-64.png in Resources */,
 				F4A079B5162AA1C900E85853 /* lever-hd.png in Resources */,
 				CE4F5FDE162FF92F00BB2B6A /* blood.png in Resources */,
+				CE3164EF16315C30008D62A2 /* blood-bar-hd.png in Resources */,
+				CE3164F016315C30008D62A2 /* blood-bar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

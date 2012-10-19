@@ -13,6 +13,7 @@
 
 @synthesize gameLayer = _gameLayer;
 @synthesize goldGauge = _goldGauge;
+@synthesize healthGauge = _healthGauge;
 @synthesize icon = _icon;
 
 - (void) dealloc
@@ -26,10 +27,10 @@
     [_goldGauge setPercentage:percentage];
 }
 
--(void) onEnter
+-(void) showHealth:(int)amount
 {
-    [super onEnter];
-    [self initGoldGauge];
+	CGFloat percentage = 100.0f * ((CGFloat)amount / kHeroInitialHealth);
+	[_healthGauge setPercentage:percentage];
 }
 
 -(void) initGoldGauge {
@@ -50,6 +51,35 @@
     queueX -= ((_goldGauge.contentSize.width / 2.0f) + (_icon.contentSize.width / 2.0f) + padding);
     _icon.position = ccp(queueX, y);
     [self addChild:_icon];
+}
+
+-(void) initHealthGauge {
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    
+    CGFloat padding = 8.0f; // 8px
+    CGFloat y = winSize.height - 16.0f - padding; // 16.0f = half the height of sprite
+    
+    _healthGauge = [CCProgressTimer progressWithFile:@"blood-bar.png"];
+    _healthGauge.type = kCCProgressTimerTypeHorizontalBarLR;
+    _healthGauge.percentage = 0.0f;
+    CGFloat queueX = ((_healthGauge.contentSize.width / 2.0f) + padding);
+	
+    _healthGauge.position = ccp(queueX, y);
+    [self addChild:_healthGauge];
+    
+    _icon = [[CCSprite alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"miner-normal-front-1.png"]];
+    queueX = ((_healthGauge.contentSize.width / 2.0f) + (_icon.contentSize.width / 2.0f) + padding);
+    _icon.position = ccp(padding, y);
+    [self addChild:_icon];
+	
+	[_healthGauge setPercentage:100];
+}
+
+-(void) onEnter
+{
+    [super onEnter];
+    [self initGoldGauge];
+	[self initHealthGauge];
 }
 
 -(id) init

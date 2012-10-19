@@ -98,8 +98,20 @@ CCParticleHeroBlood *heroBloodParticle;
 {	
 	if (!waitForHitToClear)
 	{
+		
 		self.characterHealth = self.characterHealth - 20.0f;
 		CCLOG(@"Hero getting bitten with life: %d", self.characterHealth);
+		
+		// build data to send in notification
+		NSNumber *amountInNsNumber = [NSNumber numberWithInt:self.characterHealth];
+		NSDictionary* data = [NSDictionary dictionaryWithObject:amountInNsNumber forKey:@"currentAmount"];
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"gettingBitten" object:self userInfo:data];
+		
+		if (self.characterHealth == 0) {
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"declaredDead" object:self ];
+		}
+		
+		
 		GamePlayRenderingLayer *layer = (GamePlayRenderingLayer *)[[self parent] parent];
 		
 		if (heroBloodParticle !=nil) { [self removeChild:heroBloodParticle cleanup:YES]; }

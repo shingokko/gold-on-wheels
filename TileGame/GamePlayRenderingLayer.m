@@ -199,7 +199,7 @@ int maxSight = 400;
     [[CCDirector sharedDirector] replaceScene:titleScene];
 }
 
-- (void)lose {
+- (void)lose:(NSNotification *) notification {
     GameOverScene *gameOverScene = [GameOverScene node];
     [gameOverScene.layer.label setString:@"You Lose!"];
     [[CCDirector sharedDirector] replaceScene:gameOverScene];
@@ -589,14 +589,18 @@ int maxSight = 400;
     CCLOG(@"Speedup used up");
 }
 
+-(void)handleHealthDamage:(NSNotification *) notification {
+	NSDictionary *data = [notification userInfo];
+    NSUInteger amount = [[data objectForKey:@"currentAmount"] intValue];
+	[_statusLayer showHealth:amount];
+}
+
 #pragma mark GoldCartEvents
 
 -(void) handleUpdateCart:(NSNotification *) notification {
     NSDictionary *data = [notification userInfo];
     NSUInteger amount = [[data objectForKey:@"currentAmount"] intValue];
-    GoldCart* cart = (GoldCart*)notification.object;
-
-    [_statusLayer showStatus:cart amount:amount];
+	[_statusLayer showHealth:amount];
 }
 
 -(void) handleFullCart:(NSNotification *) notification {
@@ -692,7 +696,7 @@ int maxSight = 400;
 	return [NSArray arrayWithArray:tmp];
 }
 
-#pragma mark Adding characters to the scene
+#pragma mark Adding Objects/Characters
 
 -(void)createObjectOfType:(GameObjectType)objectType withHealth:(int)initialHealth atLocation:(CGPoint)spawnLocationInPixels withZValue:(int)zValue {
     
@@ -861,7 +865,7 @@ int maxSight = 400;
         // Light is in pixels
         _player.light = self.isRetina ? 240.0f : 120.0f;
         
-		[_player setCharacterHealth: 100];
+		[_player setCharacterHealth: kHeroInitialHealth];
 		
         _hud.movingThreshold = _player.speed;
         
@@ -931,7 +935,9 @@ int maxSight = 400;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleFullCart:) name:@"cartFull" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUpdateCart:) name:@"cartLoaded" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(win:) name:@"animationDone" object:nil];
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleHealthDamage:) name:@"gettingBitten" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lose:) name:@"declaredDead" object:nil];
+		
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"mysterious-cave.mp3"];
         
 		//Schedule updates
