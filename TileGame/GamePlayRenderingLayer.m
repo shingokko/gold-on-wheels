@@ -631,6 +631,21 @@ int maxSight = 400;
     return [self isProp:@"Collidable" atTileCoord:tileCoord forLayer:_meta];
 }
 
+-(BOOL)isGoldAtTileCoord:(CGPoint)tileCoord {
+	CCArray* golds = [_goldSpriteBatchNode children];
+	
+    for (Gold* gold in golds) {
+        CGPoint tilePos = [self positionInPointsForTileCoord:tileCoord];
+        CGRect rect = CGRectMake(tilePos.x, tilePos.y, _tileSizeInPoints.width, _tileSizeInPoints.height);
+        
+        CGRect targetBox = gold.boundingBox;
+        if (CGRectIntersectsRect(targetBox, rect)) {
+            return YES;
+        }
+    }
+	return NO;
+}
+
 -(NSArray *)walkableAdjacentTilesCoordForTileCoord:(CGPoint)tileCoord
 {
 	NSMutableArray *tmp = [NSMutableArray arrayWithCapacity:8];
@@ -642,28 +657,28 @@ int maxSight = 400;
 	
 	// Top
 	CGPoint p = CGPointMake(tileCoord.x, tileCoord.y - 1);
-	if ([self isValidTileCoord:p] && ![self isWallAtTileCoord:p]) {
+	if ([self isValidTileCoord:p] && ![self isWallAtTileCoord:p] && ![self isGoldAtTileCoord:p]) {
 		[tmp addObject:[NSValue valueWithCGPoint:p]];
         t = YES;
 	}
 	
 	// Left
 	p = CGPointMake(tileCoord.x - 1, tileCoord.y);
-	if ([self isValidTileCoord:p] && ![self isWallAtTileCoord:p]) {
+	if ([self isValidTileCoord:p] && ![self isWallAtTileCoord:p] && ![self isGoldAtTileCoord:p]) {
 		[tmp addObject:[NSValue valueWithCGPoint:p]];
         l = YES;
 	}
 	
 	// Bottom
 	p = CGPointMake(tileCoord.x, tileCoord.y + 1);
-	if ([self isValidTileCoord:p] && ![self isWallAtTileCoord:p]) {
+	if ([self isValidTileCoord:p] && ![self isWallAtTileCoord:p] && ![self isGoldAtTileCoord:p]) {
 		[tmp addObject:[NSValue valueWithCGPoint:p]];
         b = YES;
 	}
 	
 	// Right
-	p = CGPointMake(tileCoord.x + 1, tileCoord.y);
-	if ([self isValidTileCoord:p] && ![self isWallAtTileCoord:p]) {
+	p = CGPointMake(tileCoord.x + 1, tileCoord.y); 
+	if ([self isValidTileCoord:p] && ![self isWallAtTileCoord:p] && ![self isGoldAtTileCoord:p]) {
 		[tmp addObject:[NSValue valueWithCGPoint:p]];
         r = YES;
 	}
@@ -671,25 +686,25 @@ int maxSight = 400;
     
 	// Top Left
 	p = CGPointMake(tileCoord.x - 1, tileCoord.y - 1);
-	if (t && l && [self isValidTileCoord:p] && ![self isWallAtTileCoord:p]) {
+	if (t && l && [self isValidTileCoord:p] && ![self isWallAtTileCoord:p] && ![self isGoldAtTileCoord:p]) {
 		[tmp addObject:[NSValue valueWithCGPoint:p]];
 	}
 	
 	// Bottom Left
 	p = CGPointMake(tileCoord.x - 1, tileCoord.y + 1);
-	if (b && l && [self isValidTileCoord:p] && ![self isWallAtTileCoord:p]) {
+	if (b && l && [self isValidTileCoord:p] && ![self isWallAtTileCoord:p] && ![self isGoldAtTileCoord:p]) {
 		[tmp addObject:[NSValue valueWithCGPoint:p]];
 	}
 	
 	// Top Right
 	p = CGPointMake(tileCoord.x + 1, tileCoord.y - 1);
-	if (t && r && [self isValidTileCoord:p] && ![self isWallAtTileCoord:p]) {
+	if (t && r && [self isValidTileCoord:p] && ![self isWallAtTileCoord:p] && ![self isGoldAtTileCoord:p]) {
 		[tmp addObject:[NSValue valueWithCGPoint:p]];
 	}
 	
 	// Bottom Right
 	p = CGPointMake(tileCoord.x + 1, tileCoord.y + 1);
-	if (b && r && [self isValidTileCoord:p] && ![self isWallAtTileCoord:p]) {
+	if (b && r && [self isValidTileCoord:p] && ![self isWallAtTileCoord:p] && ![self isGoldAtTileCoord:p]) {
 		[tmp addObject:[NSValue valueWithCGPoint:p]];
 	}
 	
