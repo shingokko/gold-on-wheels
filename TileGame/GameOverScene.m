@@ -7,7 +7,7 @@
 //
 
 #import "GameOverScene.h"
-#import "GamePlayRenderingLayer.h"
+#import "TitleScreenScene.h"
 
 @implementation GameOverScene
 @synthesize layer = _layer;
@@ -48,7 +48,7 @@
         _label.position = ccp(winSize.width/2, winSize.height/2);
         [self addChild:_label];
         
-        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:3], [CCCallFunc actionWithTarget:self selector:@selector(gameOverDone)], nil]];
+        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:5], [CCCallFunc actionWithTarget:self selector:@selector(gameOverDone)], nil]];
         
         NSLog(@"GameOverLayer initialised");
         
@@ -57,7 +57,8 @@
 }
 
 -(void)gameOverDone {
-    [[CCDirector sharedDirector] replaceScene:[GamePlayRenderingLayer scene]];
+    TitleScreenScene *titleScene = [TitleScreenScene node];
+    [[CCDirector sharedDirector] replaceScene:titleScene];
 }
 
 -(void)dealloc {

@@ -202,6 +202,7 @@ int maxSight = 400;
 - (void)lose:(NSNotification *) notification {
     GameOverScene *gameOverScene = [GameOverScene node];
     [gameOverScene.layer.label setString:@"You Lose!"];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"lose!.mp3" loop:NO];
     [[CCDirector sharedDirector] replaceScene:gameOverScene];
 }
 
@@ -592,6 +593,7 @@ int maxSight = 400;
 -(void)handleHealthDamage:(NSNotification *) notification {
 	NSDictionary *data = [notification userInfo];
     NSUInteger amount = [[data objectForKey:@"currentAmount"] intValue];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"hurt.caf"];
 	[_statusLayer showHealth:amount];
 }
 
@@ -775,6 +777,7 @@ int maxSight = 400;
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"shoot.caf"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"gold.caf"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.caf"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"hurt.caf"];
     
     [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"mysterious-cave.mp3"];
     [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"win!.mp3"];

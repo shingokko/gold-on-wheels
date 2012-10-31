@@ -31,6 +31,7 @@
 		F4374CE115AEAE83008F26A8 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F4374CE015AEAE83008F26A8 /* GameOverScene.m */; };
 		F4374CEA15AEBB2F008F26A8 /* broken.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4374CE715AEBB2F008F26A8 /* broken.caf */; };
 		F4374CEB15AEBB2F008F26A8 /* great.caf in Resources */ = {isa = PBXBuildFile; fileRef = F4374CE815AEBB2F008F26A8 /* great.caf */; };
+		F44A847616414183009F530F /* hurt.caf in Resources */ = {isa = PBXBuildFile; fileRef = F44A847516414183009F530F /* hurt.caf */; };
 		F44B3BF5161D6EFA00EA9EE6 /* grabbed.png in Resources */ = {isa = PBXBuildFile; fileRef = F44B3BF2161D6EFA00EA9EE6 /* grabbed.png */; };
 		F44B3BF6161D6EFA00EA9EE6 /* released.png in Resources */ = {isa = PBXBuildFile; fileRef = F44B3BF3161D6EFA00EA9EE6 /* released.png */; };
 		F464DD841627425700E8E3DC /* GamePlayStatusLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F464DD831627425700E8E3DC /* GamePlayStatusLayer.m */; };
@@ -269,6 +270,7 @@
 		F4374CE015AEAE83008F26A8 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		F4374CE715AEBB2F008F26A8 /* broken.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = broken.caf; sourceTree = "<group>"; };
 		F4374CE815AEBB2F008F26A8 /* great.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = great.caf; sourceTree = "<group>"; };
+		F44A847516414183009F530F /* hurt.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hurt.caf; path = Resources/hurt.caf; sourceTree = "<group>"; };
 		F44B3BF2161D6EFA00EA9EE6 /* grabbed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grabbed.png; path = Resources/grabbed.png; sourceTree = "<group>"; };
 		F44B3BF3161D6EFA00EA9EE6 /* released.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = released.png; path = Resources/released.png; sourceTree = "<group>"; };
 		F464DD831627425700E8E3DC /* GamePlayStatusLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayStatusLayer.m; sourceTree = "<group>"; };
@@ -1186,6 +1188,7 @@
 		F4F849CA16043398009945BC /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				F44A847516414183009F530F /* hurt.caf */,
 				F49C7B9616290D94001C4851 /* lose!.mp3 */,
 				F49C7B9716290D94001C4851 /* win!.mp3 */,
 				F4A2B593162195380052042D /* mysterious-cave.mp3 */,
@@ -1390,6 +1393,7 @@
 				CE4F5FDE162FF92F00BB2B6A /* blood.png in Resources */,
 				CE3164EF16315C30008D62A2 /* blood-bar-hd.png in Resources */,
 				CE3164F016315C30008D62A2 /* blood-bar.png in Resources */,
+				F44A847616414183009F530F /* hurt.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
